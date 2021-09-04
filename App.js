@@ -57,20 +57,43 @@ export default function App() {
         </View>
         <View style={styles.lesson_schedule}>
           <View style={{ flexDirection: 'row' }}>
-            <Text style={styles.lesson_time}>Время</Text>
-            <Text style={styles.lessons}>Пары</Text>
-            <Image source={{ uri: './assets/favicon.png' }} />
-
+            <Text style={styles.lesson_time_text}>Время</Text>
+            <Text style={styles.lessons_text}>Пары</Text>
           </View>
-          <View style={styles.lesson_list}>
-            <Text style={styles.lesson_time_list_text}>11:35</Text>
-            <Text style={styles.lesson_time_end_list_text}>13:05</Text>
+          <View style={styles.lessons}>
+            <View style={styles.lesson_time}>
+              <Text style={styles.lesson_time_list_text}>11:35</Text>
+              <Text style={styles.lesson_time_end_list_text}>13:05</Text>
+            </View>
             <View style={styles.lesson_card}>
               <Text style={styles.lesson_card_name}>Програмирование</Text>
               <Text style={styles.lesson_card_description}>Лекция</Text>
-              <Image style={{ width: 20, height: 20, tintColor: 'Green' }} source={{ uri: 'data:assets/location.png' }} />
-              <Text style={styles.lesson_card_locate}>Аудитория 1402</Text>
-              <Text style={styles.lesson_card_teacher}>Шпортько О. В.</Text>
+              <Text style={styles.lesson_card_locate}><Image source={require('./assets/room.png')} style={styles.lesson_card_locate_img} />Аудитория 1402</Text>
+              <Text style={styles.lesson_card_teacher}><Image source={require('./assets/person.png')} style={styles.lesson_card_teacher_img} />Шпортько О. В.</Text>
+            </View>
+          </View>
+          <View style={styles.lessons}>
+            <View style={styles.lesson_time}>
+              <Text style={styles.lesson_time_list_text}>11:35</Text>
+              <Text style={styles.lesson_time_end_list_text}>13:05</Text>
+            </View>
+            <View style={styles.lesson_card}>
+              <Text style={styles.lesson_card_name}>Програмирование</Text>
+              <Text style={styles.lesson_card_description}>Лекция</Text>
+              <Text style={styles.lesson_card_locate}><Image source={require('./assets/room.png')} style={styles.lesson_card_locate_img} />Аудитория 1402</Text>
+              <Text style={styles.lesson_card_teacher}><Image source={require('./assets/person.png')} style={styles.lesson_card_teacher_img} />Шпортько О. В.</Text>
+            </View>
+          </View>
+          <View style={styles.lessons}>
+            <View style={styles.lesson_time}>
+              <Text style={styles.lesson_time_list_text}>11:35</Text>
+              <Text style={styles.lesson_time_end_list_text}>13:05</Text>
+            </View>
+            <View style={styles.lesson_card}>
+              <Text style={styles.lesson_card_name}>Програмирование</Text>
+              <Text style={styles.lesson_card_description}>Лекция</Text>
+              <Text style={styles.lesson_card_locate}><Image source={require('./assets/room.png')} style={styles.lesson_card_locate_img} />Аудитория 1402</Text>
+              <Text style={styles.lesson_card_teacher}><Image source={require('./assets/person.png')} style={styles.lesson_card_teacher_img} />Шпортько О. В.</Text>
             </View>
           </View>
         </View>
@@ -115,7 +138,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'flex-end',
     justifyContent: 'center',
-    marginRight: 28,
+    paddingRight: 28,
   },
   day_select_text: {
     fontFamily: 'Poppins_600SemiBold',
@@ -154,15 +177,26 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderColor: '#FAF9F9',
   },
-  lesson_time: {
-    fontFamily: 'Poppins_600SemiBold',
-    fontSize: 14,
-    paddingRight: 22,
-  },
   lessons: {
+    flexDirection: 'row',
+  },
+  lesson_time_text: {
     fontFamily: 'Poppins_600SemiBold',
     fontSize: 14,
-    paddingRight: 22,
+    paddingRight: 30,
+    color: '#BCC1CD',
+
+  },
+  lesson_time: {
+    flexDirection: 'column',
+    paddingRight: 16,
+    borderRightWidth: 1,
+    borderRightColor: '#FAF9F9',
+  },
+  lessons_text: {
+    fontFamily: 'Poppins_600SemiBold',
+    fontSize: 14,
+    color: '#BCC1CD',
   },
   lesson_time_list: {
     flexDirection: 'column',
@@ -170,38 +204,58 @@ const styles = StyleSheet.create({
   },
   lesson_time_list_text: {
     fontFamily: 'Poppins_500Medium',
-    fontSize: 18,
+    fontSize: 16,
   },
   lesson_time_end_list_text: {
     fontFamily: 'Poppins_500Medium',
-    fontSize: 18,
-
+    fontSize: 16,
+    color: '#BCC1CD',
   },
   lesson_card: {
-    flexDirection: 'column'
-
+    flexDirection: 'column',
+    marginLeft: 16,
+    backgroundColor: '#4DC591',
+    borderRadius: 16,
+    paddingTop: 16,
+    paddingLeft: 16,
+    paddingBottom: 17,
+    flex: 1,
+    marginBottom: 16,
   },
   lesson_card_name: {
-    fontFamily: 'Poppins_500Medium',
-    fontSize: 18,
-
+    fontFamily: 'Poppins_600SemiBold',
+    fontSize: 16,
+    color: '#ffff'
   },
   lesson_card_description: {
     fontFamily: 'Poppins_500Medium',
-    fontSize: 18,
+    fontSize: 12,
+    paddingTop: 4,
+    color: '#ffff'
 
   },
   lesson_card_locate_img: {
-    width: 50,
-    height: 50,
+    height: 16,
+    width: 16,
+    marginRight: 50,
+    tintColor: '#FFFFFF',
   },
   lesson_card_locate: {
-    fontFamily: 'Poppins_500Medium',
-    fontSize: 18,
+    fontFamily: 'Poppins_400Regular',
+    fontSize: 12,
+    paddingTop: 15,
+    color: '#ffff'
+  },
+  lesson_card_teacher_img: {
+    height: 16,
+    width: 16,
+    marginRight: 50,
+    tintColor: '#FFFFFF',
   },
   lesson_card_teacher: {
-    fontFamily: 'Poppins_500Medium',
-    fontSize: 18,
-
+    fontFamily: 'Poppins_400Regular',
+    fontSize: 12,
+    paddingTop: 3,
+    color: '#ffff'
   },
 });
