@@ -20,23 +20,28 @@ export default function App() {
             <Text style={styles.today_day_week}>Четверг</Text>
             <Text style={styles.today_year}>Сентябрь 2021</Text>
           </View>
+          <View style={styles.day_select_conteiner}>
+            <Text style={styles.day_select_text}>Сегодня</Text>
+          </View>
+        </View>
+        <View>
+
         </View>
       </View>
     );
   }
 }
 
-
-
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#faf9f9',
-    paddingTop: 35,
+    paddingTop: 55,
   },
   today: {
     paddingLeft: 28,
     flexDirection: 'row',
     fontSize: 14,
+    display: 'flex',
   },
   today_day: {
     fontFamily: 'Poppins_500Medium',
@@ -58,5 +63,19 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins_400Regular',
     lineHeight: 21,
     color: '#BCC1CD',
+  },
+  day_select_conteiner: {
+    flex: 1,
+    alignItems: 'flex-end',
+    justifyContent: 'center',
+    marginRight: 28,
+  },
+  day_select_text: {
+    fontFamily: 'Poppins_600SemiBold',
+    fontSize: 16,
+    color: '#4DC591',
+    backgroundColor: 'rgba(77, 197, 145, 0.1)',
+    borderRadius: 8,
+    padding: 8,
   },
 });
