@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, StatusBar, Image } from 'react-native';
 import AppLoading from 'expo-app-loading';
 import { useFonts, Poppins_400Regular, Poppins_500Medium, Poppins_600SemiBold } from '@expo-google-fonts/poppins';
+import DataSlider from './components/date_slider.js'
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -26,34 +27,13 @@ export default function App() {
           </View>
         </View>
         <View style={styles.date_slider}>
-          <View style={styles.date_slider_day}>
-            <Text style={styles.date_slider_day_week}>ПН</Text>
-            <Text style={styles.date_slider_day_number}>21</Text>
-          </View>
-          <View style={styles.date_slider_day}>
-            <Text style={styles.date_slider_day_week}>ВТ</Text>
-            <Text style={styles.date_slider_day_number}>22</Text>
-          </View>
-          <View style={styles.date_slider_day}>
-            <Text style={styles.date_slider_day_week}>СР</Text>
-            <Text style={styles.date_slider_day_number}>23</Text>
-          </View>
-          <View style={{ backgroundColor: '#FF7648', borderRadius: 10, marginRight: 31, alignItems: 'center' }}>
-            <Text style={{ fontFamily: 'Poppins_600SemiBold', fontSize: 12, color: '#ffff', paddingHorizontal: 10 }}>ЧТ</Text>
-            <Text style={{ fontFamily: 'Poppins_600SemiBold', fontSize: 16, color: '#ffff', paddingHorizontal: 10 }}>24</Text>
-          </View>
-          <View style={styles.date_slider_day}>
-            <Text style={styles.date_slider_day_week}>ПТ</Text>
-            <Text style={styles.date_slider_day_number}>25</Text>
-          </View>
-          <View style={styles.date_slider_day}>
-            <Text style={styles.date_slider_day_week}>СБ</Text>
-            <Text style={styles.date_slider_day_number}>26</Text>
-          </View>
-          <View style={styles.date_slider_day}>
-            <Text style={styles.date_slider_day_week}>ВС</Text>
-            <Text style={styles.date_slider_day_number}>27</Text>
-          </View>
+          <DataSlider day_week={'ПН'} day_number={'21'} />
+          <DataSlider day_week={'ВТ'} day_number={'22'} slect={true} />
+          <DataSlider day_week={'СР'} day_number={'23'} />
+          <DataSlider day_week={'ЧТ'} day_number={'24'} />
+          <DataSlider day_week={'ПТ'} day_number={'25'} />
+          <DataSlider day_week={'СБ'} day_number={'26'} />
+          <DataSlider day_week={'ВС'} day_number={'27'} />
         </View>
         <View style={styles.lesson_schedule}>
           <View style={{ flexDirection: 'row' }}>
@@ -157,19 +137,6 @@ const styles = StyleSheet.create({
     paddingBottom: 19,
     paddingHorizontal: 28,
   },
-  date_slider_day: {
-    marginRight: 31,
-    alignItems: 'center',
-  },
-  date_slider_day_number: {
-    fontFamily: 'Poppins_600SemiBold',
-    fontSize: 16,
-  },
-  date_slider_day_week: {
-    fontFamily: 'Poppins_600SemiBold',
-    fontSize: 12,
-    color: '#BCC1CD'
-  },
   lesson_schedule: {
     backgroundColor: '#FFFFFF',
     paddingTop: 7,
@@ -219,6 +186,7 @@ const styles = StyleSheet.create({
     paddingTop: 16,
     paddingLeft: 16,
     paddingBottom: 17,
+    paddingRight: 16,
     flex: 1,
     marginBottom: 16,
   },
