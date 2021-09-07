@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 const DataSlider = (props) => {
-    const isSelect = props.slect;
+    const isSelect = props.select;
     return (
 
         <View style={[isSelect ? styles.date_slider_select_day : styles.date_slider_day]}>

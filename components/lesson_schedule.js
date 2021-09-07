@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 
-const LessonSchedule = (props) => {
+const Lesson = (props) => {
     return (
         <View style={styles.lessons}>
             <View style={styles.lesson_time}>
@@ -103,4 +103,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default LessonSchedule;
+export default Lesson;
