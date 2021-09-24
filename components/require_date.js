@@ -1,4 +1,46 @@
-export default function GetTime(a) {
+import React, { useState, useEffect } from 'react';
+import { Text } from 'react-native';
+import Moment from 'react-moment';
+import 'moment/locale/uk';
+
+export const GetDate = () => {
+    const [date, setDateTime] = useState(new Date());
+
+    useEffect(() => {
+        const id = setInterval(() => setDateTime(new Date()), 1000);
+        return () => {
+            clearInterval(id);
+        }
+    }, []);
+
+    return <Moment element={Text} locale='uk' format='D' >{date}</Moment>;
+}
+
+export const GetDayWeek = () => {
+    const [dayweek, setDateTime] = useState(new Date());
+
+    useEffect(() => {
+        const id = setInterval(() => setDateTime(new Date()), 1000);
+        return () => {
+            clearInterval(id);
+        }
+    }, []);
+    return <Moment element={Text} locale='uk' format='dddd' >{dayweek}</Moment>;
+}
+
+export const GetMonthYear = () => {
+    const [monthyear, setDateTime] = useState(new Date());
+
+    useEffect(() => {
+        const id = setInterval(() => setDateTime(new Date()), 1000);
+        return () => {
+            clearInterval(id);
+        }
+    }, []);
+    return <Moment element={Text} locale='uk' format='MMMM YYYY' >{monthyear}</Moment>;
+}
+
+/* export default function GetTime(a) {
     switch (a) {
         case 1:
             var date = new Date()
@@ -75,4 +117,4 @@ export default function GetTime(a) {
             }
             return month + " " + year;
     }
-}
+} */

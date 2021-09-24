@@ -1,10 +1,10 @@
 import React from 'react';
-import { StyleSheet, Text, View, StatusBar, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, StatusBar } from 'react-native';
 import AppLoading from 'expo-app-loading';
 import { useFonts, Poppins_400Regular, Poppins_500Medium, Poppins_600SemiBold } from '@expo-google-fonts/poppins';
 import DataSlider from './components/date_slider.js'
 import Lesson from './components/lesson_schedule.js'
-import GetTime from './components/require_date.js'
+import { GetDate, GetDayWeek, GetMonthYear } from './components/require_date.js'
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -19,10 +19,10 @@ export default function App() {
       <View style={styles.container}>
         <StatusBar />
         <View style={styles.today}>
-          <Text style={styles.today_day}>{GetTime(1)}</Text>
+          <Text style={styles.today_day}><GetDate></GetDate></Text>
           <View style={styles.today_column}>
-            <Text style={styles.today_day_week}>{GetTime(2)}</Text>
-            <Text style={styles.today_year}>{GetTime(3)}</Text>
+            <Text style={styles.today_day_week}><GetDayWeek></GetDayWeek></Text>
+            <Text style={styles.today_year}><GetMonthYear></GetMonthYear></Text>
           </View>
           <View style={styles.day_select_conteiner}>
             <Text style={styles.day_select_text}>Сьогодні</Text>
@@ -38,40 +38,35 @@ export default function App() {
           <DataSlider day_week={'НД'} day_number={'27'} />
         </View>
         <View style={styles.lesson_schedule}>
-          <ScrollView>
+          <View>
             <View style={styles.lessons}>
               <Text style={styles.lesson_text}>Час</Text>
               <Text style={styles.lesson_text}>Пари</Text>
             </View>
-            <Lesson
-              lesson_start_time={'11:35'}
-              lesson_end_time={'13:05'}
-              lesson_name={'Програмування'}
-              lesson_description={'Лекція'}
-              lesson_locate={'Аудиторія 1402'}
-              lesson_teacher={'Шпортько О. В.'} />
-            <Lesson
-              lesson_start_time={'11:35'}
-              lesson_end_time={'13:05'}
-              lesson_name={'Програмування'}
-              lesson_description={'Лекція'}
-              lesson_locate={'Аудиторія 1402'}
-              lesson_teacher={'Шпортько О. В.'} />
-            <Lesson
-              lesson_start_time={'11:35'}
-              lesson_end_time={'13:05'}
-              lesson_name={'Програмування'}
-              lesson_description={'Лекція'}
-              lesson_locate={'Аудиторія 1402'}
-              lesson_teacher={'Шпортько О. В.'} />
-            <Lesson
-              lesson_start_time={'11:35'}
-              lesson_end_time={'13:05'}
-              lesson_name={'Програмування'}
-              lesson_description={'Лекція'}
-              lesson_locate={'Аудиторія 1402'}
-              lesson_teacher={'Шпортько О. В.'} />
-          </ScrollView>
+            <View>
+              <Lesson
+                lesson_start_time={'11:35'}
+                lesson_end_time={'13:05'}
+                lesson_name={'Програмування'}
+                lesson_description={'Лекція'}
+                lesson_locate={'Аудиторія 1402'}
+                lesson_teacher={'Шпортько О. В.'} />
+              <Lesson
+                lesson_start_time={'11:35'}
+                lesson_end_time={'13:05'}
+                lesson_name={'Програмування'}
+                lesson_description={'Лекція'}
+                lesson_locate={'Аудиторія 1402'}
+                lesson_teacher={'Шпортько О. В.'} />
+              <Lesson
+                lesson_start_time={'11:35'}
+                lesson_end_time={'13:05'}
+                lesson_name={'Програмування'}
+                lesson_description={'Лекція'}
+                lesson_locate={'Аудиторія 1402'}
+                lesson_teacher={'Шпортько О. В.'} />
+            </View>
+          </View>
         </View>
       </View>
     );
