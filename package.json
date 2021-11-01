@@ -9,20 +9,20 @@
   },
   "dependencies": {
     "@expo-google-fonts/poppins": "*",
-    "expo": "~42.0.1",
-    "expo-app-loading": "*",
-    "expo-cli": "^4.12.0",
+    "expo": "^42.0.5",
+    "expo-app-loading": "1.1.2",
+    "expo-cli": "^4.12.10",
     "expo-font": "~9.2.1",
-    "expo-status-bar": "^1.0.4",
+    "expo-status-bar": "~1.0.4",
     "moment": "^2.29.1",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-moment": "^1.1.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz",
-    "react-native-web": "^0.17.1"
+    "react-native-web": "^0.17.5"
   },
   "devDependencies": {
-    "@babel/core": "^7.9.0"
+    "@babel/core": "^7.16.0"
   },
   "private": true
 }
