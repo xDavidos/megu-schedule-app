@@ -1,10 +1,21 @@
 import React from 'react';
-import { StyleSheet, Text, View, StatusBar, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, TouchableOpacity, FlatList } from 'react-native';
 import AppLoading from 'expo-app-loading';
 import { useFonts, Poppins_400Regular, Poppins_500Medium, Poppins_600SemiBold } from '@expo-google-fonts/poppins';
-import DataSlider from './components/date_slider.js'
+import Moment from 'react-moment';
+import 'moment/locale/uk';
+//import DataSlider from './components/date_slider.js'
 import Lesson from './components/lesson_schedule.js'
-import { Day, DayWeek, MonthYear } from './components/require_date.js'
+//import weekday from './components/require_date.js'
+import moment from 'moment';
+import Faker from 'faker';
+Faker.locale = "ru";
+
+const data = [...Array(14).keys()].map(() => ({
+  key: Faker.datatype.uuid(),
+  day: 21,
+  weekday: Faker.date.weekday(),
+}));
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -12,41 +23,70 @@ export default function App() {
     Poppins_500Medium,
     Poppins_600SemiBold
   });
+  console.log(moment().endOf('week').add(7, 'd').toDate());
   if (!fontsLoaded) {
     return <AppLoading />;
   } else {
     return (
       <View style={styles.container}>
-        <StatusBar />
         <View style={styles.today}>
-          <Text style={styles.today_day}><Day></Day></Text>
+          <Moment element={Text} locale='uk' style={styles.today_day} format='D'></Moment>
           <View style={styles.today_column}>
-            <Text style={styles.today_day_week}><DayWeek></DayWeek></Text>
-            <Text style={styles.today_year}><MonthYear></MonthYear></Text>
+            <Moment element={Text} locale='uk' style={styles.today_day_week} format='dddd'></Moment>
+            <Moment element={Text} locale='uk' style={styles.today_year} format='MMMM YYYY'></Moment>
           </View>
           <View style={styles.day_select_conteiner}>
             <Text style={styles.day_select_text}>Сьогодні</Text>
           </View>
         </View>
         <View style={styles.date_slider}>
-          <DataSlider day_week={'ПН'} day_number={'22'} />
-          <DataSlider day_week={'ВТ'} day_number={'22'} select={true} />
-          <DataSlider day_week={'СР'} day_number={'23'} />
-          <DataSlider day_week={'ЧТ'} day_number={'24'} />
-          <DataSlider day_week={'ПТ'} day_number={'25'} />
-          <DataSlider day_week={'СБ'} day_number={'26'} />
-          <DataSlider day_week={'НД'} day_number={'27'} />
+          <FlatList
+            style={{ flexGrow: 0 }}
+            data={data}
+            keyExtractor={(item) => item.key}
+            contentContainerStyle={{ paddingLeft: 20 }}
+            showsHorizontalScrollIndicator={false}
+            horizontal
+            renderItem={({ item, index: fIndex }) => {
+            return (
+              <TouchableOpacity onPress={() => {}}>
+                <View
+                  style={{
+                    marginRight: 16,
+                    paddingHorizontal: 9,
+                    //borderRadius: 5,
+                    //backgroundColor: `#FF7648`,
+                  }}>
+                  <Text style={{ fontFamily: 'Poppins_600SemiBold', fontSize: 12, /*color: '#ffff'*/ }}>{item.weekday}</Text>
+                  <Text style={{ fontFamily: 'Poppins_600SemiBold', fontSize: 16, /*color: '#ffff'*/ }}>{item.day}</Text>
+                </View>
+              </TouchableOpacity>
+            );
+          }}
+          />
         </View>
         <ScrollView>
           <View style={styles.lesson_schedule}>
-
             <View>
-
               <View style={styles.lessons}>
                 <Text style={styles.lesson_text}>Час</Text>
                 <Text style={styles.lesson_text}>Пари</Text>
               </View>
               <View>
+                <Lesson
+                  lesson_start_time={'11:30'}
+                  lesson_end_time={'12:50'}
+                  lesson_name={'Програмування'}
+                  lesson_description={'Лекція'}
+                  lesson_locate={'Аудиторія 1402'}
+                  lesson_teacher={'Шпортько О. В.'} />
+                <Lesson
+                  lesson_start_time={'11:35'}
+                  lesson_end_time={'13:05'}
+                  lesson_name={'Програмування'}
+                  lesson_description={'Лекція'}
+                  lesson_locate={'Аудиторія 1402'}
+                  lesson_teacher={'Шпортько О. В.'} />
                 <Lesson
                   lesson_start_time={'11:35'}
                   lesson_end_time={'13:05'}
@@ -101,7 +141,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#faf9f9',
-    paddingTop: 30,
+    paddingTop: 50,
   },
   today: {
     paddingLeft: 28,
@@ -146,12 +186,11 @@ const styles = StyleSheet.create({
   },
   date_slider: {
     backgroundColor: '#FFFFFF',
-    borderTopEndRadius: 32,
-    borderTopStartRadius: 32,
-    flexDirection: 'row',
+    borderTopEndRadius: 25,
+    borderTopStartRadius: 25,
     paddingTop: 16,
-    paddingBottom: 19,
-    paddingHorizontal: 28,
+    paddingBottom: 16,
+    //paddingHorizontal: 28,
     borderColor: '#FAF9F9',
     borderBottomWidth: 1,
   },

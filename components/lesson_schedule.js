@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
+import { AntDesign, Ionicons } from '@expo/vector-icons'; 
 
 const Lesson = (props) => {
     return (
@@ -11,8 +12,8 @@ const Lesson = (props) => {
             <View style={styles.lesson_card}>
                 <Text style={styles.lesson_card_name}>{props.lesson_name}</Text>
                 <Text style={styles.lesson_card_description}>{props.lesson_description}</Text>
-                <Text style={styles.lesson_card_locate}><Image source={require('../assets/room.png')} style={styles.lesson_card_locate_img} />{props.lesson_locate}</Text>
-                <Text style={styles.lesson_card_teacher}><Image source={require('../assets/person.png')} style={styles.lesson_card_teacher_img} />{props.lesson_teacher}</Text>
+                <Text style={styles.lesson_card_locate}><AntDesign name="enviromento" size={16} color="white"/>{props.lesson_locate}</Text>
+                <Text style={styles.lesson_card_teacher}><Ionicons name="ios-person" size={16} color="white"/>{props.lesson_teacher}</Text>
             </View>
         </View>
     )
@@ -90,14 +91,12 @@ const styles = StyleSheet.create({
         color: '#ffff'
     },
     lesson_card_teacher_img: {
-        height: 16,
-        width: 16,
-        marginRight: 50,
-        tintColor: '#FFFFFF',
+        marginRight: 500,
     },
     lesson_card_teacher: {
         fontFamily: 'Poppins_400Regular',
         fontSize: 12,
+        
         paddingTop: 3,
         color: '#ffff'
     },
