@@ -1,12 +1,12 @@
 {
   "expo": {
-    "name": "MEGU Schedule",
+    "name": "megu-schedule-app",
     "slug": "megu-schedule-app",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "",
+    "icon": "./assets/icon.png",
     "splash": {
-      "image": "",
+      "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -21,12 +21,12 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "",
+        "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       }
     },
     "web": {
-      "favicon": ""
+      "favicon": "./assets/favicon.png"
     }
   }
 }
