@@ -1,22 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import { useFonts } from 'expo-font';
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { TouchableOpacity, FlatList, StyleSheet, Text, View } from 'react-native';
 import Moment from 'react-moment';
 import moment from 'moment';
 import 'moment/locale/uk';
-
-function getday(i) {
-  const [day, setday] = useState([]);
-}
-
-const startDay = moment().subtract(1, 'week').startOf('week');
-const endDay = moment().add(1, 'week').endOf('week');
-
-const data = [...Array(14).keys()].map(() => ({
-  day: 21,
-  weekday: 5,
-}));
+import DateSlider from './components/date_slider';
 
 export default function App() {
   const [loaded] = useFonts({
@@ -42,13 +31,11 @@ export default function App() {
 
   return (
     <View style={styles.container}>
+      <StatusBar style="auto" />
       <Moment element={Text} style={styles.today_day} format='D'></Moment>
       <Moment element={Text} style={styles.today_day_week} format='dddd'></Moment>
-      <Moment element={Text} style={styles.today_year} format='MMMM YYYY'></Moment>
-      <Moment element={Text} >{startDay}</Moment>
-      <Moment element={Text} >{endDay}</Moment>
-      <Text style={{ fontFamily: 'eUkraineBold', fontSize: 50 }}>Понеділок Вівторок Середа Четвер Пятниця Субота Неділя</Text>
-      <StatusBar style="auto" />
+      <Moment element={Text} style={styles.today_month_year} format='MMMM YYYY'></Moment>
+      <DateSlider></DateSlider>
     </View>
   );
 }
@@ -67,12 +54,23 @@ const styles = StyleSheet.create({
   },
   today_day_week: {
     fontFamily: 'eUkraineRegular',
+    textTransform: 'capitalize',
     lineHeight: 21,
     color: '#BCC1CD',
   },
-  today_year: {
+  today_month_year: {
     fontFamily: 'eUkraineRegular',
+    textTransform: 'capitalize',
     lineHeight: 21,
     color: '#BCC1CD',
+    paddingBottom: 20,
+  },
+  day_array: {
+    fontFamily: 'eUkraineBold',
+    fontSize: 13, 
+    textTransform: 'uppercase',
+    textAlign: 'center',
+    color: '#000000',
+    //scolor: '#FFF', 
   },
 });
