@@ -1,68 +1,82 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { TouchableOpacity, FlatList, StyleSheet, Text, View } from 'react-native';
 import Moment from 'react-moment';
 import moment from 'moment';
 import 'moment/locale/uk';
 
 export default function DateSlider() { 
-    const _spacing = 10;
+    const _spacing = 11.5;
     const _colors = {
-        active: `#FCD259ff`,
-        inactive: `#FCD25900`,
+        active: `#FF7648`,
+        inactive: `#ffff`,
     };
-
-    // Перенести startDay/EndDay в useState, та переробити оновлення дат через useMemo коли StartDay змінится 
-    const [datelist, setDatelist] = useState(getdays());
-    const [index, setIndex] = useState(8);
+    const [startday, setstartday] = useState(updatestartday());
+    const [index, setIndex] = useState(7);
     const ref = useRef<FlatList>(null);
 
-    useEffect(() => {
-      const interval = setInterval(() => setDatelist(getdays()), 60000);
+     useEffect(() => {
+      const interval = setInterval(() => setstartday(updatestartday()), 60000);
       return () => clearInterval(interval);
     }, []);
 
-    function getdays() {
-      const startDay = moment().subtract(1, 'week').startOf('week')
-      const endDay = moment().add(1, 'week').endOf('week')
+    function updatestartday() {
+      console.log('Update Start Week Day');
+      return moment().subtract(1, 'week').startOf('week');
+    }
+
+     const generatedayslist = useMemo(() => {
       let date = []
-      const day = startDay.clone()
-      
-      while (!day.isAfter(endDay)){
+      let day = startday.clone()
+      let i = 0;
+
+      while (i++ < 21){
         date.push(day.clone())
         day.add(1, 'day')
       }
 
-      const array = date.map(function(val, index){
-        return {id:index, day:val}
+      console.log('generatedayslist')
+      return date
+    }, [startday])
+
+    useEffect(() => {
+      ref.current?.scrollToIndex({
+        index: index,
+        animated: true,
+        viewPosition: 0,
+        viewOffset: _spacing
       })
-      
-      return () => array
-    }
+    }, [index])
 
     return (
-      <FlatList
+     <FlatList
+      ref={ref}
+      initialNumToRender={21}
+      initialScrollIndex={index}
+      onScrollToIndexFailed={info => {
+        const wait = new Promise(resolve => setTimeout(resolve, 500));
+        wait.then(() => {
+          ref.current?.scrollToIndex({ index: info.index, animated: false, viewOffset: _spacing });
+        });
+      }}
       style={{ flexGrow: 0 }}
-      data={datelist}
-      keyExtractor={(item) => item.id.toString()}
+      data={generatedayslist}
+      keyExtractor={(item) => item}
       contentContainerStyle={{ paddingLeft: _spacing }}
       showsHorizontalScrollIndicator={false}
-      initialScrollIndex={index}
       horizontal
       renderItem={({ item, index: fIndex }) => {
         return (
-          <TouchableOpacity onPress={() => {}}>
+          <TouchableOpacity onPress={() => { setIndex(fIndex) }}>
             <View
               style={{
                 marginRight: _spacing,
                 paddingHorizontal: _spacing,
-                borderWidth: 1,
-                //borderColor: '#FF7648',
-                borderColor: '#FFF',
                 borderRadius: 10,
-                //backgroundColor: '#FF7648',
+                backgroundColor: 
+                fIndex == index ? _colors.active : _colors.inactive,
               }}>
-              <Moment element={Text} style={styles.day_array} format='dd'>{item.day}</Moment>
-              <Moment element={Text} style={styles.day_array} format='D'>{item.day}</Moment>
+              <Moment element={Text} style={fIndex == index ? styles.day_flatlist_select : styles.day_flatlist} format='dd'>{item}</Moment>
+              <Moment element={Text} style={fIndex == index ? styles.day_flatlist_select : styles.day_flatlist} format='D'>{item}</Moment>
             </View>
           </TouchableOpacity>
         );
@@ -72,12 +86,18 @@ export default function DateSlider() {
 }
 
 const styles = StyleSheet.create({
-  day_array: {
+  day_flatlist: {
     fontFamily: 'eUkraineBold',
     fontSize: 13, 
     textTransform: 'uppercase',
     textAlign: 'center',
-    color: '#000000',
-    //color: '#FFF', 
+    color: '#000',
+  },
+  day_flatlist_select: {
+    fontFamily: 'eUkraineBold',
+    fontSize: 13, 
+    textTransform: 'uppercase',
+    textAlign: 'center',
+    color: '#FFF',
   },
 });

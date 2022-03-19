@@ -1,9 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
 import { useFonts } from 'expo-font';
-import React, { useState, useEffect } from 'react';
-import { TouchableOpacity, FlatList, StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 import Moment from 'react-moment';
-import moment from 'moment';
 import 'moment/locale/uk';
 import DateSlider from './components/date_slider';
 
@@ -35,7 +34,9 @@ export default function App() {
       <Moment element={Text} style={styles.today_day} format='D'></Moment>
       <Moment element={Text} style={styles.today_day_week} format='dddd'></Moment>
       <Moment element={Text} style={styles.today_month_year} format='MMMM YYYY'></Moment>
-      <DateSlider></DateSlider>
+      <View>
+        <DateSlider></DateSlider>
+      </View>
     </View>
   );
 }
