@@ -34,9 +34,7 @@ export default function App() {
       <Moment element={Text} style={styles.today_day} format='D'></Moment>
       <Moment element={Text} style={styles.today_day_week} format='dddd'></Moment>
       <Moment element={Text} style={styles.today_month_year} format='MMMM YYYY'></Moment>
-      <View>
-        <DateSlider></DateSlider>
-      </View>
+      <DateSlider></DateSlider>
     </View>
   );
 }

@@ -8,13 +8,12 @@ export default function DateSlider() {
     const _spacing = 11.5;
     const _colors = {
         active: `#FF7648`,
-        inactive: `#ffff`,
+        inactive: `#fff`,
     };
     const [startday, setstartday] = useState(updatestartday());
-    const [index, setIndex] = useState(7);
     const ref = useRef<FlatList>(null);
 
-     useEffect(() => {
+    useEffect(() => {
       const interval = setInterval(() => setstartday(updatestartday()), 60000);
       return () => clearInterval(interval);
     }, []);
@@ -24,7 +23,7 @@ export default function DateSlider() {
       return moment().subtract(1, 'week').startOf('week');
     }
 
-     const generatedayslist = useMemo(() => {
+    const generatedayslist = useMemo(() => {
       let date = []
       let day = startday.clone()
       let i = 0;
@@ -33,10 +32,22 @@ export default function DateSlider() {
         date.push(day.clone())
         day.add(1, 'day')
       }
-
-      console.log('generatedayslist')
+      
       return date
     }, [startday])
+
+    const [index, setIndex] = useState(setindexday());
+
+    function setindexday() {
+      let i = 0;
+
+      while (i++ < 21){
+        if (moment(generatedayslist[i]).date() == moment().date())
+          break;
+      }
+      
+      return i
+    }
 
     useEffect(() => {
       ref.current?.scrollToIndex({
@@ -46,7 +57,7 @@ export default function DateSlider() {
         viewOffset: _spacing
       })
     }, [index])
-
+    
     return (
      <FlatList
       ref={ref}
@@ -75,8 +86,10 @@ export default function DateSlider() {
                 backgroundColor: 
                 fIndex == index ? _colors.active : _colors.inactive,
               }}>
-              <Moment element={Text} style={fIndex == index ? styles.day_flatlist_select : styles.day_flatlist} format='dd'>{item}</Moment>
-              <Moment element={Text} style={fIndex == index ? styles.day_flatlist_select : styles.day_flatlist} format='D'>{item}</Moment>
+              <Moment element={Text} style={fIndex == index ? styles.day_flatlist_select 
+                : styles.day_flatlist} format='dd'>{item}</Moment>
+              <Moment element={Text} style={fIndex == index ? styles.day_flatlist_select 
+                : styles.day_flatlist} format='D'>{item}</Moment>
             </View>
           </TouchableOpacity>
         );
