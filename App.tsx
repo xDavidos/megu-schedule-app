@@ -5,6 +5,8 @@ import { StyleSheet, Text, View } from 'react-native';
 import Moment from 'react-moment';
 import 'moment/locale/uk';
 import DateSlider from './components/date_slider';
+import LessonList from './components/lesson_list'
+import moment from 'moment';
 
 export default function App() {
   const [loaded] = useFonts({
@@ -27,7 +29,7 @@ export default function App() {
   if (!loaded) {
     return null;
   }
-
+  LessonList()
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
@@ -35,6 +37,9 @@ export default function App() {
       <Moment element={Text} style={styles.today_day_week} format='dddd'></Moment>
       <Moment element={Text} style={styles.today_month_year} format='MMMM YYYY'></Moment>
       <DateSlider></DateSlider>
+      <View style={{paddingTop: 50}}>
+        <LessonList></LessonList>
+      </View>
     </View>
   );
 }
