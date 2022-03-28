@@ -1,0 +1,426 @@
+[
+  {
+    "date": "2022-03-13T22:00:00.000Z",
+    "data": [
+      {
+        "id": 0,
+        "name": "Програмування C#",
+        "type": 0,
+        "isOnline": false,
+        "starttime": "10:00",
+        "endtime": "11:00",
+        "description": "Пара фігня",
+        "location": "Аудиторія 1402",
+        "teacher": "Шпортько О. В."
+      },
+      {
+        "id": 1,
+        "name": "Програмування Java",
+        "type": 1,
+        "isOnline": false,
+        "starttime": "11:10",
+        "endtime": "12:10",
+        "description": "Мова дідів",
+        "location": "Аудиторія 1402",
+        "teacher": "Шпортько О. В."
+      },
+      {
+        "id": 2,
+        "name": "Програмування JavaScript",
+        "type": 0,
+        "isOnline": true,
+        "starttime": "12:20",
+        "endtime": "11:20",
+        "description": "Жабаскрипт",
+        "location": "meet.google.com/yyf-ykye-kgk",
+        "teacher": "Шпортько О. В. V2"
+      }
+    ]
+  },
+  {
+    "date": "2022-03-14T22:00:00.000Z",
+    "data": [
+      {
+        "id": 0,
+        "name": "Програмування C#",
+        "type": 0,
+        "isOnline": false,
+        "starttime": "10:00",
+        "endtime": "11:00",
+        "description": "Пара фігня",
+        "location": "Аудиторія 1402",
+        "teacher": "Шпортько О. В."
+      },
+      {
+        "id": 1,
+        "name": "Програмування JavaScript",
+        "type": 1,
+        "isOnline": false,
+        "starttime": "11:10",
+        "endtime": "12:10",
+        "description": "Мова дідів",
+        "location": "Аудиторія 1402",
+        "teacher": "Шпортько О. В."
+      }
+    ]
+  },
+  {
+    "date": "2022-03-15T22:00:00.000Z",
+    "data": [
+      {
+        "id": 0,
+        "name": "Програмування C#",
+        "type": 0,
+        "isOnline": false,
+        "starttime": "10:00",
+        "endtime": "11:00",
+        "description": "Пара фігня",
+        "location": "Аудиторія 1402",
+        "teacher": "Шпортько О. В."
+      },
+      {
+        "id": 1,
+        "name": "Програмування Java",
+        "type": 1,
+        "isOnline": false,
+        "starttime": "11:10",
+        "endtime": "12:10",
+        "description": "Мова дідів",
+        "location": "Аудиторія 1402",
+        "teacher": "Шпортько О. В."
+      },
+      {
+        "id": 2,
+        "name": "Програмування JavaScript",
+        "type": 0,
+        "isOnline": true,
+        "starttime": "12:20",
+        "endtime": "11:20",
+        "description": "Жабаскрипт",
+        "location": "meet.google.com/yyf-ykye-kgk",
+        "teacher": "Шпортько О. В. V2"
+      }
+    ]
+  },
+  {
+    "date": "2022-03-16T22:00:00.000Z",
+    "data": [
+      {
+        "id": 0,
+        "name": "Програмування C#",
+        "type": 0,
+        "isOnline": false,
+        "starttime": "10:00",
+        "endtime": "11:00",
+        "description": "Пара фігня",
+        "location": "Аудиторія 1402",
+        "teacher": "Шпортько О. В."
+      },
+      {
+        "id": 1,
+        "name": "Програмування Java",
+        "type": 1,
+        "isOnline": false,
+        "starttime": "11:10",
+        "endtime": "12:10",
+        "description": "Мова дідів",
+        "location": "Аудиторія 1402",
+        "teacher": "Шпортько О. В."
+      },
+      {
+        "id": 2,
+        "name": "Програмування JavaScript",
+        "type": 0,
+        "isOnline": true,
+        "starttime": "12:20",
+        "endtime": "11:20",
+        "description": "Жабаскрипт",
+        "location": "meet.google.com/yyf-ykye-kgk",
+        "teacher": "Шпортько О. В. V2"
+      }
+    ]
+  },
+  {
+    "date": "2022-03-17T22:00:00.000Z",
+    "data": [
+      {
+        "id": 0,
+        "name": "Програмування C#",
+        "type": 0,
+        "isOnline": false,
+        "starttime": "10:00",
+        "endtime": "11:00",
+        "description": "Пара фігня",
+        "location": "Аудиторія 1402",
+        "teacher": "Шпортько О. В."
+      }
+    ]
+  },
+  {
+    "date": "2022-03-18T22:00:00.000Z",
+    "data": [
+      {
+        "id": 0,
+        "name": "Програмування C#",
+        "type": 0,
+        "isOnline": false,
+        "starttime": "10:00",
+        "endtime": "11:00",
+        "description": "Пара фігня",
+        "location": "Аудиторія 1402",
+        "teacher": "Шпортько О. В."
+      }
+    ]
+  },
+  {
+    "date": "2022-03-19T22:00:00.000Z",
+    "data": [
+      {
+        "id": 0,
+        "name": "Програмування C#",
+        "type": 0,
+        "isOnline": false,
+        "starttime": "10:00",
+        "endtime": "11:00",
+        "description": "Пара фігня",
+        "location": "Аудиторія 1402",
+        "teacher": "Шпортько О. В."
+      }
+    ]
+  },
+  {
+    "date": "2022-03-20T22:00:00.000Z",
+    "data": [
+      {
+        "id": 0,
+        "name": "Програмування C#",
+        "type": 0,
+        "isOnline": false,
+        "starttime": "10:00",
+        "endtime": "11:00",
+        "description": "Пара фігня",
+        "location": "Аудиторія 1402",
+        "teacher": "Шпортько О. В."
+      }
+    ]
+  },
+  {
+    "date": "2022-03-21T22:00:00.000Z",
+    "data": [
+      {
+        "id": 0,
+        "name": "Програмування C#",
+        "type": 0,
+        "isOnline": false,
+        "starttime": "10:00",
+        "endtime": "11:00",
+        "description": "Пара фігня",
+        "location": "Аудиторія 1402",
+        "teacher": "Шпортько О. В."
+      }
+    ]
+  },
+  {
+    "date": "2022-03-22T22:00:00.000Z",
+    "data": [
+      {
+        "id": 0,
+        "name": "Програмування C#",
+        "type": 0,
+        "isOnline": false,
+        "starttime": "10:00",
+        "endtime": "11:00",
+        "description": "Пара фігня",
+        "location": "Аудиторія 1402",
+        "teacher": "Шпортько О. В."
+      }
+    ]
+  },
+  {
+    "date": "2022-03-23T22:00:00.000Z",
+    "data": [
+      {
+        "id": 0,
+        "name": "Програмування C#",
+        "type": 0,
+        "isOnline": false,
+        "starttime": "10:00",
+        "endtime": "11:00",
+        "description": "Пара фігня",
+        "location": "Аудиторія 1402",
+        "teacher": "Шпортько О. В."
+      }
+    ]
+  },
+  {
+    "date": "2022-03-24T22:00:00.000Z",
+    "data": [
+      {
+        "id": 0,
+        "name": "Програмування C#",
+        "type": 0,
+        "isOnline": false,
+        "starttime": "10:00",
+        "endtime": "11:00",
+        "description": "Пара фігня",
+        "location": "Аудиторія 1402",
+        "teacher": "Шпортько О. В."
+      }
+    ]
+  },
+  {
+    "date": "2022-03-25T22:00:00.000Z",
+    "data": [
+      {
+        "id": 0,
+        "name": "Програмування C#",
+        "type": 0,
+        "isOnline": false,
+        "starttime": "10:00",
+        "endtime": "11:00",
+        "description": "Пара фігня",
+        "location": "Аудиторія 1402",
+        "teacher": "Шпортько О. В."
+      }
+    ]
+  },
+  {
+    "date": "2022-03-26T21:00:00.000Z",
+    "data": [
+      {
+        "id": 0,
+        "name": "Програмування C#",
+        "type": 0,
+        "isOnline": false,
+        "starttime": "10:00",
+        "endtime": "11:00",
+        "description": "Пара фігня",
+        "location": "Аудиторія 1402",
+        "teacher": "Шпортько О. В."
+      }
+    ]
+  },
+  {
+    "date": "2022-03-27T21:00:00.000Z",
+    "data": [
+      {
+        "id": 0,
+        "name": "Програмування C#",
+        "type": 0,
+        "isOnline": false,
+        "starttime": "10:00",
+        "endtime": "11:00",
+        "description": "Пара фігня",
+        "location": "Аудиторія 1402",
+        "teacher": "Шпортько О. В."
+      },
+      {
+        "id": 1,
+        "name": "Програмування C#",
+        "type": 0,
+        "isOnline": false,
+        "starttime": "10:00",
+        "endtime": "11:00",
+        "description": "Пара фігня",
+        "location": "Аудиторія 1402",
+        "teacher": "Шпортько О. В."
+      }
+    ]
+  },
+  {
+    "date": "2022-03-28T21:00:00.000Z",
+    "data": [
+      {
+        "id": 0,
+        "name": "Програмування C#",
+        "type": 0,
+        "isOnline": false,
+        "starttime": "10:00",
+        "endtime": "11:00",
+        "description": "Пара фігня",
+        "location": "Аудиторія 1402",
+        "teacher": "Шпортько О. В."
+      }
+    ]
+  },
+  {
+    "date": "2022-03-29T21:00:00.000Z",
+    "data": [
+      {
+        "id": 0,
+        "name": "Програмування C#",
+        "type": 0,
+        "isOnline": false,
+        "starttime": "10:00",
+        "endtime": "11:00",
+        "description": "Пара фігня",
+        "location": "Аудиторія 1402",
+        "teacher": "Шпортько О. В."
+      }
+    ]
+  },
+  {
+    "date": "2022-03-30T21:00:00.000Z",
+    "data": [
+      {
+        "id": 0,
+        "name": "Програмування C#",
+        "type": 0,
+        "isOnline": false,
+        "starttime": "10:00",
+        "endtime": "11:00",
+        "description": "Пара фігня",
+        "location": "Аудиторія 1402",
+        "teacher": "Шпортько О. В."
+      }
+    ]
+  },
+  {
+    "date": "2022-03-31T21:00:00.000Z",
+    "data": [
+      {
+        "id": 0,
+        "name": "Програмування C#",
+        "type": 0,
+        "isOnline": false,
+        "starttime": "10:00",
+        "endtime": "11:00",
+        "description": "Пара фігня",
+        "location": "Аудиторія 1402",
+        "teacher": "Шпортько О. В."
+      }
+    ]
+  },
+  {
+    "date": "2022-04-01T21:00:00.000Z",
+    "data": [
+      {
+        "id": 0,
+        "name": "Програмування C#",
+        "type": 0,
+        "isOnline": false,
+        "starttime": "10:00",
+        "endtime": "11:00",
+        "description": "Пара фігня",
+        "location": "Аудиторія 1402",
+        "teacher": "Шпортько О. В."
+      }
+    ]
+  },
+  {
+    "date": "2022-04-02T21:00:00.000Z",
+    "data": [
+      {
+        "id": 0,
+        "name": "Програмування C#",
+        "type": 0,
+        "isOnline": false,
+        "starttime": "10:00",
+        "endtime": "11:00",
+        "description": "Пара фігня",
+        "location": "Аудиторія 1402",
+        "teacher": "Шпортько О. В."
+      }
+    ]
+  }
+]

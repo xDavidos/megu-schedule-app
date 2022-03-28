@@ -29,17 +29,19 @@ export default function App() {
   if (!loaded) {
     return null;
   }
-  LessonList()
+
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <Moment element={Text} style={styles.today_day} format='D'></Moment>
-      <Moment element={Text} style={styles.today_day_week} format='dddd'></Moment>
-      <Moment element={Text} style={styles.today_month_year} format='MMMM YYYY'></Moment>
-      <DateSlider></DateSlider>
-      <View style={{paddingTop: 50}}>
-        <LessonList></LessonList>
+      <View style={styles.today}>
+        <Moment element={Text} style={styles.today_day} format='D'></Moment>
+        <View style={styles.today_column}>
+          <Moment element={Text} style={styles.today_day_week} format='dddd'></Moment>
+          <Moment element={Text} style={styles.today_month_year} format='MMMM YYYY'></Moment>
+        </View>
       </View>
+      <DateSlider></DateSlider>
+      <LessonList></LessonList>
     </View>
   );
 }
@@ -48,13 +50,26 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    paddingTop: 40,
+  },
+  today: {
+    paddingLeft: 28,
+    paddingBottom: 20,
+    flexDirection: 'row',
+    fontSize: 14,
+    display: 'flex',
   },
   today_day: {
     fontFamily: 'eUkraineMedium',
     fontSize: 44,
     color: '#212525',
+    flexDirection: 'column',
+    alignSelf: 'center',
+  },
+  today_column: {
+    flexDirection: 'column',
+    alignSelf: 'center',
+    paddingLeft: 8,
   },
   today_day_week: {
     fontFamily: 'eUkraineRegular',
@@ -67,7 +82,6 @@ const styles = StyleSheet.create({
     textTransform: 'capitalize',
     lineHeight: 21,
     color: '#BCC1CD',
-    paddingBottom: 20,
   },
   day_array: {
     fontFamily: 'eUkraineBold',

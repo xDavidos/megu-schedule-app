@@ -61,10 +61,10 @@ export default function DateSlider() {
     return (
      <FlatList
       ref={ref}
-      initialNumToRender={21}
+      initialNumToRender={8}
       initialScrollIndex={index}
       onScrollToIndexFailed={info => {
-        const wait = new Promise(resolve => setTimeout(resolve, 500));
+        const wait = new Promise(resolve => setTimeout(resolve, 1000));
         wait.then(() => {
           ref.current?.scrollToIndex({ index: info.index, animated: false, viewOffset: _spacing });
         });
@@ -72,7 +72,7 @@ export default function DateSlider() {
       style={{ flexGrow: 0 }}
       data={generatedayslist}
       keyExtractor={(item) => item}
-      contentContainerStyle={{ paddingLeft: _spacing }}
+      contentContainerStyle={{ paddingLeft: _spacing, paddingBottom: 25 }}
       showsHorizontalScrollIndicator={false}
       horizontal
       renderItem={({ item, index: fIndex }) => {
