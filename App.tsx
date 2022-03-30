@@ -1,12 +1,14 @@
 import './config/firebase';
 import { StatusBar } from 'expo-status-bar';
 import { useFonts } from 'expo-font';
-import React from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Moment from 'react-moment';
 import 'moment/locale/uk';
 import DateSlider from './components/date_slider';
 import LessonList from './components/lesson_list'
+import AppLoading from 'expo-app-loading';
+import Lessons from './components/data.json'
 
 export default function App() {
   const [loaded] = useFonts({
@@ -14,9 +16,10 @@ export default function App() {
     eUkraineMedium: require('./assets/fonts/e-Ukraine/e-Ukraine-Medium.otf'),
     eUkraineRegular: require('./assets/fonts/e-Ukraine/e-Ukraine-Regular.otf'),
   });
+  const [index, setIndex] = useState(0)
   
   if (!loaded) {
-    return <Text>Loading...</Text>
+    return <AppLoading/>
   }
 
   return (
@@ -29,8 +32,8 @@ export default function App() {
           <Moment element={Text} style={styles.today_month_year} format='MMMM YYYY'></Moment>
         </View>
       </View>
-      <DateSlider></DateSlider>
-      <LessonList></LessonList>
+      <DateSlider/>
+      <LessonList data={Lessons} index={index}/>
     </View>
   );
 }
@@ -63,13 +66,13 @@ const styles = StyleSheet.create({
   today_day_week: {
     fontFamily: 'eUkraineRegular',
     textTransform: 'capitalize',
-    lineHeight: 21,
+    fontSize: 14,
     color: '#BCC1CD',
   },
   today_month_year: {
     fontFamily: 'eUkraineRegular',
     textTransform: 'capitalize',
-    lineHeight: 21,
+    fontSize: 14,
     color: '#BCC1CD',
   },
   day_array: {

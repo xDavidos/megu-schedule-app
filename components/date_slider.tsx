@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
-import { TouchableOpacity, FlatList, StyleSheet, Text, View } from 'react-native';
+import { TouchableOpacity, FlatList, StyleSheet, Text, View, Dimensions } from 'react-native';
 import Moment from 'react-moment';
 import moment from 'moment';
 import 'moment/locale/uk';
 
+const { width } = Dimensions.get('screen');
+
 export default function DateSlider() { 
-  const _spacing = 11.5;
+  const _spacing = 11;
   const _colors = {
       active: `#FF7648`,
       inactive: `#fff`,
@@ -63,13 +65,9 @@ export default function DateSlider() {
     ref={ref}
     initialNumToRender={8}
     initialScrollIndex={index}
-    onScrollToIndexFailed={info => {
-      const wait = new Promise(resolve => setTimeout(resolve, 1000));
-      wait.then(() => {
-        ref.current?.scrollToIndex({ index: info.index, animated: false, viewOffset: _spacing });
-      });
-    }}
-    style={{ flexGrow: 0 }}
+    getItemLayout={(data, index) => (
+      {length: 54.5, offset: 54.5 * index, index}
+    )}
     data={generatedayslist}
     keyExtractor={(item) => item}
     contentContainerStyle={{ paddingLeft: _spacing, paddingBottom: 25 }}
@@ -81,10 +79,10 @@ export default function DateSlider() {
           <View
             style={{
               marginRight: _spacing,
-              paddingHorizontal: _spacing,
               borderRadius: 10,
               backgroundColor: 
               fIndex == index ? _colors.active : _colors.inactive,
+              width: 43
             }}>
             <Moment element={Text} style={fIndex == index ? styles.day_flatlist_select 
               : styles.day_flatlist} format='dd'>{item}</Moment>
