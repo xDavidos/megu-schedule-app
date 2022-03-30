@@ -1,3 +1,4 @@
+import './config/firebase';
 import { StatusBar } from 'expo-status-bar';
 import { useFonts } from 'expo-font';
 import React from 'react';
@@ -6,28 +7,16 @@ import Moment from 'react-moment';
 import 'moment/locale/uk';
 import DateSlider from './components/date_slider';
 import LessonList from './components/lesson_list'
-import moment from 'moment';
 
 export default function App() {
   const [loaded] = useFonts({
     eUkraineBold: require('./assets/fonts/e-Ukraine/e-Ukraine-Bold.otf'),
-    eUkraineLight: require('./assets/fonts/e-Ukraine/e-Ukraine-Light.otf'),
     eUkraineMedium: require('./assets/fonts/e-Ukraine/e-Ukraine-Medium.otf'),
     eUkraineRegular: require('./assets/fonts/e-Ukraine/e-Ukraine-Regular.otf'),
-    eUkraineThin: require('./assets/fonts/e-Ukraine/e-Ukraine-Thin.otf'),
-    eUkraineUltraLight: require('./assets/fonts/e-Ukraine/e-Ukraine-UltraLight.otf'),
-
-    eUkraineHeadBold: require('./assets/fonts/e-Ukraine-Head/e-UkraineHead-Bold.otf'),
-    eUkraineHeadLight: require('./assets/fonts/e-Ukraine-Head/e-UkraineHead-Light.otf'),
-    eUkraineHeadLOGO: require('./assets/fonts/e-Ukraine-Head/e-UkraineHead-LOGO.otf'),
-    eUkraineHeadMedium: require('./assets/fonts/e-Ukraine-Head/e-UkraineHead-Medium.otf'),
-    eUkraineHeadRegular: require('./assets/fonts/e-Ukraine-Head/e-UkraineHead-Regular.otf'),
-    eUkraineHeadThin: require('./assets/fonts/e-Ukraine-Head/e-UkraineHead-Thin.otf'),
-    eUkraineHeadUltraLight: require('./assets/fonts/e-Ukraine-Head/e-UkraineHead-UltraLight.otf'),
   });
   
   if (!loaded) {
-    return null;
+    return <Text>Loading...</Text>
   }
 
   return (
