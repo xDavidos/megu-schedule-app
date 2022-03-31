@@ -1,7 +1,7 @@
 const theme = {
   colors: {
     orange: `#FF7648`,
-    white: `#FFF`,
+    white: `#FFFFFF`,
     black: '#000',
     green: '#4DC591',
     gray: '#BCC1CD'
@@ -12,14 +12,18 @@ const theme = {
     m: 16,
     l: 32,
     xl: 40,
-    data_slidel: 11
+    data_slidel: 15
   },
   textVariants: {
     h1: {
       fontFamily: 'eUkraineBold',
-      fontSize: 13,
+      fontSize: 14,
     },
     h2: {
+      fontFamily: 'eUkraineBold',
+      fontSize: 11,
+    },
+    h3: {
       fontFamily: 'eUkraineBold',
       fontSize: 9,
     },
@@ -37,11 +41,11 @@ const theme = {
     },
     body4: {
       fontFamily: 'eUkraineRegular',
-      fontSize: 10,
+      fontSize: 14,
     },
     body5: {
       fontFamily: 'eUkraineRegular',
-      fontSize: 14,
+      fontSize: 10,
     }
   },
 }

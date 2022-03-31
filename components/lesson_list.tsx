@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, FlatList, Dimensions, ScrollView } from 'react-native'
 import AntDesign from '@expo/vector-icons/AntDesign';
+import theme from '../assets/themes';
 
 const { width, height } = Dimensions.get('screen');
 
@@ -17,10 +18,9 @@ const LessonList = ({ data, index, setIndex }) => {
   return (
     <FlatList
       ref={lessonsRef}
-      initialNumToRender={1}
+      style={styles.lessons_flatlist}
       initialScrollIndex={index}
       data={data.days}
-      maxToRenderPerBatch={3}
       keyExtractor={(item) => item.date}
       getItemLayout={(data, index) => ({
         length: width,
@@ -35,14 +35,17 @@ const LessonList = ({ data, index, setIndex }) => {
       showsHorizontalScrollIndicator={false}
       renderItem={({ item, index: fIndex }) => {
         return (
-          <ScrollView
-            showsVerticalScrollIndicator={false}
-            contentContainerStyle={{ flexGrow: 1, height: '100%'}}>
-            {item.lessons.map((item) => (
-              <Lesson key={item.id} item={item} />
-            ))}
-          </ScrollView>
-
+          <View style={styles.lessons_view}>
+            <ScrollView showsVerticalScrollIndicator={false}>
+              <View style={styles.lessons_view_heder}>
+                <Text style={styles.lessons_view_heder_text1}>Час</Text>
+                <Text style={styles.lessons_view_heder_text2}>Пари</Text>
+              </View>
+              {item.lessons.map((item) => (
+                <Lesson key={item.id} item={item} />
+              ))}
+            </ScrollView>
+          </View>
         );
       }}
     />
@@ -73,12 +76,32 @@ const Lesson = ({ item }) => {
 }
 
 const styles = StyleSheet.create({
-  lessons_scrollview: {
-
+  lessons_flatlist: {
+    height: "120%",
+    marginTop: -30,
+    transform: [{ translateY: 30 }],
+  },
+  lessons_view: {
+    height: "99%",
+  },
+  lessons_view_heder: {
+    flexDirection: "row",
+    paddingTop: 7,
+    paddingBottom: 14,
+  },
+  lessons_view_heder_text1: {
+    ...theme.textVariants.body2,
+    color: theme.colors.gray,
+    paddingLeft: theme.spacing.m,
+    flex: 0.14,
+  },
+  lessons_view_heder_text2: {
+    ...theme.textVariants.body2,
+    color: theme.colors.gray,
   },
   lessons: {
     flexDirection: "row",
-    paddingHorizontal: 15,
+    paddingHorizontal: theme.spacing.m,
     paddingTop: 5,
     width: width,
     //height: '100%'
@@ -107,6 +130,7 @@ const styles = StyleSheet.create({
   },
   lesson_time_list_text: {
     fontFamily: "eUkraineMedium",
+    paddingBottom: 4,
     fontSize: 14,
   },
   lesson_time_end_list_text: {

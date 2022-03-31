@@ -11,7 +11,7 @@ const DateSlider = ({ data, index, setIndex }) => {
     sliderRef.current?.scrollToIndex({
       index: index,
       animated: true,
-      viewPosition: 0,
+      viewPosition: 0.40,
       viewOffset: theme.spacing.data_slidel
     })
   }, [index])
@@ -19,10 +19,11 @@ const DateSlider = ({ data, index, setIndex }) => {
   return (
     <FlatList
     ref={sliderRef}
+    style ={styles.dataslider}
     initialNumToRender={8}
     initialScrollIndex={index}
     getItemLayout={(data, index) => (
-      {length: 54.5, offset: 54.5 * index, index}
+      {length: 54, offset: 54 * index, index}
     )}
     data={data.days}
     keyExtractor={(item) => item.date}
@@ -36,16 +37,17 @@ const DateSlider = ({ data, index, setIndex }) => {
             style={{
               marginRight: theme.spacing.data_slidel,
               borderRadius: 10,
+              paddingVertical: 8,
               backgroundColor:
                 fIndex == index ? theme.colors.orange : theme.colors.white,
-              width: 43,
+              width: 40,
             }}><Moment element={Text} style={ fIndex == index
-                ? styles.day_flatlist_select
-                : styles.day_flatlist
+                ? styles.day_flatlist_weekday_select
+                : styles.day_flatlist_weekday
               } format="dd">{item.date}</Moment>
             <Moment element={Text} style={ fIndex == index
-                ? styles.day_flatlist_select
-                : styles.day_flatlist
+                ? styles.day_flatlist_day_select
+                : styles.day_flatlist_day
               } format="D">{item.date}</Moment>
           </View>
         </TouchableOpacity>
@@ -56,18 +58,38 @@ const DateSlider = ({ data, index, setIndex }) => {
 }
 
 const styles = StyleSheet.create({
-  day_flatlist: {
+  dataslider: {
+    height: '15%',
+    borderBottomWidth: 1,
+    borderBottomColor: "#FAF9F9",
+    paddingTop: 15,
+  },
+  day_flatlist_weekday: {
+    ...theme.textVariants.h2,
+    textTransform: 'uppercase',
+    textAlign: 'center',
+    color: theme.colors.gray,
+    paddingBottom: 5,
+  },
+  day_flatlist_weekday_select: {
+    ...theme.textVariants.h2,
+    textTransform: 'uppercase',
+    textAlign: 'center',
+    color: '#FFF',
+    paddingBottom: 5,
+  },
+  day_flatlist_day: {
     ...theme.textVariants.h1,
     textTransform: 'uppercase',
     textAlign: 'center',
     color: '#000',
   },
-  day_flatlist_select: {
+  day_flatlist_day_select: {
     ...theme.textVariants.h1,
     textTransform: 'uppercase',
     textAlign: 'center',
     color: '#FFF',
-  },
+  }
 });
 
 export default DateSlider

@@ -10,6 +10,7 @@ import LessonList from './components/lesson_list'
 import AppLoading from 'expo-app-loading';
 import Lessons from './components/data.json'
 import { ScrollView } from 'react-native-gesture-handler';
+import theme from './assets/themes';
 
 export default function App() {
   const [loaded] = useFonts({
@@ -32,9 +33,12 @@ export default function App() {
           <Moment element={Text} style={styles.today_day_week} format='dddd'></Moment>
           <Moment element={Text} style={styles.today_month_year} format='MMMM YYYY'></Moment>
         </View>
+        <View style={styles.today_button_conteiner}>
+          <Text style={styles.today_button_text}>Сьогодні</Text>
+        </View>
       </View>
-      <View>
-        <DateSlider data={Lessons} index={index} setIndex={setIndex} />
+      <View style={styles.date_lesson_conteiner}>
+        <DateSlider data={Lessons}  index={index} setIndex={setIndex} />
         <LessonList data={Lessons} index={index} setIndex={setIndex} />
       </View>
     </View>
@@ -43,22 +47,20 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#faf9f9',
     paddingTop: 40,
+    height: '100%'
   },
   today: {
     paddingLeft: 28,
     paddingBottom: 20,
     flexDirection: 'row',
-    fontSize: 14,
+    height: '11%',
     display: 'flex',
   },
   today_day: {
-    fontFamily: 'eUkraineMedium',
-    fontSize: 44,
-    color: '#212525',
-    flexDirection: 'column',
+    ...theme.textVariants.body1,
+    color: theme.colors.black,
     alignSelf: 'center',
   },
   today_column: {
@@ -67,23 +69,33 @@ const styles = StyleSheet.create({
     paddingLeft: 8,
   },
   today_day_week: {
-    fontFamily: 'eUkraineRegular',
+    ...theme.textVariants.body4,
     textTransform: 'capitalize',
-    fontSize: 14,
-    color: '#BCC1CD',
+    color: theme.colors.gray,
   },
   today_month_year: {
-    fontFamily: 'eUkraineRegular',
+    ...theme.textVariants.body4,
     textTransform: 'capitalize',
-    fontSize: 14,
-    color: '#BCC1CD',
+    color: theme.colors.gray,
   },
-  day_array: {
-    fontFamily: 'eUkraineBold',
-    fontSize: 13, 
-    textTransform: 'uppercase',
-    textAlign: 'center',
-    color: '#000000',
-    //scolor: '#FFF', 
+  today_button_conteiner: {
+    flex: 1,
+    alignItems: 'flex-end',
+    justifyContent: 'center',
+    paddingRight: 28,
   },
+  today_button_text: {
+    ...theme.textVariants.h1,
+    color: theme.colors.green,
+    backgroundColor: 'rgba(77, 197, 145, 0.1)',
+    borderRadius: 8,
+    padding: 8,
+  },
+  date_lesson_conteiner: {
+    height: '90%',
+    marginTop: -20,
+    borderTopEndRadius: 25,
+    borderTopStartRadius: 25,
+    backgroundColor: theme.colors.white
+  }
 });
