@@ -1,26 +1,34 @@
-import React, { useState, useEffect, useRef, useMemo } from 'react';
+import React from 'react';
 import { StyleSheet, Text, View, FlatList, Dimensions, ScrollView } from 'react-native'
 import AntDesign from '@expo/vector-icons/AntDesign';
 
-const { width } = Dimensions.get('screen');
+const { width, height } = Dimensions.get('screen');
 
-const LessonList = ({ data, index }) => {
-  const [activeindex, setActiveIndex] = useState(index)
-  const lessonsRef = React.useRef<FlatList>()
+const LessonList = ({ data, index, setIndex }) => {
+  const lessonsRef = React.useRef<FlatList>();
+
+  React.useEffect(() => {
+    lessonsRef.current?.scrollToOffset({
+      offset: index * width,
+      animated: true,
+    });
+  }, [index]);
 
   return (
     <FlatList
       ref={lessonsRef}
-      initialNumToRender={3}
-      initialScrollIndex={activeindex}
+      initialNumToRender={1}
+      initialScrollIndex={index}
       data={data.days}
       maxToRenderPerBatch={3}
       keyExtractor={(item) => item.date}
-      getItemLayout={(data, index) => (
-        {length: width, offset: width * index, index}
-      )}
-      onMomentumScrollEnd={ev => {
-        setActiveIndex(Math.floor(ev.nativeEvent.contentOffset.x / width))
+      getItemLayout={(data, index) => ({
+        length: width,
+        offset: width * index,
+        index,
+      })}
+      onMomentumScrollEnd={(ev) => {
+        setIndex(Math.floor(Math.floor(ev.nativeEvent.contentOffset.x) / Math.floor(width)));
       }}
       horizontal
       pagingEnabled
@@ -29,11 +37,12 @@ const LessonList = ({ data, index }) => {
         return (
           <ScrollView
             showsVerticalScrollIndicator={false}
-            contentContainerStyle={styles.lessons_scrollview}>
+            contentContainerStyle={{ flexGrow: 1, height: '100%'}}>
             {item.lessons.map((item) => (
               <Lesson key={item.id} item={item} />
             ))}
           </ScrollView>
+
         );
       }}
     />
@@ -65,12 +74,14 @@ const Lesson = ({ item }) => {
 
 const styles = StyleSheet.create({
   lessons_scrollview: {
-    paddingHorizontal: 15,
-    width: width,
-    paddingTop: 15,
+
   },
   lessons: {
     flexDirection: "row",
+    paddingHorizontal: 15,
+    paddingTop: 5,
+    width: width,
+    //height: '100%'
   },
   lesson_time_text: {
     fontFamily: "eUkraineBold",
@@ -80,6 +91,7 @@ const styles = StyleSheet.create({
   },
   lesson_time: {
     flexDirection: "column",
+    minWidth: 55,
     paddingRight: 9,
     borderRightWidth: 1,
     borderRightColor: "#FAF9F9",
@@ -135,9 +147,6 @@ const styles = StyleSheet.create({
     fontSize: 10,
     paddingTop: 15,
     color: "#ffff",
-  },
-  lesson_card_teacher_img: {
-    //marginRight: 500,
   },
   lesson_card_teacher: {
     fontFamily: "eUkraineRegular",

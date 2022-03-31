@@ -1,7 +1,7 @@
 import './config/firebase';
 import { StatusBar } from 'expo-status-bar';
 import { useFonts } from 'expo-font';
-import React, { useState, useEffect, useRef, useMemo } from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Moment from 'react-moment';
 import 'moment/locale/uk';
@@ -9,6 +9,7 @@ import DateSlider from './components/date_slider';
 import LessonList from './components/lesson_list'
 import AppLoading from 'expo-app-loading';
 import Lessons from './components/data.json'
+import { ScrollView } from 'react-native-gesture-handler';
 
 export default function App() {
   const [loaded] = useFonts({
@@ -16,8 +17,8 @@ export default function App() {
     eUkraineMedium: require('./assets/fonts/e-Ukraine/e-Ukraine-Medium.otf'),
     eUkraineRegular: require('./assets/fonts/e-Ukraine/e-Ukraine-Regular.otf'),
   });
-  const [index, setIndex] = useState(0)
-  
+  const [index, setIndex] = useState(15);
+
   if (!loaded) {
     return <AppLoading/>
   }
@@ -32,8 +33,10 @@ export default function App() {
           <Moment element={Text} style={styles.today_month_year} format='MMMM YYYY'></Moment>
         </View>
       </View>
-      <DateSlider/>
-      <LessonList data={Lessons} index={index}/>
+      <View>
+        <DateSlider data={Lessons} index={index} setIndex={setIndex} />
+        <LessonList data={Lessons} index={index} setIndex={setIndex} />
+      </View>
     </View>
   );
 }

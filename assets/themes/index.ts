@@ -1,9 +1,10 @@
 const theme = {
   colors: {
     orange: `#FF7648`,
-    white: `#FAFAFA`,
+    white: `#FFF`,
     black: '#000',
-    green: '#4DC591'
+    green: '#4DC591',
+    gray: '#BCC1CD'
   },
   spacing: {
     xs: 4,
@@ -11,7 +12,7 @@ const theme = {
     m: 16,
     l: 32,
     xl: 40,
-    data_slidel: 11.5
+    data_slidel: 11
   },
   textVariants: {
     h1: {
