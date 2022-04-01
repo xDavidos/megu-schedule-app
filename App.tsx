@@ -2,14 +2,13 @@ import './config/firebase';
 import { StatusBar } from 'expo-status-bar';
 import { useFonts } from 'expo-font';
 import React, { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import Moment from 'react-moment';
 import 'moment/locale/uk';
 import DateSlider from './components/date_slider';
 import LessonList from './components/lesson_list'
 import AppLoading from 'expo-app-loading';
 import Lessons from './components/data.json'
-import { ScrollView } from 'react-native-gesture-handler';
 import theme from './assets/themes';
 
 export default function App() {
@@ -33,12 +32,12 @@ export default function App() {
           <Moment element={Text} style={styles.today_day_week} format='dddd'></Moment>
           <Moment element={Text} style={styles.today_month_year} format='MMMM YYYY'></Moment>
         </View>
-        <View style={styles.today_button_conteiner}>
+        <TouchableOpacity style={styles.today_button_conteiner} onPress={() => { setIndex(7) }}>
           <Text style={styles.today_button_text}>Сьогодні</Text>
-        </View>
+        </TouchableOpacity>
       </View>
       <View style={styles.date_lesson_conteiner}>
-        <DateSlider data={Lessons}  index={index} setIndex={setIndex} />
+        <DateSlider data={Lessons} index={index} setIndex={setIndex} />
         <LessonList data={Lessons} index={index} setIndex={setIndex} />
       </View>
     </View>
@@ -52,7 +51,7 @@ const styles = StyleSheet.create({
     height: '100%'
   },
   today: {
-    paddingLeft: 28,
+    paddingHorizontal: 20,
     paddingBottom: 20,
     flexDirection: 'row',
     height: '11%',
@@ -82,7 +81,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'flex-end',
     justifyContent: 'center',
-    paddingRight: 28,
   },
   today_button_text: {
     ...theme.textVariants.h1,

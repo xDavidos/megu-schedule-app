@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, FlatList, Dimensions, ScrollView } from 'react-
 import AntDesign from '@expo/vector-icons/AntDesign';
 import theme from '../assets/themes';
 
-const { width, height } = Dimensions.get('screen');
+const { width } = Dimensions.get('screen');
 
 const LessonList = ({ data, index, setIndex }) => {
   const lessonsRef = React.useRef<FlatList>();
@@ -56,8 +56,8 @@ const Lesson = ({ item }) => {
   return (
     <View style={styles.lessons}>
       <View style={styles.lesson_time}>
-        <Text style={styles.lesson_time_list_text}>{item.starttime}</Text>
-        <Text style={styles.lesson_time_end_list_text}>{item.endtime}</Text>
+        <Text style={styles.lesson_time_start_text}>{item.starttime}</Text>
+        <Text style={styles.lesson_time_end_text}>{item.endtime}</Text>
       </View>
       <View style={styles.lesson_card}>
         <Text style={styles.lesson_card_name}>{item.name}</Text>
@@ -86,8 +86,8 @@ const styles = StyleSheet.create({
   },
   lessons_view_heder: {
     flexDirection: "row",
-    paddingTop: 7,
-    paddingBottom: 14,
+    marginTop: 7,
+    marginBottom: 14,
   },
   lessons_view_heder_text1: {
     ...theme.textVariants.body2,
@@ -102,81 +102,48 @@ const styles = StyleSheet.create({
   lessons: {
     flexDirection: "row",
     paddingHorizontal: theme.spacing.m,
-    paddingTop: 5,
     width: width,
-    //height: '100%'
-  },
-  lesson_time_text: {
-    fontFamily: "eUkraineBold",
-    fontSize: 9,
-    paddingRight: 30,
-    color: "#BCC1CD",
   },
   lesson_time: {
-    flexDirection: "column",
     minWidth: 55,
-    paddingRight: 9,
     borderRightWidth: 1,
     borderRightColor: "#FAF9F9",
   },
-  lessons_text: {
-    fontFamily: "eUkraineBold",
-    fontSize: 9,
-    color: "#BCC1CD",
+  lesson_time_start_text: {
+    ...theme.textVariants.body2,
+    color: theme.colors.black,
+    marginBottom: 5,
   },
-  lesson_time_list: {
-    flexDirection: "column",
-    paddingTop: 14,
-  },
-  lesson_time_list_text: {
-    fontFamily: "eUkraineMedium",
-    paddingBottom: 4,
-    fontSize: 14,
-  },
-  lesson_time_end_list_text: {
-    fontFamily: "eUkraineMedium",
-    fontSize: 14,
-    color: "#BCC1CD",
+  lesson_time_end_text: {
+    ...theme.textVariants.body2,
+    color: theme.colors.gray,
   },
   lesson_card: {
-    flexDirection: "column",
-    marginLeft: 16,
-    backgroundColor: "#4DC591",
-    borderRadius: 16,
-    paddingTop: 16,
-    paddingLeft: 16,
-    paddingBottom: 17,
+    backgroundColor: theme.colors.green,
+    marginLeft: theme.spacing.m,
+    marginBottom: theme.spacing.m,
+    borderRadius: 15,
+    padding: theme.spacing.m,
     flex: 1,
-    marginBottom: 16,
   },
   lesson_card_name: {
-    fontFamily: "eUkraineBold",
-    fontSize: 13,
-    color: "#ffff",
+    ...theme.textVariants.h2,
+    color: theme.colors.white,
+    marginBottom: 5,
   },
   lesson_card_description: {
-    fontFamily: "eUkraineMedium",
-    fontSize: 10,
-    paddingTop: 4,
-    color: "#ffff",
-  },
-  lesson_card_locate_img: {
-    height: 16,
-    width: 16,
-    marginRight: 50,
-    tintColor: "#FFFFFF",
+    ...theme.textVariants.body3,
+    color: theme.colors.white,
+    marginBottom: 15
   },
   lesson_card_locate: {
-    fontFamily: "eUkraineRegular",
-    fontSize: 10,
-    paddingTop: 15,
-    color: "#ffff",
+    ...theme.textVariants.body5,
+    color: theme.colors.white,
+    marginBottom: 3,
   },
   lesson_card_teacher: {
-    fontFamily: "eUkraineRegular",
-    fontSize: 10,
-    paddingTop: 3,
-    color: "#ffff",
+    ...theme.textVariants.body5,
+    color: theme.colors.white,
   },
 });
 
