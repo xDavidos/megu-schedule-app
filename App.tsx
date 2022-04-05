@@ -1,15 +1,18 @@
 import './config/firebase';
 import { StatusBar } from 'expo-status-bar';
 import { useFonts } from 'expo-font';
+import AppLoading from 'expo-app-loading';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import Moment from 'react-moment';
 import 'moment/locale/uk';
 import DateSlider from './components/date_slider';
 import LessonList from './components/lesson_list'
-import AppLoading from 'expo-app-loading';
 import Lessons from './components/data.json'
 import theme from './assets/themes';
+//import { lessons } from './services/lessonsService'
+// import moment from 'moment';
+import './services/firebase'
 
 export default function App() {
   const [loaded] = useFonts({
@@ -18,6 +21,7 @@ export default function App() {
     eUkraineRegular: require('./assets/fonts/e-Ukraine/e-Ukraine-Regular.otf'),
   });
   const [index, setIndex] = useState(15);
+
 
   if (!loaded) {
     return <AppLoading/>
@@ -47,25 +51,24 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#faf9f9',
-    paddingTop: 40,
+    marginTop: 40,
     height: '100%'
   },
   today: {
-    paddingHorizontal: 20,
-    paddingBottom: 20,
+    marginHorizontal: 20,
+    marginBottom: 20,
     flexDirection: 'row',
     height: '11%',
-    display: 'flex',
   },
   today_day: {
     ...theme.textVariants.body1,
     color: theme.colors.black,
     alignSelf: 'center',
+    marginRight: 8,
   },
   today_column: {
     flexDirection: 'column',
     alignSelf: 'center',
-    paddingLeft: 8,
   },
   today_day_week: {
     ...theme.textVariants.body4,

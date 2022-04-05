@@ -6,7 +6,7 @@
         {
           "description": "А пари вообще нормальні будуть",
           "endtime": "11:00",
-          "id": 0,
+          "id": "0",
           "isOnline": false,
           "location": "Аудиторія 1402",
           "name": "Програмування C#",
@@ -17,7 +17,7 @@
         {
           "description": "Мова дідів",
           "endtime": "12:10",
-          "id": 1,
+          "id": "1",
           "isOnline": false,
           "location": "Аудиторія 1402",
           "name": "Програмування Java",
@@ -28,7 +28,7 @@
         {
           "description": "Жабаскрипт",
           "endtime": "11:20",
-          "id": 2,
+          "id": "2",
           "isOnline": true,
           "location": "meet.google.com/yyf-ykye-kgk",
           "name": "Програмування JavaScript",
@@ -39,7 +39,7 @@
         {
           "description": "Жабаскрипт",
           "endtime": "11:20",
-          "id": 3,
+          "id": "3",
           "isOnline": true,
           "location": "meet.google.com/yyf-ykye-kgk",
           "name": "Програмування JavaScript",
@@ -50,7 +50,7 @@
         {
           "description": "Жабаскрипт",
           "endtime": "11:20",
-          "id": 4,
+          "id": "4",
           "isOnline": true,
           "location": "meet.google.com/yyf-ykye-kgk",
           "name": "Програмування JavaScript",
@@ -61,7 +61,7 @@
         {
           "description": "Жабаскрипт",
           "endtime": "11:20",
-          "id": 5,
+          "id": "5",
           "isOnline": true,
           "location": "meet.google.com/yyf-ykye-kgk",
           "name": "Програмування JavaScript",
@@ -72,7 +72,7 @@
         {
           "description": "Жабаскрипт",
           "endtime": "11:20",
-          "id": 6,
+          "id": "6",
           "isOnline": true,
           "location": "meet.google.com/yyf-ykye-kgk",
           "name": "Програмування JavaScript",
@@ -88,7 +88,7 @@
         {
           "description": "А пари вообще нормальні будуть",
           "endtime": "11:00",
-          "id": 0,
+          "id": "0",
           "isOnline": false,
           "location": "Аудиторія 1402",
           "name": "Програмування C#",
@@ -99,7 +99,7 @@
         {
           "description": "Мова дідів",
           "endtime": "12:10",
-          "id": 1,
+          "id": "1",
           "isOnline": false,
           "location": "Аудиторія 1402",
           "name": "Програмування Java",
@@ -110,7 +110,7 @@
         {
           "description": "Жабаскрипт",
           "endtime": "11:20",
-          "id": 2,
+          "id": "2",
           "isOnline": true,
           "location": "meet.google.com/yyf-ykye-kgk",
           "name": "Програмування JavaScript",
@@ -121,7 +121,7 @@
         {
           "description": "Жабаскрипт",
           "endtime": "11:20",
-          "id": 3,
+          "id": "3",
           "isOnline": true,
           "location": "meet.google.com/yyf-ykye-kgk",
           "name": "Програмування JavaScript",
@@ -132,7 +132,7 @@
         {
           "description": "Жабаскрипт",
           "endtime": "11:20",
-          "id": 4,
+          "id": "4",
           "isOnline": true,
           "location": "meet.google.com/yyf-ykye-kgk",
           "name": "Програмування JavaScript",
@@ -143,7 +143,7 @@
         {
           "description": "Жабаскрипт",
           "endtime": "11:20",
-          "id": 5,
+          "id": "5",
           "isOnline": true,
           "location": "meet.google.com/yyf-ykye-kgk",
           "name": "Програмування JavaScript",
@@ -154,7 +154,7 @@
         {
           "description": "Жабаскрипт",
           "endtime": "11:20",
-          "id": 6,
+          "id": "6",
           "isOnline": true,
           "location": "meet.google.com/yyf-ykye-kgk",
           "name": "Програмування JavaScript",
@@ -170,7 +170,7 @@
         {
           "description": "Пара фігня",
           "endtime": "11:00",
-          "id": 0,
+          "id": "0",
           "isOnline": false,
           "location": "Аудиторія 1402",
           "name": "Програмування C#",
@@ -181,7 +181,7 @@
         {
           "description": "Мова дідів",
           "endtime": "12:10",
-          "id": 1,
+          "id": "1",
           "isOnline": false,
           "location": "Аудиторія 1402",
           "name": "Програмування Java",
@@ -192,7 +192,7 @@
         {
           "description": "Жабаскрипт",
           "endtime": "11:20",
-          "id": 2,
+          "id": "2",
           "isOnline": true,
           "location": "meet.google.com/yyf-ykye-kgk",
           "name": "Програмування JavaScript",
@@ -203,7 +203,7 @@
         {
           "description": "Жабаскрипт",
           "endtime": "11:20",
-          "id": 3,
+          "id": "3",
           "isOnline": true,
           "location": "meet.google.com/yyf-ykye-kgk",
           "name": "Програмування JavaScript",
@@ -219,7 +219,7 @@
         {
           "description": "Пара фігня",
           "endtime": "11:00",
-          "id": 0,
+          "id": "0",
           "isOnline": false,
           "location": "Аудиторія 1402",
           "name": "Програмування C#",
@@ -230,7 +230,7 @@
         {
           "description": "Мова дідів",
           "endtime": "12:10",
-          "id": 1,
+          "id": "1",
           "isOnline": false,
           "location": "Аудиторія 1402",
           "name": "Програмування Java",
@@ -241,7 +241,7 @@
         {
           "description": "Жабаскрипт",
           "endtime": "11:20",
-          "id": 2,
+          "id": "2",
           "isOnline": true,
           "location": "meet.google.com/yyf-ykye-kgk",
           "name": "Програмування JavaScript",
@@ -257,7 +257,7 @@
         {
           "description": "Пара фігня",
           "endtime": "11:00",
-          "id": 0,
+          "id": "0",
           "isOnline": false,
           "location": "Аудиторія 1402",
           "name": "Програмування C#",
@@ -268,7 +268,7 @@
         {
           "description": "Мова дідів",
           "endtime": "12:10",
-          "id": 1,
+          "id": "1",
           "isOnline": false,
           "location": "Аудиторія 1402",
           "name": "Програмування Java",
@@ -279,7 +279,7 @@
         {
           "description": "Жабаскрипт",
           "endtime": "11:20",
-          "id": 2,
+          "id": "2",
           "isOnline": true,
           "location": "meet.google.com/yyf-ykye-kgk",
           "name": "Програмування JavaScript",
@@ -295,7 +295,7 @@
         {
           "description": "Пара фігня",
           "endtime": "11:00",
-          "id": 0,
+          "id": "0",
           "isOnline": false,
           "location": "Аудиторія 1402",
           "name": "Програмування C#",
@@ -306,7 +306,7 @@
         {
           "description": "Мова дідів",
           "endtime": "12:10",
-          "id": 1,
+          "id": "1",
           "isOnline": false,
           "location": "Аудиторія 1402",
           "name": "Програмування Java",
@@ -317,7 +317,7 @@
         {
           "description": "Жабаскрипт",
           "endtime": "11:20",
-          "id": 2,
+          "id": "2",
           "isOnline": true,
           "location": "meet.google.com/yyf-ykye-kgk",
           "name": "Програмування JavaScript",
@@ -333,7 +333,7 @@
         {
           "description": "Пара фігня",
           "endtime": "11:00",
-          "id": 0,
+          "id": "0",
           "isOnline": false,
           "location": "Аудиторія 1402",
           "name": "Програмування C#",
@@ -344,7 +344,7 @@
         {
           "description": "Мова дідів",
           "endtime": "12:10",
-          "id": 1,
+          "id": "1",
           "isOnline": false,
           "location": "Аудиторія 1402",
           "name": "Програмування Java",
@@ -355,7 +355,7 @@
         {
           "description": "Жабаскрипт",
           "endtime": "11:20",
-          "id": 2,
+          "id": "2",
           "isOnline": true,
           "location": "meet.google.com/yyf-ykye-kgk",
           "name": "Програмування JavaScript",
@@ -371,7 +371,7 @@
         {
           "description": "Пара фігня",
           "endtime": "11:00",
-          "id": 0,
+          "id": "0",
           "isOnline": false,
           "location": "Аудиторія 1402",
           "name": "Програмування C#",
@@ -382,7 +382,7 @@
         {
           "description": "Мова дідів",
           "endtime": "12:10",
-          "id": 1,
+          "id": "1",
           "isOnline": false,
           "location": "Аудиторія 1402",
           "name": "Програмування Java",
@@ -393,7 +393,7 @@
         {
           "description": "Жабаскрипт",
           "endtime": "11:20",
-          "id": 2,
+          "id": "2",
           "isOnline": true,
           "location": "meet.google.com/yyf-ykye-kgk",
           "name": "Програмування JavaScript",
@@ -409,7 +409,7 @@
         {
           "description": "Пара фігня",
           "endtime": "11:00",
-          "id": 0,
+          "id": "0",
           "isOnline": false,
           "location": "Аудиторія 1402",
           "name": "Програмування C#",
@@ -420,7 +420,7 @@
         {
           "description": "Мова дідів",
           "endtime": "12:10",
-          "id": 1,
+          "id": "1",
           "isOnline": false,
           "location": "Аудиторія 1402",
           "name": "Програмування Java",
@@ -431,7 +431,7 @@
         {
           "description": "Жабаскрипт",
           "endtime": "11:20",
-          "id": 2,
+          "id": "2",
           "isOnline": true,
           "location": "meet.google.com/yyf-ykye-kgk",
           "name": "Програмування JavaScript",
@@ -447,7 +447,7 @@
         {
           "description": "Пара фігня",
           "endtime": "11:00",
-          "id": 0,
+          "id": "0",
           "isOnline": false,
           "location": "Аудиторія 1402",
           "name": "Програмування C#",
@@ -458,7 +458,7 @@
         {
           "description": "Мова дідів",
           "endtime": "12:10",
-          "id": 1,
+          "id": "1",
           "isOnline": false,
           "location": "Аудиторія 1402",
           "name": "Програмування Java",
@@ -469,7 +469,7 @@
         {
           "description": "Жабаскрипт",
           "endtime": "11:20",
-          "id": 2,
+          "id": "2",
           "isOnline": true,
           "location": "meet.google.com/yyf-ykye-kgk",
           "name": "Програмування JavaScript",
@@ -485,7 +485,7 @@
         {
           "description": "Пара фігня",
           "endtime": "11:00",
-          "id": 0,
+          "id": "0",
           "isOnline": false,
           "location": "Аудиторія 1402",
           "name": "Програмування C#",
@@ -496,7 +496,7 @@
         {
           "description": "Мова дідів",
           "endtime": "12:10",
-          "id": 1,
+          "id": "1",
           "isOnline": false,
           "location": "Аудиторія 1402",
           "name": "Програмування Java",
@@ -507,7 +507,7 @@
         {
           "description": "Жабаскрипт",
           "endtime": "11:20",
-          "id": 2,
+          "id": "2",
           "isOnline": true,
           "location": "meet.google.com/yyf-ykye-kgk",
           "name": "Програмування JavaScript",
@@ -523,7 +523,7 @@
         {
           "description": "Пара фігня",
           "endtime": "11:00",
-          "id": 0,
+          "id": "0",
           "isOnline": false,
           "location": "Аудиторія 1402",
           "name": "Програмування C#",
@@ -534,7 +534,7 @@
         {
           "description": "Мова дідів",
           "endtime": "12:10",
-          "id": 1,
+          "id": "1",
           "isOnline": false,
           "location": "Аудиторія 1402",
           "name": "Програмування Java",
@@ -545,7 +545,7 @@
         {
           "description": "Жабаскрипт",
           "endtime": "11:20",
-          "id": 2,
+          "id": "2",
           "isOnline": true,
           "location": "meet.google.com/yyf-ykye-kgk",
           "name": "Програмування JavaScript",
@@ -561,7 +561,7 @@
         {
           "description": "Пара фігня",
           "endtime": "11:00",
-          "id": 0,
+          "id": "0",
           "isOnline": false,
           "location": "Аудиторія 1402",
           "name": "Програмування C#",
@@ -572,7 +572,7 @@
         {
           "description": "Мова дідів",
           "endtime": "12:10",
-          "id": 1,
+          "id": "1",
           "isOnline": false,
           "location": "Аудиторія 1402",
           "name": "Програмування Java",
@@ -583,7 +583,7 @@
         {
           "description": "Жабаскрипт",
           "endtime": "11:20",
-          "id": 2,
+          "id": "2",
           "isOnline": true,
           "location": "meet.google.com/yyf-ykye-kgk",
           "name": "Програмування JavaScript",
@@ -599,7 +599,7 @@
         {
           "description": "Пара фігня",
           "endtime": "11:00",
-          "id": 0,
+          "id": "0",
           "isOnline": false,
           "location": "Аудиторія 1402",
           "name": "Програмування C#",
@@ -610,7 +610,7 @@
         {
           "description": "Мова дідів",
           "endtime": "12:10",
-          "id": 1,
+          "id": "1",
           "isOnline": false,
           "location": "Аудиторія 1402",
           "name": "Програмування Java",
@@ -621,7 +621,7 @@
         {
           "description": "Жабаскрипт",
           "endtime": "11:20",
-          "id": 2,
+          "id": "2",
           "isOnline": true,
           "location": "meet.google.com/yyf-ykye-kgk",
           "name": "Програмування JavaScript",
@@ -637,7 +637,7 @@
         {
           "description": "Пара фігня",
           "endtime": "11:00",
-          "id": 0,
+          "id": "0",
           "isOnline": false,
           "location": "Аудиторія 1402",
           "name": "Програмування C#",
@@ -648,7 +648,7 @@
         {
           "description": "Мова дідів",
           "endtime": "12:10",
-          "id": 1,
+          "id": "1",
           "isOnline": false,
           "location": "Аудиторія 1402",
           "name": "Програмування Java",
@@ -659,7 +659,7 @@
         {
           "description": "Жабаскрипт",
           "endtime": "11:20",
-          "id": 2,
+          "id": "2",
           "isOnline": true,
           "location": "meet.google.com/yyf-ykye-kgk",
           "name": "Програмування JavaScript",
@@ -675,7 +675,7 @@
         {
           "description": "Пара фігня",
           "endtime": "11:00",
-          "id": 0,
+          "id": "0",
           "isOnline": false,
           "location": "Аудиторія 1402",
           "name": "Програмування C#",
@@ -686,7 +686,7 @@
         {
           "description": "Мова дідів",
           "endtime": "12:10",
-          "id": 1,
+          "id": "1",
           "isOnline": false,
           "location": "Аудиторія 1402",
           "name": "Програмування Java",
@@ -697,7 +697,7 @@
         {
           "description": "Жабаскрипт",
           "endtime": "11:20",
-          "id": 2,
+          "id": "2",
           "isOnline": true,
           "location": "meet.google.com/yyf-ykye-kgk",
           "name": "Програмування JavaScript",
@@ -713,7 +713,7 @@
         {
           "description": "Пара фігня",
           "endtime": "11:00",
-          "id": 0,
+          "id": "0",
           "isOnline": false,
           "location": "Аудиторія 1402",
           "name": "Програмування C#",
@@ -724,7 +724,7 @@
         {
           "description": "Мова дідів",
           "endtime": "12:10",
-          "id": 1,
+          "id": "1",
           "isOnline": false,
           "location": "Аудиторія 1402",
           "name": "Програмування Java",
@@ -735,7 +735,7 @@
         {
           "description": "Жабаскрипт",
           "endtime": "11:20",
-          "id": 2,
+          "id": "2",
           "isOnline": true,
           "location": "meet.google.com/yyf-ykye-kgk",
           "name": "Програмування JavaScript",
@@ -751,7 +751,7 @@
         {
           "description": "Пара фігня",
           "endtime": "11:00",
-          "id": 0,
+          "id": "0",
           "isOnline": false,
           "location": "Аудиторія 1402",
           "name": "Програмування C#",
@@ -762,7 +762,7 @@
         {
           "description": "Мова дідів",
           "endtime": "12:10",
-          "id": 1,
+          "id": "1",
           "isOnline": false,
           "location": "Аудиторія 1402",
           "name": "Програмування Java",
@@ -773,7 +773,7 @@
         {
           "description": "Жабаскрипт",
           "endtime": "11:20",
-          "id": 2,
+          "id": "2",
           "isOnline": true,
           "location": "meet.google.com/yyf-ykye-kgk",
           "name": "Програмування JavaScript",
@@ -789,7 +789,7 @@
         {
           "description": "Пара фігня",
           "endtime": "11:00",
-          "id": 0,
+          "id": "0",
           "isOnline": false,
           "location": "Аудиторія 1402",
           "name": "Програмування C#",
@@ -800,7 +800,7 @@
         {
           "description": "Мова дідів",
           "endtime": "12:10",
-          "id": 1,
+          "id": "1",
           "isOnline": false,
           "location": "Аудиторія 1402",
           "name": "Програмування Java",
@@ -811,7 +811,7 @@
         {
           "description": "Жабаскрипт",
           "endtime": "11:20",
-          "id": 2,
+          "id": "2",
           "isOnline": true,
           "location": "meet.google.com/yyf-ykye-kgk",
           "name": "Програмування JavaScript",
@@ -827,7 +827,7 @@
         {
           "description": "Пара фігня",
           "endtime": "11:00",
-          "id": 0,
+          "id": "0",
           "isOnline": false,
           "location": "Аудиторія 1402",
           "name": "Програмування C#",
@@ -838,7 +838,7 @@
         {
           "description": "Мова дідів",
           "endtime": "12:10",
-          "id": 1,
+          "id": "1",
           "isOnline": false,
           "location": "Аудиторія 1402",
           "name": "Програмування Java",
@@ -849,7 +849,7 @@
         {
           "description": "Жабаскрипт",
           "endtime": "11:20",
-          "id": 2,
+          "id": "2",
           "isOnline": true,
           "location": "meet.google.com/yyf-ykye-kgk",
           "name": "Програмування JavaScript",
@@ -865,7 +865,7 @@
         {
           "description": "Пара фігня",
           "endtime": "11:00",
-          "id": 0,
+          "id": "0",
           "isOnline": false,
           "location": "Аудиторія 1402",
           "name": "Програмування C#",
