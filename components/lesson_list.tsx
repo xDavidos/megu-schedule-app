@@ -3,10 +3,10 @@ import { StyleSheet, Text, View, FlatList, Dimensions, ScrollView } from 'react-
 import AntDesign from '@expo/vector-icons/AntDesign';
 import theme from '../assets/themes';
 
-const { width } = Dimensions.get('screen');
+const { width, height } = Dimensions.get('screen');
 
-const LessonList = ({ data, index, setIndex }) => {
-  const lessonsRef = React.useRef<FlatList>();
+const LessonList = ({ data, index, setIndex } : { data: any, index: any, setIndex: any }) => {
+  const lessonsRef = React.useRef<FlatList>(null);
 
   React.useEffect(() => {
     lessonsRef.current?.scrollToOffset({
@@ -33,7 +33,7 @@ const LessonList = ({ data, index, setIndex }) => {
       horizontal
       pagingEnabled
       showsHorizontalScrollIndicator={false}
-      renderItem={({ item, index: fIndex }) => {
+      renderItem={({ item } : { item: any, index: any }) => {
         return (
           <View style={styles.lessons_view}>
             <ScrollView showsVerticalScrollIndicator={false}>
@@ -41,7 +41,7 @@ const LessonList = ({ data, index, setIndex }) => {
                 <Text style={styles.lessons_view_heder_text1}>Час</Text>
                 <Text style={styles.lessons_view_heder_text2}>Пари</Text>
               </View>
-              {item.lessons.map((item) => (
+              {item.lessons.map((item:any) => (
                 <Lesson key={item.id} item={item} />
               ))}
             </ScrollView>
@@ -52,7 +52,7 @@ const LessonList = ({ data, index, setIndex }) => {
   );
 }
 
-const Lesson = ({ item }) => {
+const Lesson = ({ item } : { item: any }) => {
   return (
     <View style={styles.lessons}>
       <View style={styles.lesson_time}>
@@ -78,8 +78,8 @@ const Lesson = ({ item }) => {
 const styles = StyleSheet.create({
   lessons_flatlist: {
     height: "120%",
-    marginTop: -30,
-    transform: [{ translateY: 30 }],
+    marginTop: -45,
+    transform: [{ translateY: 45 }],
   },
   lessons_view: {
     height: "99%",

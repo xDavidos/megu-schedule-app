@@ -4,8 +4,8 @@ import Moment from 'react-moment';
 import 'moment/locale/uk';
 import theme from '../assets/themes/index';
 
-const DateSlider = ({ data, index, setIndex }) => {
-  const sliderRef = React.useRef<FlatList>();
+const DateSlider = ({ data, index, setIndex } : { data: any, index: any, setIndex: any }) => {
+  const sliderRef = React.useRef<FlatList>(null);
 
   React.useEffect(() => {
     sliderRef.current?.scrollToIndex({
@@ -17,6 +17,7 @@ const DateSlider = ({ data, index, setIndex }) => {
   }, [index])
   
   return (
+    <View>
     <FlatList
     ref={sliderRef}
     style ={styles.dataslider}
@@ -54,12 +55,13 @@ const DateSlider = ({ data, index, setIndex }) => {
       );
     }}
   />
+  </View>
   );
 }
 
 const styles = StyleSheet.create({
   dataslider: {
-    height: '15%',
+ //   height: '15%',
     borderBottomWidth: 1,
     borderBottomColor: "#FAF9F9",
     paddingTop: 15,

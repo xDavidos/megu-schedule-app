@@ -8,11 +8,10 @@ import Moment from 'react-moment';
 import 'moment/locale/uk';
 import DateSlider from './components/date_slider';
 import LessonList from './components/lesson_list'
-import Lessons from './components/data.json'
+import Lessons from './components/data.json';
 import theme from './assets/themes';
-//import { lessons } from './services/lessonsService'
-// import moment from 'moment';
-import './services/firebase'
+// import { lessons } from './services/lessonsService'
+//import { firebasedb } from './services/firebase';
 
 export default function App() {
   const [loaded] = useFonts({
@@ -20,8 +19,7 @@ export default function App() {
     eUkraineMedium: require('./assets/fonts/e-Ukraine/e-Ukraine-Medium.otf'),
     eUkraineRegular: require('./assets/fonts/e-Ukraine/e-Ukraine-Regular.otf'),
   });
-  const [index, setIndex] = useState(15);
-
+  const [index, setIndex] = useState(2);
 
   if (!loaded) {
     return <AppLoading/>
@@ -36,7 +34,7 @@ export default function App() {
           <Moment element={Text} style={styles.today_day_week} format='dddd'></Moment>
           <Moment element={Text} style={styles.today_month_year} format='MMMM YYYY'></Moment>
         </View>
-        <TouchableOpacity style={styles.today_button_conteiner} onPress={() => { setIndex(7) }}>
+        <TouchableOpacity style={styles.today_button_conteiner} onPress={() => { setIndex(1) }}>
           <Text style={styles.today_button_text}>Сьогодні</Text>
         </TouchableOpacity>
       </View>
@@ -52,13 +50,13 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#faf9f9',
     marginTop: 40,
-    height: '100%'
+  //  height: '100%'
   },
   today: {
     marginHorizontal: 20,
     marginBottom: 20,
     flexDirection: 'row',
-    height: '11%',
+  //  height: '11%',
   },
   today_day: {
     ...theme.textVariants.body1,
