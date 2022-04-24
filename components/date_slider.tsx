@@ -61,10 +61,8 @@ const DateSlider = ({ data, index, setIndex } : { data: any, index: any, setInde
 
 const styles = StyleSheet.create({
   dataslider: {
- //   height: '15%',
     borderBottomWidth: 1,
     borderBottomColor: "#FAF9F9",
-    paddingTop: 15,
   },
   day_flatlist_weekday: {
     ...theme.textVariants.h2,

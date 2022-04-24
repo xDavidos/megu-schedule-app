@@ -3,7 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Dimensions } from 'react-native';
 import Moment from 'react-moment';
 import 'moment/locale/uk';
 import DateSlider from './components/date_slider';
@@ -13,13 +13,15 @@ import theme from './assets/themes';
 // import { lessons } from './services/lessonsService'
 //import { firebasedb } from './services/firebase';
 
+const { width, height } = Dimensions.get('screen');
+
 export default function App() {
   const [loaded] = useFonts({
     eUkraineBold: require('./assets/fonts/e-Ukraine/e-Ukraine-Bold.otf'),
     eUkraineMedium: require('./assets/fonts/e-Ukraine/e-Ukraine-Medium.otf'),
     eUkraineRegular: require('./assets/fonts/e-Ukraine/e-Ukraine-Regular.otf'),
   });
-  const [index, setIndex] = useState(2);
+  const [index, setIndex] = useState(1);
 
   if (!loaded) {
     return <AppLoading/>
@@ -38,7 +40,7 @@ export default function App() {
           <Text style={styles.today_button_text}>Сьогодні</Text>
         </TouchableOpacity>
       </View>
-      <View style={styles.date_lesson_conteiner}>
+      <View style={styles.lesson_conteiner}>
         <DateSlider data={Lessons} index={index} setIndex={setIndex} />
         <LessonList data={Lessons} index={index} setIndex={setIndex} />
       </View>
@@ -50,13 +52,12 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#faf9f9',
     marginTop: 40,
-  //  height: '100%'
+    height: height - 40,
   },
   today: {
     marginHorizontal: 20,
     marginBottom: 20,
     flexDirection: 'row',
-  //  height: '11%',
   },
   today_day: {
     ...theme.textVariants.body1,
@@ -79,8 +80,7 @@ const styles = StyleSheet.create({
     color: theme.colors.gray,
   },
   today_button_conteiner: {
-    flex: 1,
-    alignItems: 'flex-end',
+    marginLeft: 'auto',
     justifyContent: 'center',
   },
   today_button_text: {
@@ -90,11 +90,11 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     padding: 8,
   },
-  date_lesson_conteiner: {
-    height: '90%',
-    marginTop: -20,
+  lesson_conteiner: {
     borderTopEndRadius: 25,
     borderTopStartRadius: 25,
-    backgroundColor: theme.colors.white
+    backgroundColor: theme.colors.white,
+    paddingTop: 15,
+    flex: 1,
   }
 });
