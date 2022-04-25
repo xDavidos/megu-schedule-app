@@ -1,78 +1,59 @@
 import React from 'react';
-import { StyleSheet, Text, View, FlatList, Dimensions, ScrollView, TouchableOpacity, SafeAreaView } from 'react-native'
+import { StyleSheet, Text, View, FlatList, Dimensions, ScrollView, TouchableOpacity } from 'react-native'
 import AntDesign from '@expo/vector-icons/AntDesign';
 import theme from '../assets/themes';
 import * as Linking from 'expo-linking';
-import { isEmpty } from '@firebase/util';
 
-const { width, height } = Dimensions.get('screen');
+const width = Dimensions.get('screen').width;
 
-const LessonList = ({
-  data,
-  index,
-  setIndex,
-}: {
-  data: any;
-  index: any;
-  setIndex: any;
-}) => {
+const LessonList = ({data, index, setIndex,}: { data: any; index: any; setIndex: any; }) => {
   const lessonsRef = React.useRef<FlatList>(null);
 
   React.useEffect(() => {
     lessonsRef.current?.scrollToOffset({
-      offset: index * width,
+      offset: width * index,
       animated: true,
     });
   }, [index]);
+
   return (
-  <FlatList
-    ref={lessonsRef}
-    initialScrollIndex={index}
-    data={data.days}
-    keyExtractor={item => item.date}
-    getItemLayout={(data, index) => ({
-      length: width,
-      offset: width * index,
-      index,
-    })}
-    onMomentumScrollEnd={ev => {
-      setIndex(
-        Math.floor(
-          Math.floor(ev.nativeEvent.contentOffset.x) / Math.floor(width),
-        ),
-      );
-    }}
-    horizontal
-    pagingEnabled
-    showsHorizontalScrollIndicator={false}
-    renderItem={({item}: {item: any; index: any}) => {
-      return (
-        <View>
-          <ScrollView showsVerticalScrollIndicator={false} style={{ }}>
+    <FlatList
+      ref={lessonsRef}
+      initialScrollIndex={index}
+      data={data.days}
+      keyExtractor={item => item.date}
+      getItemLayout={(data, index) => ({
+        length: width,
+        offset: width * index,
+        index,
+      })}
+      onMomentumScrollEnd={ev => {
+        setIndex(
+          Math.floor(Math.floor(ev.nativeEvent.contentOffset.x) / Math.floor(width),
+          ),
+        );
+      }}
+      horizontal
+      pagingEnabled
+      showsHorizontalScrollIndicator={false}
+      renderItem={({item}: {item: any; index: any}) => {
+        return (
+          <ScrollView showsVerticalScrollIndicator={false}>
             <View style={styles.lessons_view_heder}>
               <Text style={styles.lessons_view_heder_text1}>Час</Text>
               <Text style={styles.lessons_view_heder_text2}>Пари</Text>
             </View>
-            {isEmpty(item.lessons) ? (
-              <Text
-                style={{
-                  ...theme.textVariants.body1,
-                  width: width,
-                  paddingTop: 20,
-                  textAlign: 'center',
-                }}>
-                Вихідний
-              </Text>
+            {(item.lessons.length == 0) ? (
+              <Text style={styles.lesson_empty}>Вихідний</Text>
             ) : (
               item.lessons.map((item: any) => (
                 <Lesson key={item.id} item={item} />
               ))
             )}
           </ScrollView>
-        </View>
-      );
-    }}
-  />
+        );
+      }}
+    />
   );
 };
 
@@ -191,6 +172,12 @@ const styles = StyleSheet.create({
     ...theme.textVariants.body5,
     color: theme.colors.white,
   },
+  lesson_empty: {
+    ...theme.textVariants.body1,
+    width: width,
+    paddingTop: 20,
+    textAlign: 'center',
+  }
 });
 
 export default LessonList

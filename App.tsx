@@ -3,7 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Dimensions, SafeAreaView } from 'react-native';
 import Moment from 'react-moment';
 import 'moment/locale/uk';
 import DateSlider from './components/date_slider';
@@ -13,7 +13,7 @@ import theme from './assets/themes';
 // import { lessons } from './services/lessonsService'
 //import { firebasedb } from './services/firebase';
 
-const { width, height } = Dimensions.get('screen');
+const height = Dimensions.get('screen').height;
 
 export default function App() {
   const [loaded] = useFonts({
@@ -28,8 +28,8 @@ export default function App() {
   }
 
   return (
-    <View style={styles.container}>
-      <StatusBar style="auto" />
+    <SafeAreaView style={styles.container}>
+      <StatusBar style='auto'/> 
       <View style={styles.today}>
         <Moment element={Text} style={styles.today_day} format='D'></Moment>
         <View style={styles.today_column}>
@@ -44,7 +44,7 @@ export default function App() {
         <DateSlider data={Lessons} index={index} setIndex={setIndex} />
         <LessonList data={Lessons} index={index} setIndex={setIndex} />
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -52,7 +52,8 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#faf9f9',
     marginTop: 40,
-    height: height - 40,
+    marginBottom: 40,
+    height: height,
   },
   today: {
     marginHorizontal: 20,
@@ -91,10 +92,10 @@ const styles = StyleSheet.create({
     padding: 8,
   },
   lesson_conteiner: {
-    borderTopEndRadius: 25,
-    borderTopStartRadius: 25,
+    borderRadius: 25,
     backgroundColor: theme.colors.white,
     paddingTop: 15,
+    marginBottom: 80,
     flex: 1,
   }
 });

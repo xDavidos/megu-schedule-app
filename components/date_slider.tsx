@@ -17,7 +17,6 @@ const DateSlider = ({ data, index, setIndex } : { data: any, index: any, setInde
   }, [index])
   
   return (
-    <View>
     <FlatList
     ref={sliderRef}
     style ={styles.dataslider}
@@ -55,7 +54,6 @@ const DateSlider = ({ data, index, setIndex } : { data: any, index: any, setInde
       );
     }}
   />
-  </View>
   );
 }
 
