@@ -12,7 +12,7 @@ const theme = {
     m: 16,
     l: 32,
     xl: 40,
-    data_slidel: 15
+    data_slidel: 14.9
   },
   textVariants: {
     h1: {

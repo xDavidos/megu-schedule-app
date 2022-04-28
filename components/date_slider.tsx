@@ -27,29 +27,29 @@ const DateSlider = ({ data, index, setIndex } : { data: any, index: any, setInde
     )}
     data={data.days}
     keyExtractor={(item) => item.date}
-    contentContainerStyle={{ paddingLeft: theme.spacing.data_slidel, paddingBottom: theme.spacing.m }}
+    contentContainerStyle={{ paddingLeft: theme.spacing.data_slidel }}
     showsHorizontalScrollIndicator={false}
     horizontal
     renderItem={({ item, index: fIndex }) => {
       return (
-        <TouchableOpacity onPress={() => { setIndex(fIndex);}}>
-          <View
-            style={{
-              marginRight: theme.spacing.data_slidel,
-              borderRadius: 10,
-              paddingVertical: 8,
-              backgroundColor:
-                fIndex == index ? theme.colors.orange : theme.colors.white,
-              width: 40,
-            }}><Moment element={Text} style={ fIndex == index
-                ? styles.day_flatlist_weekday_select
-                : styles.day_flatlist_weekday
-              } format="dd">{item.date}</Moment>
-            <Moment element={Text} style={ fIndex == index
-                ? styles.day_flatlist_day_select
-                : styles.day_flatlist_day
-              } format="D">{item.date}</Moment>
-          </View>
+        <TouchableOpacity 
+        onPress={() => { setIndex(fIndex);}}
+        style={{
+          marginRight: theme.spacing.data_slidel,
+          borderRadius: 10,
+          paddingVertical: 8,
+          width: 40,
+          backgroundColor:
+            fIndex == index ? theme.colors.orange : theme.colors.white,
+        }}>
+          <Moment element={Text} style={ fIndex == index
+            ? styles.day_flatlist_weekday_select
+            : styles.day_flatlist_weekday
+          } format="dd">{item.date}</Moment>
+          <Moment element={Text} style={ fIndex == index
+            ? styles.day_flatlist_day_select
+            : styles.day_flatlist_day
+          } format="D">{item.date}</Moment>
         </TouchableOpacity>
       );
     }}
@@ -61,6 +61,7 @@ const styles = StyleSheet.create({
   dataslider: {
     borderBottomWidth: 1,
     borderBottomColor: "#FAF9F9",
+    paddingVertical: 10,
   },
   day_flatlist_weekday: {
     ...theme.textVariants.h2,

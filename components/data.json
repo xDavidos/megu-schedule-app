@@ -1,154 +1,68 @@
 {
   "days": [
     { 
-      "date": "2022-04-10T21:00:00.000Z",
+      "date": "2022-04-24T21:00:00.000Z",
+      "lessons": [
+      ]
+    },
+    { 
+      "date": "2022-04-25T21:00:00.000Z",
+      "lessons": [
+        {
+          "description": "А пари вообще нормальні будуть",
+          "endtime": "11:10",
+          "id": "0",
+          "isOnline": true,
+          "location": "meet.google.com/rdq-xekd-eng",
+          "name": "Програмування IoT",
+          "starttime": "9:00",
+          "teacher": "Ляшук Т. Г.",
+          "type": 0
+        },
+        {
+          "description": "А пари вообще нормальні будуть",
+          "endtime": "12:20",
+          "id": "2",
+          "isOnline": true,
+          "location": "meet.google.com/yux-azsa-inh",
+          "name": "Алгоритми і структури даних",
+          "starttime": "11:20",
+          "teacher": "Деканша",
+          "type": 0
+        },
+        {
+          "description": "А пари вообще нормальні будуть",
+          "endtime": "14:40",
+          "id": "3",
+          "isOnline": true,
+          "location": "meet.google.com/hhy-upjm-eek",
+          "name": "Факультатив з програмування",
+          "starttime": "13:40",
+          "teacher": "доц. Шпортько О. В.",
+          "type": 0
+        }
+      ]
+    },
+    { 
+      "date": "2022-04-26T21:00:00.000Z",
       "lessons": [
         {
           "description": "А пари вообще нормальні будуть",
           "endtime": "10:00",
           "id": "0",
           "isOnline": true,
-          "location": "meet.google.com/hhy-upjm-eek",
-          "name": "Алгоритми і структури даних",
+          "location": "calendar.google.com/calendar",
+          "name": "Смарт-технології та їх застосування",
           "starttime": "9:00",
-          "teacher": "Деканша",
+          "teacher": "Кот В.В",
           "type": 0
         },        
         {
           "description": "А пари вообще нормальні будуть",
           "endtime": "11:10",
           "id": "1",
-          "isOnline": false,
-          "location": "meet.google.com/hhy-upjm-eek",
-          "name": "Програмування IoT",
-          "starttime": "10:10",
-          "teacher": "Ляшук Т. Г.",
-          "type": 0
-        },
-        {
-          "description": "А пари вообще нормальні будуть",
-          "endtime": "12:20",
-          "id": "2",
-          "isOnline": false,
-          "location": "Онлайн",
-          "name": "Програмування С#",
-          "starttime": "11:20",
-          "teacher": "Шпортько О. В.",
-          "type": 0
-        },
-        {
-          "description": "А пари вообще нормальні будуть",
-          "endtime": "13:30",
-          "id": "3",
-          "isOnline": false,
-          "location": "Онлайн",
-          "name": "Програмування IoT",
-          "starttime": "12:30",
-          "teacher": "Ляшук Т. Г.",
-          "type": 0
-        },
-        {
-          "description": "А пари вообще нормальні будуть",
-          "endtime": "13:30",
-          "id": "4",
-          "isOnline": false,
-          "location": "Онлайн",
-          "name": "Програмування IoT",
-          "starttime": "12:30",
-          "teacher": "Ляшук Т. Г.",
-          "type": 0
-        }
-      ]
-    },
-    { 
-      "date": "2022-04-11T21:00:00.000Z",
-      "lessons": [
-        {
-          "description": "А пари вообще нормальні будуть",
-          "endtime": "10:00",
-          "id": "0",
-          "isOnline": false,
-          "location": "Онлайн",
-          "name": "Програмування IoT",
-          "starttime": "9:00",
-          "teacher": "Ляшук Т. Г.",
-          "type": 0
-        },        {
-          "description": "А пари вообще нормальні будуть",
-          "endtime": "11:10",
-          "id": "1",
-          "isOnline": false,
-          "location": "Онлайн",
-          "name": "Програмування IoT",
-          "starttime": "10:10",
-          "teacher": "Ляшук Т. Г.",
-          "type": 0
-        },
-        {
-          "description": "А пари вообще нормальні будуть",
-          "endtime": "12:20",
-          "id": "2",
-          "isOnline": false,
-          "location": "Онлайн",
-          "name": "Алгоритми і структури даних",
-          "starttime": "11:20",
-          "teacher": "Деканша",
-          "type": 0
-        },
-        {
-          "description": "А пари вообще нормальні будуть",
-          "endtime": "13:30",
-          "id": "3",
-          "isOnline": false,
-          "location": "Онлайн",
-          "name": "Програмування С#",
-          "starttime": "12:30",
-          "teacher": "Шпортько О. В.",
-          "type": 0
-        },
-        {
-          "description": "А пари вообще нормальні будуть",
-          "endtime": "14:40",
-          "id": "4",
-          "isOnline": false,
-          "location": "Онлайн",
-          "name": "Факультатив з програмування С#",
-          "starttime": "13:40",
-          "teacher": "Шпортько О. В.",
-          "type": 0
-        },
-        {
-          "description": "А пари вообще нормальні будуть",
-          "endtime": "14:40",
-          "id": "5",
-          "isOnline": false,
-          "location": "Онлайн",
-          "name": "Факультатив з програмування С#",
-          "starttime": "13:40",
-          "teacher": "Шпортько О. В.",
-          "type": 0
-        }
-      ]
-    },
-    { 
-      "date": "2022-04-12T21:00:00.000Z",
-      "lessons": [
-        {
-          "description": "А пари вообще нормальні будуть",
-          "endtime": "10:00",
-          "id": "0",
-          "isOnline": false,
-          "location": "Онлайн",
-          "name": "Смарт-технології та їх застосування",
-          "starttime": "9:00",
-          "teacher": "Кот В.В",
-          "type": 0
-        },        {
-          "description": "А пари вообще нормальні будуть",
-          "endtime": "11:10",
-          "id": "1",
-          "isOnline": false,
-          "location": "Онлайн",
+          "isOnline": true,
+          "location": "calendar.google.com/calendar",
           "name": "Укр мова",
           "starttime": "10:10",
           "teacher": "Саркісова І. А.",
@@ -158,8 +72,8 @@
           "description": "А пари вообще нормальні будуть",
           "endtime": "12:20",
           "id": "2",
-          "isOnline": false,
-          "location": "Онлайн",
+          "isOnline": true,
+          "location": "calendar.google.com/calendar",
           "name": "Групова динаміка і комунікації",
           "starttime": "11:20",
           "teacher": "Деканша",
@@ -167,26 +81,26 @@
         },
         {
           "description": "А пари вообще нормальні будуть",
-          "endtime": "13:30",
+          "endtime": "14:40",
           "id": "3",
-          "isOnline": false,
-          "location": "Онлайн",
-          "name": "Групова динаміка і комунікації",
-          "starttime": "12:30",
-          "teacher": "Деканша",
+          "isOnline": true,
+          "location": "calendar.google.com/calendar",
+          "name": "Програмування C#",
+          "starttime": "13:40",
+          "teacher": "доц. Шпортько О. В.",
           "type": 0
         }
       ]
     },
     { 
-      "date": "2022-04-13T21:00:00.000Z",
+      "date": "2022-04-27T21:00:00.000Z",
       "lessons": [
         {
           "description": "А пари вообще нормальні будуть",
           "endtime": "12:20",
           "id": "0",
-          "isOnline": false,
-          "location": "Онлайн",
+          "isOnline": true,
+          "location": "calendar.google.com/calendar",
           "name": "Смарт-технології та їх застосування",
           "starttime": "11:20",
           "teacher": "Кот В.В",
@@ -196,8 +110,8 @@
           "description": "А пари вообще нормальні будуть",
           "endtime": "13:30",
           "id": "1",
-          "isOnline": false,
-          "location": "Онлайн",
+          "isOnline": true,
+          "location": "calendar.google.com/calendar",
           "name": "Програмування С#",
           "starttime": "12:30",
           "teacher": "Шпортько О. В.",
@@ -205,59 +119,26 @@
         },
         {
           "description": "А пари вообще нормальні будуть",
-          "endtime": "13:30",
-          "id": "3",
-          "isOnline": false,
-          "location": "Онлайн",
-          "name": "Програмування С#",
-          "starttime": "12:30",
-          "teacher": "Шпортько О. В.",
-          "type": 0
-        },
-        {
-          "description": "А пари вообще нормальні будуть",
-          "endtime": "13:30",
-          "id": "4",
-          "isOnline": false,
-          "location": "Онлайн",
-          "name": "Програмування С#",
-          "starttime": "12:30",
-          "teacher": "Шпортько О. В.",
-          "type": 0
-        },
-        {
-          "description": "А пари вообще нормальні будуть",
-          "endtime": "13:30",
-          "id": "5",
-          "isOnline": false,
-          "location": "Онлайн",
-          "name": "Програмування С#",
-          "starttime": "12:30",
-          "teacher": "Шпортько О. В.",
-          "type": 0
-        },
-        {
-          "description": "А пари вообще нормальні будуть",
-          "endtime": "13:30",
-          "id": "6",
-          "isOnline": false,
-          "location": "Онлайн",
-          "name": "Програмування С#",
-          "starttime": "12:30",
-          "teacher": "Шпортько О. В.",
+          "endtime": "13:40",
+          "id": "2",
+          "isOnline": true,
+          "location": "calendar.google.com/calendar",
+          "name": "Групова динаміка і комунікації",
+          "starttime": "13:40",
+          "teacher": "Деканша",
           "type": 0
         }
       ]
     },
     { 
-      "date": "2022-04-14T21:00:00.000Z",
+      "date": "2022-04-28T21:00:00.000Z",
       "lessons": [
         {
           "description": "А пари вообще нормальні будуть",
           "endtime": "10:00",
           "id": "0",
-          "isOnline": false,
-          "location": "Онлайн",
+          "isOnline": true,
+          "location": "calendar.google.com/calendar",
           "name": "Алгоритми і структури даних",
           "starttime": "9:00",
           "teacher": "Деканша",
@@ -265,24 +146,46 @@
         },
         {
           "description": "А пари вообще нормальні будуть",
+          "endtime": "11:10",
+          "id": "1",
+          "isOnline": true,
+          "location": "calendar.google.com/calendar",
+          "name": "Програмування IoT",
+          "starttime": "10:10",
+          "teacher": "Ляшук Т. Г.",
+          "type": 0
+        },
+        {
+          "description": "А пари вообще нормальні будуть",
           "endtime": "12:20",
           "id": "2",
-          "isOnline": false,
-          "location": "Онлайн",
+          "isOnline": true,
+          "location": "calendar.google.com/calendar",
           "name": "Іноземна мова",
           "starttime": "11:20",
           "teacher": "Пабат М. А.",
+          "type": 0
+        },
+        {
+          "description": "А пари вообще нормальні будуть",
+          "endtime": "13:40",
+          "id": "3",
+          "isOnline": true,
+          "location": "calendar.google.com/calendar",
+          "name": "Програмування IoT",
+          "starttime": "12:30",
+          "teacher": "Ляшук Т. Г.",
           "type": 0
         }
       ]
     },
     { 
-      "date": "2022-04-15T21:00:00.000Z",
+      "date": "2022-04-29T21:00:00.000Z",
       "lessons": [
       ]
     },
     { 
-      "date": "2022-04-16T21:00:00.000Z",
+      "date": "2022-04-30T21:00:00.000Z",
       "lessons": [
       ]
     }

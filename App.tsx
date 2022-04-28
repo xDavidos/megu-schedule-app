@@ -1,4 +1,4 @@
-import './config/firebase';
+//import './config/firebase';
 import { StatusBar } from 'expo-status-bar';
 import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
@@ -8,10 +8,10 @@ import Moment from 'react-moment';
 import 'moment/locale/uk';
 import DateSlider from './components/date_slider';
 import LessonList from './components/lesson_list'
-import Lessons from './components/data.json';
+import Lessons_local from './components/data.json';
 import theme from './assets/themes';
 // import { lessons } from './services/lessonsService'
-//import { firebasedb } from './services/firebase';
+//import { firebase } from './services/firebase';
 
 const height = Dimensions.get('screen').height;
 
@@ -21,6 +21,11 @@ export default function App() {
     eUkraineMedium: require('./assets/fonts/e-Ukraine/e-Ukraine-Medium.otf'),
     eUkraineRegular: require('./assets/fonts/e-Ukraine/e-Ukraine-Regular.otf'),
   });
+
+//  const [lessons, setLessons] = useState(firebase());
+
+//  console.log(lessons);
+
   const [index, setIndex] = useState(1);
 
   if (!loaded) {
@@ -41,8 +46,8 @@ export default function App() {
         </TouchableOpacity>
       </View>
       <View style={styles.lesson_conteiner}>
-        <DateSlider data={Lessons} index={index} setIndex={setIndex} />
-        <LessonList data={Lessons} index={index} setIndex={setIndex} />
+        <DateSlider data={Lessons_local} index={index} setIndex={setIndex} />
+        <LessonList data={Lessons_local} index={index} setIndex={setIndex} />
       </View>
     </SafeAreaView>
   );
@@ -93,9 +98,7 @@ const styles = StyleSheet.create({
   },
   lesson_conteiner: {
     borderRadius: 25,
-    backgroundColor: theme.colors.white,
-    paddingTop: 15,
+    backgroundColor: theme.colors.black,
     marginBottom: 80,
-    flex: 1,
   }
 });
