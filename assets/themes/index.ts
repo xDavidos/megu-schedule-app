@@ -1,10 +1,9 @@
 const theme = {
   colors: {
-    orange: `#FF7648`,
     white: `#FFFFFF`,
-    black: '#000',
-    green: '#4DC591',
-    gray: '#BCC1CD'
+    gray: '#BCC1CD',
+    blue: '#344FB3',
+    blueGray: '#7D99FF'
   },
   spacing: {
     xs: 4,

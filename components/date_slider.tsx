@@ -40,7 +40,7 @@ const DateSlider = ({ data, index, setIndex } : { data: any, index: any, setInde
           paddingVertical: 8,
           width: 40,
           backgroundColor:
-            fIndex == index ? theme.colors.orange : theme.colors.white,
+            fIndex == index ? theme.colors.blue : theme.colors.white,
         }}>
           <Moment element={Text} style={ fIndex == index
             ? styles.day_flatlist_weekday_select
@@ -60,8 +60,10 @@ const DateSlider = ({ data, index, setIndex } : { data: any, index: any, setInde
 const styles = StyleSheet.create({
   dataslider: {
     borderBottomWidth: 1,
-    borderBottomColor: "#FAF9F9",
+    borderBottomColor: "#f5f5f5",
     paddingVertical: 10,
+    flexGrow: 0,
+    flexShrink: 0,
   },
   day_flatlist_weekday: {
     ...theme.textVariants.h2,

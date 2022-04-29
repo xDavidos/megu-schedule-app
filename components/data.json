@@ -89,6 +89,72 @@
           "starttime": "13:40",
           "teacher": "доц. Шпортько О. В.",
           "type": 0
+        },
+        {
+          "description": "А пари вообще нормальні будуть",
+          "endtime": "14:40",
+          "id": "4",
+          "isOnline": true,
+          "location": "calendar.google.com/calendar",
+          "name": "Програмування C#",
+          "starttime": "13:40",
+          "teacher": "доц. Шпортько О. В.",
+          "type": 0
+        },
+        {
+          "description": "А пари вообще нормальні будуть",
+          "endtime": "14:40",
+          "id": "5",
+          "isOnline": true,
+          "location": "calendar.google.com/calendar",
+          "name": "Програмування C#",
+          "starttime": "13:40",
+          "teacher": "доц. Шпортько О. В.",
+          "type": 0
+        },
+        {
+          "description": "А пари вообще нормальні будуть",
+          "endtime": "14:40",
+          "id": "6",
+          "isOnline": true,
+          "location": "calendar.google.com/calendar",
+          "name": "Програмування C#",
+          "starttime": "13:40",
+          "teacher": "доц. Шпортько О. В.",
+          "type": 0
+        },
+        {
+          "description": "А пари вообще нормальні будуть",
+          "endtime": "14:40",
+          "id": "7",
+          "isOnline": true,
+          "location": "calendar.google.com/calendar",
+          "name": "Програмування C#",
+          "starttime": "13:40",
+          "teacher": "доц. Шпортько О. В.",
+          "type": 0
+        },
+        {
+          "description": "А пари вообще нормальні будуть",
+          "endtime": "14:40",
+          "id": "8",
+          "isOnline": true,
+          "location": "calendar.google.com/calendar",
+          "name": "Програмування C#",
+          "starttime": "13:40",
+          "teacher": "доц. Шпортько О. В.",
+          "type": 0
+        },
+        {
+          "description": "А пари вообще нормальні будуть",
+          "endtime": "14:40",
+          "id": "9",
+          "isOnline": true,
+          "location": "calendar.google.com/calendar",
+          "name": "Програмування C#",
+          "starttime": "13:40",
+          "teacher": "доц. Шпортько О. В.",
+          "type": 0
         }
       ]
     },

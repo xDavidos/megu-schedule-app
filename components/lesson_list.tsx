@@ -21,6 +21,7 @@ const LessonList = ({data, index, setIndex,}: { data: any; index: any; setIndex:
       ref={lessonsRef}
       initialScrollIndex={index}
       data={data.days}
+      //style={{flexGrow: 2}}
       keyExtractor={item => item.date}
       getItemLayout={(data, index) => ({
         length: width,
@@ -129,16 +130,14 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     paddingHorizontal: theme.spacing.m,
     width: width,
-    flex: 1,
   },
   lesson_time: {
     minWidth: 55,
     borderRightWidth: 1,
-    borderRightColor: "#FAF9F9",
+    borderRightColor: "#f5f5f5",
   },
   lesson_time_start_text: {
     ...theme.textVariants.body2,
-    color: theme.colors.black,
     marginBottom: 5,
   },
   lesson_time_end_text: {
@@ -146,7 +145,7 @@ const styles = StyleSheet.create({
     color: theme.colors.gray,
   },
   lesson_card: {
-    backgroundColor: theme.colors.green,
+    backgroundColor: theme.colors.blueGray,
     marginLeft: theme.spacing.m,
     marginBottom: theme.spacing.m,
     borderRadius: 15,
