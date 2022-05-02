@@ -10,6 +10,7 @@ import DateSlider from './components/date_slider';
 import LessonList from './components/lesson_list'
 import Lessons_local from './components/data.json';
 import theme from './assets/themes';
+import { StatusBar } from 'expo-status-bar';
 // import { lessons } from './services/lessonsService'
 //import { firebase } from './services/firebase';
 
@@ -49,6 +50,7 @@ export default function App() {
 
   return (
     <View style={styles.container} onLayout={onLayoutRootView}>
+      <StatusBar style='auto'/>
       <View style={styles.today}>
         <Moment element={Text} style={styles.today_day} format='D'></Moment>
         <View style={styles.today_column}>
@@ -70,7 +72,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#faf9f9',
-    paddingTop: 25,
+    paddingTop: 30,
     flex: 1
   },
   today: {
