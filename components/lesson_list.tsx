@@ -75,27 +75,27 @@ const Lesson = ({ item } : { item: any }) => {
             <Text style={styles.lesson_card_description}>
               {item.description}
             </Text>
-            <Text style={styles.lesson_card_locate}>
-              <AntDesign name="enviromento" size={16} color="white" />
-              {item.location}
-            </Text>
-            <Text style={styles.lesson_card_teacher}>
-              <AntDesign name="user" size={16} color="white" />
-              {item.teacher}
-            </Text>
+            <View style={styles.lesson_card_bottom_view}>
+              <AntDesign style={styles.lesson_card_bottom_img} name="enviromento" size={16} color="white" />
+              <Text style={styles.lesson_card_bottom_text}>{item.location}</Text>
+            </View>
+            <View style={styles.lesson_card_bottom_view}>
+              <AntDesign style={styles.lesson_card_bottom_img} name="user" size={16} color="white" />
+              <Text style={styles.lesson_card_bottom_text}>{item.teacher}</Text>
+            </View>
         </TouchableOpacity>
       ) : (
         <View style={styles.lesson_card}>
           <Text style={styles.lesson_card_name}>{item.name}</Text>
           <Text style={styles.lesson_card_description}>{item.description}</Text>
-          <Text style={styles.lesson_card_locate}>
-            <AntDesign name="enviromento" size={16} color="white" />
-            {item.location}
-          </Text>
-          <Text style={styles.lesson_card_teacher}>
-            <AntDesign name="user" size={16} color="white" />
-            {item.teacher}
-          </Text>
+          <View style={styles.lesson_card_bottom_view}>
+              <AntDesign style={styles.lesson_card_bottom_img} name="enviromento" size={16} color="white" />
+              <Text style={styles.lesson_card_bottom_text}>{item.location}</Text>
+            </View>
+            <View style={styles.lesson_card_bottom_view}>
+              <AntDesign style={styles.lesson_card_bottom_img} name="user" size={16} color="white" />
+              <Text style={styles.lesson_card_bottom_text}>{item.teacher}</Text>
+            </View>
         </View>
       )}
     </View>
@@ -162,14 +162,17 @@ const styles = StyleSheet.create({
     color: theme.colors.white,
     marginBottom: 15
   },
-  lesson_card_locate: {
-    ...theme.textVariants.body5,
-    color: theme.colors.white,
+  lesson_card_bottom_view: {
+    flexDirection: 'row',
     marginBottom: 3,
   },
-  lesson_card_teacher: {
+  lesson_card_bottom_img: {
+    marginRight: 5,
+  },
+  lesson_card_bottom_text: {
     ...theme.textVariants.body5,
     color: theme.colors.white,
+    textAlignVertical: 'center'
   },
   lesson_empty: {
     ...theme.textVariants.body1,

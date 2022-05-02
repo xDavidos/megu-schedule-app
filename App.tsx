@@ -15,7 +15,7 @@ import theme from './assets/themes';
 
 export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);
-  const [index, setIndex] = useState(1);
+  const [index, setIndex] = useState(2);
 
   useEffect(() => {
     async function prepare() {
@@ -27,7 +27,6 @@ export default function App() {
           eUkraineMedium: require('./assets/fonts/e-Ukraine/e-Ukraine-Medium.otf'),
           eUkraineRegular: require('./assets/fonts/e-Ukraine/e-Ukraine-Regular.otf'),
         });
-        await new Promise(resolve => setTimeout(resolve, 10000));
       } catch (e) {
         console.warn(e);
       } finally {
@@ -71,6 +70,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#faf9f9',
+    paddingTop: 25,
     flex: 1
   },
   today: {
