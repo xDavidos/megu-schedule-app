@@ -20,8 +20,7 @@ const LessonList = ({data, index, setIndex,}: { data: any; index: any; setIndex:
     <FlatList
       ref={lessonsRef}
       initialScrollIndex={index}
-      data={data.days}
-      //style={{flexGrow: 2}}
+      data={data}
       keyExtractor={item => item.date}
       getItemLayout={(data, index) => ({
         length: width,
@@ -44,12 +43,12 @@ const LessonList = ({data, index, setIndex,}: { data: any; index: any; setIndex:
               <Text style={styles.lessons_view_heder_text1}>Час</Text>
               <Text style={styles.lessons_view_heder_text2}>Пари</Text>
             </View>
-            {(item.lessons.length == 0) ? (
-              <Text style={styles.lesson_empty}>Вихідний</Text>
-            ) : (
+            {item.hasOwnProperty('lessons') ? (
               item.lessons.map((item: any) => (
                 <Lesson key={item.id} item={item} />
               ))
+            ) : (
+              <Text style={styles.lesson_empty}>Вихідний</Text>
             )}
           </ScrollView>
         );
@@ -103,14 +102,6 @@ const Lesson = ({ item } : { item: any }) => {
 }
 
 const styles = StyleSheet.create({
-/*   lessons_flatlist: {
-    height: "120%",
-    marginTop: -45,
-    transform: [{ translateY: 45 }],
-  }, */
-   lessons_view: {
-    //flex: 1
-  },
   lessons_view_heder: {
     flexDirection: "row",
     marginBottom: 14,

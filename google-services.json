@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "641477291619",
+    "firebase_url": "https://megu-schedule-1430c-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "megu-schedule-1430c",
+    "storage_bucket": "megu-schedule-1430c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:641477291619:android:dd04fc3c0fc89ad0ae5256",
+        "android_client_info": {
+          "package_name": "com.megu.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "641477291619-0icaisivdlqoastppa4i55hlbfujhnq8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.megu.app",
+            "certificate_hash": "e99807dd8788c137069616e444b9c364fba3d696"
+          }
+        },
+        {
+          "client_id": "641477291619-6et96rj6gb88g5nb1vah5621nq83gui6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMIcJGZKJYbKuP8nBH-5QHGf8Tc8JzV7o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "641477291619-6et96rj6gb88g5nb1vah5621nq83gui6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

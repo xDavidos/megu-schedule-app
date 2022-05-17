@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableOpacity, FlatList, StyleSheet, Text, View } from 'react-native';
+import { TouchableOpacity, FlatList, StyleSheet, Text } from 'react-native';
 import Moment from 'react-moment';
 import 'moment/locale/uk';
 import theme from '../assets/themes/index';
@@ -25,7 +25,7 @@ const DateSlider = ({ data, index, setIndex } : { data: any, index: any, setInde
     getItemLayout={(data, index) => (
       {length: 54, offset: 54 * index, index}
     )}
-    data={data.days}
+    data={data}
     keyExtractor={(item) => item.date}
     contentContainerStyle={{ paddingLeft: theme.spacing.data_slidel }}
     showsHorizontalScrollIndicator={false}

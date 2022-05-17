@@ -1,22 +1,22 @@
-//import './config/firebase';
+import './services/firebase';
+import { getLessons } from './services/firebasedb';
 import * as Font from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
+import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect, useCallback } from 'react';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import Moment from 'react-moment';
 import 'moment/locale/uk';
 import DateSlider from './components/date_slider';
-import LessonList from './components/lesson_list'
-import Lessons_local from './components/data.json';
+import LessonList from './components/lesson_list';
 import theme from './assets/themes';
-import { StatusBar } from 'expo-status-bar';
-// import { lessons } from './services/lessonsService'
-//import { firebase } from './services/firebase';
+
 
 export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);
-  const [index, setIndex] = useState(2);
+  const [index, setIndex] = useState(0);
+  const [lessons, setLessons] = useState();
 
   useEffect(() => {
     async function prepare() {
@@ -28,12 +28,13 @@ export default function App() {
           eUkraineMedium: require('./assets/fonts/e-Ukraine/e-Ukraine-Medium.otf'),
           eUkraineRegular: require('./assets/fonts/e-Ukraine/e-Ukraine-Regular.otf'),
         });
+        setLessons(await getLessons());
       } catch (e) {
         console.warn(e);
       } finally {
         setAppIsReady(true);
       }
-    }
+    } 
 
     prepare();
   }, []);
@@ -62,8 +63,8 @@ export default function App() {
         </TouchableOpacity>
       </View>
       <View style={styles.lesson_conteiner}>
-        <DateSlider data={Lessons_local} index={index} setIndex={setIndex} />
-        <LessonList data={Lessons_local} index={index} setIndex={setIndex} />
+        <DateSlider data={lessons} index={index} setIndex={setIndex} />
+        <LessonList data={lessons} index={index} setIndex={setIndex} />
       </View>
     </View>
   );
