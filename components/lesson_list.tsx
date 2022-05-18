@@ -10,6 +10,9 @@ const width = Dimensions.get('screen').width;
 const LessonList = ({data, index, setIndex, onRefresh, refreshing}:
    { data: any; index: any; setIndex: any; onRefresh: any, refreshing: any }) => {
   const lessonsRef = React.useRef<FlatList>(null);
+  const colorSchema = useColorScheme();
+  const themeLessonEmpty = colorSchema === 'light' ? styles.lesson_empty_light 
+  : styles.lesson_empty_dark;
 
   React.useEffect(() => {
     lessonsRef.current?.scrollToOffset({
@@ -51,7 +54,7 @@ const LessonList = ({data, index, setIndex, onRefresh, refreshing}:
                 <Lesson key={item.id} item={item} />
               ))
             ) : (
-              <Text style={styles.lesson_empty}>Вихідний</Text>
+              <Text style={[styles.lesson_empty, themeLessonEmpty]}>Вихідний</Text>
             )}
           </ScrollView>
         );
@@ -198,6 +201,12 @@ const styles = StyleSheet.create({
     width: width,
     paddingTop: 20,
     textAlign: 'center',
+  },
+  lesson_empty_light: {
+    color: theme.colors.white
+  },
+  lesson_empty_dark: {
+    color: theme.colors.white
   }
 });
 
