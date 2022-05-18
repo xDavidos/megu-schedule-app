@@ -5,18 +5,19 @@ import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect, useCallback } from 'react';
 import AntDesign from '@expo/vector-icons/AntDesign';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, RefreshControl } from 'react-native';
 import Moment from 'react-moment';
 import 'moment/locale/uk';
 import DateSlider from './components/date_slider';
 import LessonList from './components/lesson_list';
 import theme from './assets/themes';
-
+import { lessonsToday } from './services/lessonsService';
 
 export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);
   const [index, setIndex] = useState(0);
   const [lessons, setLessons] = useState();
+  const [refreshing, setRefreshing] = React.useState(false);
 
   useEffect(() => {
     async function prepare() {
@@ -42,8 +43,15 @@ export default function App() {
   const onLayoutRootView = useCallback(async () => {
     if (appIsReady) {
       await SplashScreen.hideAsync();
+      setIndex(lessonsToday(lessons));
     }
   }, [appIsReady]);
+
+  const onRefresh = React.useCallback(async () => {
+    setRefreshing(true);
+    setLessons(await getLessons());
+    setRefreshing(false);
+  }, []);
 
   if (!appIsReady) {
     return null;
@@ -58,14 +66,14 @@ export default function App() {
           <Moment element={Text} style={styles.today_day_week} format='dddd'></Moment>
           <Moment element={Text} style={styles.today_month_year} format='MMMM YYYY'></Moment>
         </View>
-        <TouchableOpacity style={styles.today_button_conteiner} onPress={() => { setIndex(1) }}>
+        <TouchableOpacity style={styles.today_button_conteiner} onPress={() => { setIndex(lessonsToday(lessons)) }}>
           <Text style={styles.today_button_text}>Сьогодні</Text>
         </TouchableOpacity>
       </View>
-      <View style={styles.lesson_conteiner}>
-        <DateSlider data={lessons} index={index} setIndex={setIndex} />
-        <LessonList data={lessons} index={index} setIndex={setIndex} />
-      </View>
+        <View style={styles.lesson_conteiner}>
+          <DateSlider data={lessons} index={index} setIndex={setIndex} />
+          <LessonList data={lessons} index={index} setIndex={setIndex} onRefresh={onRefresh} refreshing={refreshing} />
+        </View>
     </View>
   );
 }
