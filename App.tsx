@@ -5,7 +5,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect, useCallback } from 'react';
 import AntDesign from '@expo/vector-icons/AntDesign';
-import { StyleSheet, Text, View, TouchableOpacity, RefreshControl } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, useColorScheme } from 'react-native';
 import Moment from 'react-moment';
 import 'moment/locale/uk';
 import DateSlider from './components/date_slider';
@@ -18,6 +18,12 @@ export default function App() {
   const [index, setIndex] = useState(0);
   const [lessons, setLessons] = useState();
   const [refreshing, setRefreshing] = React.useState(false);
+  const colorSchema = useColorScheme();
+  const themeContainer = colorSchema === 'light' ? styles.container_light 
+  : styles.container_dark;
+  const themeLesssonsContainer = colorSchema === 'light' ? styles.lesson_conteiner_light 
+  : styles.lesson_conteiner_dark;
+
 
   useEffect(() => {
     async function prepare() {
@@ -58,10 +64,12 @@ export default function App() {
   }
 
   return (
-    <View style={styles.container} onLayout={onLayoutRootView}>
+    <View style={[styles.container, themeContainer]} onLayout={onLayoutRootView}>
       <StatusBar style='auto'/>
       <View style={styles.today}>
-        <Moment element={Text} style={styles.today_day} format='D'></Moment>
+        <Moment element={Text} style={ colorSchema === 'light' 
+          ? styles.today_day_light 
+          : styles.today_day_dark } format='D'></Moment>
         <View style={styles.today_column}>
           <Moment element={Text} style={styles.today_day_week} format='dddd'></Moment>
           <Moment element={Text} style={styles.today_month_year} format='MMMM YYYY'></Moment>
@@ -70,7 +78,7 @@ export default function App() {
           <Text style={styles.today_button_text}>Сьогодні</Text>
         </TouchableOpacity>
       </View>
-        <View style={styles.lesson_conteiner}>
+        <View style={[styles.lesson_conteiner, themeLesssonsContainer]}>
           <DateSlider data={lessons} index={index} setIndex={setIndex} />
           <LessonList data={lessons} index={index} setIndex={setIndex} onRefresh={onRefresh} refreshing={refreshing} />
         </View>
@@ -80,18 +88,30 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#faf9f9',
     paddingTop: 30,
     flex: 1
+  },
+  container_light: {
+    backgroundColor: '#faf9f9',
+  },
+  container_dark: {
+    backgroundColor: theme.colors.gray2,
   },
   today: {
     margin: 20,
     flexDirection: 'row',
   },
-  today_day: {
+  today_day_light: {
     ...theme.textVariants.body1,
     alignSelf: 'center',
     marginRight: 8,
+    color: '#000'
+  },
+  today_day_dark: {
+    ...theme.textVariants.body1,
+    alignSelf: 'center',
+    marginRight: 8,
+    color: '#fff'
   },
   today_column: {
     flexDirection: 'column',
@@ -119,9 +139,14 @@ const styles = StyleSheet.create({
     padding: 8,
   },
   lesson_conteiner: {
-    backgroundColor: theme.colors.white,
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
     flex: 1,
+  },
+  lesson_conteiner_light: {
+    backgroundColor: theme.colors.white,
+  },  
+  lesson_conteiner_dark: {
+    backgroundColor: theme.colors.gray3,
   }
 });

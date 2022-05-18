@@ -1,13 +1,14 @@
 import React from 'react';
-import { StyleSheet, Text, View, FlatList, Dimensions, ScrollView, TouchableOpacity, RefreshControl } from 'react-native'
+import { StyleSheet, Text, View, FlatList, 
+  Dimensions, ScrollView, TouchableOpacity, RefreshControl, useColorScheme } from 'react-native'
 import AntDesign from '@expo/vector-icons/AntDesign';
 import theme from '../assets/themes';
 import * as Linking from 'expo-linking';
-import { getLessons } from '../services/firebasedb';
 
 const width = Dimensions.get('screen').width;
 
-const LessonList = ({data, index, setIndex, onRefresh, refreshing}: { data: any; index: any; setIndex: any; onRefresh: any, refreshing: any }) => {
+const LessonList = ({data, index, setIndex, onRefresh, refreshing}:
+   { data: any; index: any; setIndex: any; onRefresh: any, refreshing: any }) => {
   const lessonsRef = React.useRef<FlatList>(null);
 
   React.useEffect(() => {
@@ -60,10 +61,18 @@ const LessonList = ({data, index, setIndex, onRefresh, refreshing}: { data: any;
 };
 
 const Lesson = ({ item } : { item: any }) => {
+  const colorSchema = useColorScheme();
+  const themeLessonStartTime = colorSchema === 'light' ? styles.lesson_time_start_text_light 
+  : styles.lesson_time_start_text_dark;
+  const themeLessonTime = colorSchema === 'light' ? styles.lesson_time_light 
+  : styles.lesson_time_dark;
+  const themeLessonCard = colorSchema === 'light' ? styles.lesson_card_light 
+  : styles.lesson_card_dark;
+
   return (
     <View style={styles.lessons}>
-      <View style={styles.lesson_time}>
-        <Text style={styles.lesson_time_start_text}>{item.starttime}</Text>
+      <View style={[styles.lesson_time, themeLessonTime]}>
+        <Text style={[styles.lesson_time_start_text, themeLessonStartTime]}>{item.starttime}</Text>
         <Text style={styles.lesson_time_end_text}>{item.endtime}</Text>
       </View>
       {item.isOnline == true ? (
@@ -71,7 +80,7 @@ const Lesson = ({ item } : { item: any }) => {
           onPress={() => {
             Linking.openURL('https://' + item.location);
           }}
-          style={styles.lesson_card}>
+          style={[styles.lesson_card, themeLessonCard]}>
             <Text style={styles.lesson_card_name}>{item.name}</Text>
             <Text style={styles.lesson_card_description}>
               {item.description}
@@ -86,7 +95,7 @@ const Lesson = ({ item } : { item: any }) => {
             </View>
         </TouchableOpacity>
       ) : (
-        <View style={styles.lesson_card}>
+        <View style={[styles.lesson_card, themeLessonCard]}>
           <Text style={styles.lesson_card_name}>{item.name}</Text>
           <Text style={styles.lesson_card_description}>{item.description}</Text>
           <View style={styles.lesson_card_bottom_view}>
@@ -127,11 +136,22 @@ const styles = StyleSheet.create({
   lesson_time: {
     minWidth: 55,
     borderRightWidth: 1,
+  },
+  lesson_time_light: {
     borderRightColor: "#f5f5f5",
+  },
+  lesson_time_dark: {
+    borderRightColor: "#222222",
   },
   lesson_time_start_text: {
     ...theme.textVariants.body2,
     marginBottom: 5,
+  },
+  lesson_time_start_text_light: {
+    color: "#000"
+  },
+  lesson_time_start_text_dark: {
+    color: "#fff"
   },
   lesson_time_end_text: {
     ...theme.textVariants.body2,
@@ -144,6 +164,12 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     padding: theme.spacing.m,
     flex: 1,
+  },
+  lesson_card_light: {
+    backgroundColor: theme.colors.blueGray,
+  },
+  lesson_card_dark: {
+    backgroundColor: theme.colors.darkblueGray,
   },
   lesson_card_name: {
     ...theme.textVariants.h2,

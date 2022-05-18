@@ -3,7 +3,10 @@ const theme = {
     white: `#FFFFFF`,
     gray: '#BCC1CD',
     blue: '#344FB3',
-    blueGray: '#7D99FF'
+    blueGray: '#7D99FF',
+    darkblueGray: '#4468C8',
+    gray2: '#1F1F1F',
+    gray3: '#1B1B1B'
   },
   spacing: {
     xs: 4,

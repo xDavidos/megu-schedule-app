@@ -6,6 +6,7 @@ export default {
     slug: "megu-app",
     version: "0.9.0",
     orientation: "portrait",
+    userInterfaceStyle: "automatic",
     icon: "./assets/icon.png",
     splash: {
       image: "./assets/splash.png",
