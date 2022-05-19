@@ -1,14 +1,14 @@
 import React from 'react';
 import { StyleSheet, Text, View, FlatList, 
-  Dimensions, ScrollView, TouchableOpacity, RefreshControl, useColorScheme } from 'react-native'
+  Dimensions, ScrollView, TouchableOpacity, useColorScheme } from 'react-native'
 import AntDesign from '@expo/vector-icons/AntDesign';
 import theme from '../assets/themes';
 import * as Linking from 'expo-linking';
 
 const width = Dimensions.get('screen').width;
 
-const LessonList = ({data, index, setIndex, onRefresh, refreshing}:
-   { data: any; index: any; setIndex: any; onRefresh: any, refreshing: any }) => {
+const LessonList = ({ data, index, setIndex }:
+   { data: any; index: any; setIndex: any }) => {
   const lessonsRef = React.useRef<FlatList>(null);
   const colorSchema = useColorScheme();
   const themeLessonEmpty = colorSchema === 'light' ? styles.lesson_empty_light 
@@ -43,8 +43,7 @@ const LessonList = ({data, index, setIndex, onRefresh, refreshing}:
       showsHorizontalScrollIndicator={false}
       renderItem={({item}: {item: any; index: any}) => {
         return (
-          <ScrollView showsVerticalScrollIndicator={false} 
-            refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}>
+          <ScrollView showsVerticalScrollIndicator={false}>
             <View style={styles.lessons_view_heder}>
               <Text style={styles.lessons_view_heder_text1}>Час</Text>
               <Text style={styles.lessons_view_heder_text2}>Пари</Text>
@@ -203,7 +202,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   lesson_empty_light: {
-    color: theme.colors.white
+    color: "#000"
   },
   lesson_empty_dark: {
     color: theme.colors.white

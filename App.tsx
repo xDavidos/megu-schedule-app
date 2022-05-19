@@ -1,5 +1,3 @@
-import './services/firebase';
-import { getLessons } from './services/firebasedb';
 import * as Font from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
@@ -10,14 +8,14 @@ import Moment from 'react-moment';
 import 'moment/locale/uk';
 import DateSlider from './components/date_slider';
 import LessonList from './components/lesson_list';
-import theme from './assets/themes';
 import { lessonsToday } from './services/lessonsService';
+import { getLessons, updateLessons } from './services/firebase';
+import theme from './assets/themes';
 
 export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);
   const [index, setIndex] = useState(0);
   const [lessons, setLessons] = useState();
-  const [refreshing, setRefreshing] = React.useState(false);
   const colorSchema = useColorScheme();
   const themeContainer = colorSchema === 'light' ? styles.container_light 
   : styles.container_dark;
@@ -36,6 +34,7 @@ export default function App() {
           eUkraineRegular: require('./assets/fonts/e-Ukraine/e-Ukraine-Regular.otf'),
         });
         setLessons(await getLessons());
+        updateLessons(setLessons)
       } catch (e) {
         console.warn(e);
       } finally {
@@ -52,12 +51,6 @@ export default function App() {
       setIndex(lessonsToday(lessons));
     }
   }, [appIsReady]);
-
-  const onRefresh = React.useCallback(async () => {
-    setRefreshing(true);
-    setLessons(await getLessons());
-    setRefreshing(false);
-  }, []);
 
   if (!appIsReady) {
     return null;
@@ -80,7 +73,7 @@ export default function App() {
       </View>
         <View style={[styles.lesson_conteiner, themeLesssonsContainer]}>
           <DateSlider data={lessons} index={index} setIndex={setIndex} />
-          <LessonList data={lessons} index={index} setIndex={setIndex} onRefresh={onRefresh} refreshing={refreshing} />
+          <LessonList data={lessons} index={index} setIndex={setIndex} />
         </View>
     </View>
   );

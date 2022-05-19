@@ -5,7 +5,7 @@ import 'moment/locale/uk';
 import theme from '../assets/themes/index';
 
 const DateSlider = ({ data, index, setIndex } : { data: any, index: any, setIndex: any }) => {
-  const sliderRef = React.useRef<FlatList>(null);
+  //const sliderRef = React.useRef<FlatList>(null);
   const colorSchema = useColorScheme();
   const themeDataslider = colorSchema === 'light' ? styles.dataslider_light 
   : styles.dataslider_dark;
@@ -16,18 +16,18 @@ const DateSlider = ({ data, index, setIndex } : { data: any, index: any, setInde
   const themeDatasliderTextSelect = colorSchema === 'light' ? styles.day_flatlist_day_select_light 
   : styles.day_flatlist_day_select_dark;
 
-  React.useEffect(() => {
+/*   React.useEffect(() => {
     sliderRef.current?.scrollToIndex({
       index: index,
       animated: true,
       viewPosition: 0.40,
       viewOffset: theme.spacing.data_slidel
     })
-  }, [index])
+  }, [index]) */
   
   return (
     <FlatList
-    ref={sliderRef}
+    //ref={sliderRef}
     style ={[styles.dataslider, themeDataslider]}
     initialNumToRender={8}
     initialScrollIndex={index}

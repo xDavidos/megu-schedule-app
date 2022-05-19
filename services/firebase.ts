@@ -1,17 +1,23 @@
-import { initializeApp } from "firebase/app";
-import Constants from 'expo-constants';
+import database from '@react-native-firebase/database';
 
-const firebaseConfig = {
-  apiKey: Constants.manifest.extra.FIREBASE_API_KEY,
-  authDomain: Constants.manifest.extra.FIREBASE_AUTH_DOMAIN,
-  databaseURL: Constants.manifest.extra.FIREBASE_DATABASE_URL,
-  projectId: Constants.manifest.extra.FIREBASE_PROJECT_ID,
-  storageBucket: Constants.manifest.extra.FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: Constants.manifest.extra.FIREBASE_MESSAGING_SENDER_ID,
-  appId: Constants.manifest.extra.FIREBASE_APP_ID,
-  measurementId: Constants.manifest.extra.FIREBASE_MEASUREMENT_ID
-};
+export async function getLessons() { 
+  database().setPersistenceEnabled(true);
+  database().goOffline();
+  let data
+  await database()
+  .ref('days')
+  .once('value')
+  .then(snapshot => {
+    data = snapshot.val();
+  });
 
-const app = initializeApp(firebaseConfig);
+  return data
+}
 
-export default app;
+export async function updateLessons(setLessons) { 
+  database()
+  .ref('days')
+  .on('value', snapshot => {
+    setLessons(snapshot.val());
+  });
+}

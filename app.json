@@ -11,11 +11,9 @@
       "resizeMode": "cover",
       "backgroundColor": "#6486FF"
     },
-    "updates": {
-      "fallbackToCacheTimeout": 0
-    },
     "assetBundlePatterns": [
-      "**/*"
+      "assets/*",
+      "assets/fonts/*"
     ],
     "ios": {
       "supportsTablet": false
@@ -27,6 +25,9 @@
       },
       "package": "com.megu.app",
       "googleServicesFile": "./google-services.json"
-    }
+    },
+    "plugins": [
+      "@react-native-firebase/app"
+    ]
   }
 }
