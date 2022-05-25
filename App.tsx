@@ -2,41 +2,45 @@ import * as Font from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect, useCallback } from 'react';
-import AntDesign from '@expo/vector-icons/AntDesign';
-import { StyleSheet, Text, View, TouchableOpacity, useColorScheme } from 'react-native';
-import Moment from 'react-moment';
-import 'moment/locale/uk';
-import DateSlider from './components/date_slider';
-import LessonList from './components/lesson_list';
-import { lessonsToday } from './services/lessonsService';
+import { MaterialCommunityIcons, AntDesign } from '@expo/vector-icons'; 
+import { StyleSheet, View, useColorScheme } from 'react-native';
+import database from '@react-native-firebase/database';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import StartMenu from './components/StartMenu';
+import MainMenu from './components/MainMenu';
 import { getLessons, updateLessons } from './services/firebase';
 import theme from './assets/themes';
 
 export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);
-  const [index, setIndex] = useState(0);
+  const [firstStart, setFirstStart] = useState(false);
   const [lessons, setLessons] = useState();
   const colorSchema = useColorScheme();
   const themeContainer = colorSchema === 'light' ? styles.container_light 
   : styles.container_dark;
-  const themeLesssonsContainer = colorSchema === 'light' ? styles.lesson_conteiner_light 
-  : styles.lesson_conteiner_dark;
 
 
   useEffect(() => {
     async function prepare() {
       try {
         await SplashScreen.preventAutoHideAsync();
+        //database().goOffline();
+        database().setPersistenceEnabled(true);
         await Font.loadAsync(AntDesign.font);
+        await Font.loadAsync(MaterialCommunityIcons.font);
         await Font.loadAsync({
           eUkraineBold: require('./assets/fonts/e-Ukraine/e-Ukraine-Bold.otf'),
           eUkraineMedium: require('./assets/fonts/e-Ukraine/e-Ukraine-Medium.otf'),
           eUkraineRegular: require('./assets/fonts/e-Ukraine/e-Ukraine-Regular.otf'),
         });
-        setLessons(await getLessons());
-        updateLessons(setLessons)
+        const value = await AsyncStorage.getItem('@group');
+        if(value == null) {
+          setFirstStart(true);
+        } else {
+          setLessons(await getLessons());
+        }
       } catch (e) {
-        console.warn(e);
+        console.log(e)
       } finally {
         setAppIsReady(true);
       }
@@ -47,8 +51,10 @@ export default function App() {
 
   const onLayoutRootView = useCallback(async () => {
     if (appIsReady) {
+      if (firstStart == false){
+        updateLessons(setLessons)
+      }
       await SplashScreen.hideAsync();
-      setIndex(lessonsToday(lessons));
     }
   }, [appIsReady]);
 
@@ -58,24 +64,11 @@ export default function App() {
 
   return (
     <View style={[styles.container, themeContainer]} onLayout={onLayoutRootView}>
-      <StatusBar style='auto'/>
-      <View style={styles.today}>
-        <Moment element={Text} style={ colorSchema === 'light' 
-          ? styles.today_day_light 
-          : styles.today_day_dark } format='D'></Moment>
-        <View style={styles.today_column}>
-          <Moment element={Text} style={styles.today_day_week} format='dddd'></Moment>
-          <Moment element={Text} style={styles.today_month_year} format='MMMM YYYY'></Moment>
-        </View>
-        <TouchableOpacity style={styles.today_button_conteiner} onPress={() => { setIndex(lessonsToday(lessons)) }}>
-          <Text style={styles.today_button_text}>Сьогодні</Text>
-        </TouchableOpacity>
-      </View>
-        <View style={[styles.lesson_conteiner, themeLesssonsContainer]}>
-          <DateSlider data={lessons} index={index} setIndex={setIndex} />
-          <LessonList data={lessons} index={index} setIndex={setIndex} />
-        </View>
-    </View>
+      <StatusBar style='auto'/> 
+      {firstStart == true 
+      ? <StartMenu setFirstStart={setFirstStart} setLessons={setLessons} /> 
+      : <MainMenu lessons={lessons} />}
+    </View>  
   );
 }
 
@@ -90,56 +83,4 @@ const styles = StyleSheet.create({
   container_dark: {
     backgroundColor: theme.colors.gray2,
   },
-  today: {
-    margin: 20,
-    flexDirection: 'row',
-  },
-  today_day_light: {
-    ...theme.textVariants.body1,
-    alignSelf: 'center',
-    marginRight: 8,
-    color: '#000'
-  },
-  today_day_dark: {
-    ...theme.textVariants.body1,
-    alignSelf: 'center',
-    marginRight: 8,
-    color: '#fff'
-  },
-  today_column: {
-    flexDirection: 'column',
-    alignSelf: 'center',
-  },
-  today_day_week: {
-    ...theme.textVariants.body4,
-    textTransform: 'capitalize',
-    color: theme.colors.gray,
-  },
-  today_month_year: {
-    ...theme.textVariants.body4,
-    textTransform: 'capitalize',
-    color: theme.colors.gray,
-  },
-  today_button_conteiner: {
-    marginLeft: 'auto',
-    justifyContent: 'center',
-  },
-  today_button_text: {
-    ...theme.textVariants.h1,
-    color: theme.colors.blueGray,
-    backgroundColor: 'rgba(52, 79, 179, 0.1)',
-    borderRadius: 10,
-    padding: 8,
-  },
-  lesson_conteiner: {
-    borderTopLeftRadius: 25,
-    borderTopRightRadius: 25,
-    flex: 1,
-  },
-  lesson_conteiner_light: {
-    backgroundColor: theme.colors.white,
-  },  
-  lesson_conteiner_dark: {
-    backgroundColor: theme.colors.gray3,
-  }
 });
