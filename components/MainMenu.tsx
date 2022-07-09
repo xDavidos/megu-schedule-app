@@ -5,9 +5,9 @@ import 'moment/locale/uk';
 import theme from '../assets/themes';
 import DateSlider from './DateSlider';
 import LessonList from './LessonList';
-import { lessonsToday } from '../services/lessonsService';
+import { lessonsToday } from '../services/lessons';
 
-const MainMenu = ({lessons}) => {
+const MainMenu = (lessons: any) => {
   const [index, setIndex] = useState(0);
   const colorSchema = useColorScheme();
   const themeLesssonsContainer = colorSchema === 'light' ? styles.lesson_conteiner_light 

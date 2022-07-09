@@ -7,7 +7,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import database from '@react-native-firebase/database';
 import { getLessons, updateLessons } from '../services/firebase';
 
-const startMenu = ({setFirstStart, setLessons}) => {
+const startMenu = ({setFirstStart, setLessons} : {setFirstStart: any, setLessons: any}) => {
   const [selectGroup, setSelectGroup] = useState("PI20");
   const colorSchema = useColorScheme();
   const TextTheme = colorSchema === 'light' ? styles.Text_light 
@@ -60,7 +60,7 @@ const startMenu = ({setFirstStart, setLessons}) => {
 
     Alert.alert(
       "Увага!",
-      "Ти впевнений що группа " + TextGroup + " твоя?",
+      "Ти впевнений(на) що группа " + TextGroup + " твоя?",
       [
         {
           text: "Ні, зараз зміню",

@@ -5,19 +5,18 @@ export async function getLessons() {
   const group = await AsyncStorage.getItem('@group');
   let data;
   await database()
-  .ref(`${group}/0/days`)
+  .ref(`shedule/${group}`)
   .once('value')
   .then(snapshot => {
     data = snapshot.val();
   })
-
-  return data
+  return data;
 }
 
-export async function updateLessons(setLessons) { 
+export async function updateLessons(setLessons: any) { 
   const group = await AsyncStorage.getItem('@group') 
   database()
-  .ref(`${group}/0/days`)
+  .ref(`shedule/${group}`)
   .on('value', snapshot => {
     setLessons(snapshot.val());
   });

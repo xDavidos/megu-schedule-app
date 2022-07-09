@@ -24,7 +24,6 @@ export default function App() {
     async function prepare() {
       try {
         await SplashScreen.preventAutoHideAsync();
-        //database().goOffline();
         database().setPersistenceEnabled(true);
         await Font.loadAsync(AntDesign.font);
         await Font.loadAsync(MaterialCommunityIcons.font);

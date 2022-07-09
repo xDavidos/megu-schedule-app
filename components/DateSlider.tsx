@@ -34,7 +34,7 @@ const DateSlider = ({ data, index, setIndex } : { data: any, index: any, setInde
     getItemLayout={(data, index) => (
       {length: 54, offset: 54 * index, index}
     )}
-    data={data}
+    data={data.lessons}
     keyExtractor={(item) => item.date}
     contentContainerStyle={{ paddingLeft: theme.spacing.data_slidel }}
     showsHorizontalScrollIndicator={false}
@@ -51,11 +51,11 @@ const DateSlider = ({ data, index, setIndex } : { data: any, index: any, setInde
           backgroundColor:
             fIndex == index ? theme.colors.blue : themeDatasliderBox,
         }}>
-          <Moment element={Text} style={ fIndex == index
+          <Moment element={Text} unix={true} style={ fIndex == index
             ? styles.day_flatlist_weekday_select
             : styles.day_flatlist_weekday
           } format="dd">{item.date}</Moment>
-          <Moment element={Text} style={ fIndex == index
+          <Moment element={Text} unix={true} style={ fIndex == index
             ? themeDatasliderTextSelect
             : themeDatasliderText
           } format="D">{item.date}</Moment>

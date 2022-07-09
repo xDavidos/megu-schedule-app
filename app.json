@@ -2,7 +2,7 @@
   "expo": {
     "name": "Megu",
     "slug": "megu-app",
-    "version": "1.0.2",
+    "version": "1.0.4",
     "orientation": "portrait",
     "userInterfaceStyle": "automatic",
     "icon": "./assets/icon.png",
@@ -15,9 +15,6 @@
       "assets/*",
       "assets/fonts/*"
     ],
-    "ios": {
-      "supportsTablet": false
-    },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
@@ -27,7 +24,9 @@
       "googleServicesFile": "./google-services.json"
     },
     "plugins": [
-      "@react-native-firebase/app"
+      [
+        "@react-native-firebase/app",{}
+      ]
     ]
   }
 }

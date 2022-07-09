@@ -4,6 +4,7 @@ import { StyleSheet, Text, View, FlatList,
 import AntDesign from '@expo/vector-icons/AntDesign';
 import theme from '../assets/themes';
 import * as Linking from 'expo-linking';
+import Moment from 'react-moment';
 
 const width = Dimensions.get('screen').width;
 
@@ -25,7 +26,7 @@ const LessonList = ({ data, index, setIndex }:
     <FlatList
       ref={lessonsRef}
       initialScrollIndex={index}
-      data={data}
+      data={data.lessons}
       keyExtractor={item => item.date}
       getItemLayout={(data, index) => ({
         length: width,
@@ -74,8 +75,11 @@ const Lesson = ({ item } : { item: any }) => {
   return (
     <View style={styles.lessons}>
       <View style={[styles.lesson_time, themeLessonTime]}>
-        <Text style={[styles.lesson_time_start_text, themeLessonStartTime]}>{item.starttime}</Text>
-        <Text style={styles.lesson_time_end_text}>{item.endtime}</Text>
+        <Moment element={Text} format={'H:mm'} unix={true} style={ colorSchema === 'light' 
+          ? styles.lesson_time_start_text_light 
+          : styles.lesson_time_start_text_dark }>{item.starttime}</Moment>
+        <Moment element={Text} format={'H:mm'} unix={true} 
+          style={styles.lesson_time_end_text}>{item.endtime}</Moment>
       </View>
       {item.isOnline == true ? (
         <TouchableOpacity
@@ -145,14 +149,14 @@ const styles = StyleSheet.create({
   lesson_time_dark: {
     borderRightColor: "#222222",
   },
-  lesson_time_start_text: {
+  lesson_time_start_text_light: {
     ...theme.textVariants.body2,
     marginBottom: 5,
-  },
-  lesson_time_start_text_light: {
     color: "#000"
   },
   lesson_time_start_text_dark: {
+    ...theme.textVariants.body2,
+    marginBottom: 5,
     color: "#fff"
   },
   lesson_time_end_text: {
