@@ -6,17 +6,11 @@
     "development": {
       "releaseChannel": "dev",
       "developmentClient": true,
-      "distribution": "internal",
-      "env": {
-        "APP_VARIANT": "development"
-      }
+      "distribution": "internal"
     },
     "preview": {
       "releaseChannel": "staging",
-      "distribution": "internal",
-      "env": {
-        "APP_VARIANT": "development"
-      }
+      "distribution": "internal"
     },
     "production": {
       "releaseChannel": "production"

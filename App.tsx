@@ -28,9 +28,9 @@ export default function App() {
         await Font.loadAsync(AntDesign.font);
         await Font.loadAsync(MaterialCommunityIcons.font);
         await Font.loadAsync({
-          eUkraineBold: require('./assets/fonts/e-Ukraine/e-Ukraine-Bold.otf'),
-          eUkraineMedium: require('./assets/fonts/e-Ukraine/e-Ukraine-Medium.otf'),
-          eUkraineRegular: require('./assets/fonts/e-Ukraine/e-Ukraine-Regular.otf'),
+          eUkraineBold: require('./assets/fonts/e-Ukraine-Bold.otf'),
+          eUkraineMedium: require('./assets/fonts/e-Ukraine-Medium.otf'),
+          eUkraineRegular: require('./assets/fonts/e-Ukraine-Regular.otf'),
         });
         const value = await AsyncStorage.getItem('@group');
         if(value == null) {

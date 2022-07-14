@@ -1,23 +1,48 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, useColorScheme, Image, Alert } from 'react-native';
-import {Picker} from '@react-native-picker/picker';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
-import theme from '../assets/themes';
+import theme from '../../assets/themes';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import database from '@react-native-firebase/database';
 import { getLessons, updateLessons } from '../services/firebase';
+import DropDownPicker from 'react-native-dropdown-picker';
+import * as Network from 'expo-network';
 
 const startMenu = ({setFirstStart, setLessons} : {setFirstStart: any, setLessons: any}) => {
-  const [selectGroup, setSelectGroup] = useState("PI20");
+  DropDownPicker.addTheme("DropDown-Dark", require("../assets/themes/dropdown-picker-dark"));
+  DropDownPicker.addTheme("DropDown-Light", require("../assets/themes/dropdown-picker-light"));
+  const [selectGroup, setSelectGroup] = useState('');
+  const [open, setOpen] = useState(false);
+  const [connectStatus, setConnectStatus] = useState(false);
+  const [items, setItems] = useState([
+    {label: 'ПІ-20', value: 'PI20'},
+    {label: 'КН-20', value: 'KN20'},
+    {label: 'ІН-20', value: 'IN20'},
+    {label: 'ЄВІ-20', value: 'EBI20'}
+    
+  ]);
   const colorSchema = useColorScheme();
+  DropDownPicker.setTheme(colorSchema === 'light' ? "DropDown-Light" : "DropDown-Dark");
   const TextTheme = colorSchema === 'light' ? styles.Text_light 
   : styles.Text_dark;
   const descriptionTheme = colorSchema === 'light' ? styles.Text_light 
   : styles.description_dark;
+
+  useEffect(() => {
+    (async () => {
+      let connection = await Network.getNetworkStateAsync();
+
+      if (connection.isConnected !== true || connection.isInternetReachable !== true){
+        console.log('Нема віфі')
+        Alert.alert('Нема інтерната', 'Нема інтерната.');
+        return;
+      }
+    })
+  }, [])
   
   async function buttoncontinue()
   {
-    await database()
+/*     await database()
     .ref(".info/connected")
     .once("value", async status => {
       if (status.val() == true) {
@@ -27,7 +52,7 @@ const startMenu = ({setFirstStart, setLessons} : {setFirstStart: any, setLessons
         createAlertNoInternet();
         console.log("not connected");
       }
-    })
+    }) */
   }
 
   const createAlertNoInternet = () =>
@@ -56,6 +81,7 @@ const startMenu = ({setFirstStart, setLessons} : {setFirstStart: any, setLessons
       case 'EBI20':
         TextGroup = "ЄВІ-20"
         break;
+
     }
 
     Alert.alert(
@@ -83,26 +109,24 @@ const startMenu = ({setFirstStart, setLessons} : {setFirstStart: any, setLessons
   return (
     <View style={styles.containerMenu}>
       <View style={styles.containerLogo}>
-        <Image style={styles.containerLogo_Img} source={require('../assets/icon.png')}/>
+        <Image style={styles.containerLogo_Img} source={require('../assets/images/icon.png')}/>
         <Text style={[styles.logoText, TextTheme]}>MEGU</Text>
       </View>
       <View style={styles.containerPicker}>
-        <MaterialCommunityIcons name="account-group-outline" size={24} color={colorSchema === 'light'
-          ? "#000" : "#fff"} />
-        <Picker
-          selectedValue={selectGroup}
-          mode="dropdown"
-          style={[styles.pickerGroup, TextTheme]}
-          dropdownIconColor={colorSchema === 'light' ? "#000" : "#fff"}
-          dropdownIconRippleColor={colorSchema === 'light' ? "#000" : "#fff"}
-          onValueChange={(itemValue) =>
-            setSelectGroup(itemValue)
-          }>
-          <Picker.Item label="ПІ-20" value="PI20" />
-          <Picker.Item label="КН-20" value="KN20" />
-          <Picker.Item label="ІН-20" value="IN20" />
-          <Picker.Item label="ЄВІ-20" value="EBI20" />
-        </Picker>
+        <MaterialCommunityIcons name="account-group-outline" size={24} 
+          color={colorSchema === 'light' ? "#000" : "#fff"} />
+        <DropDownPicker
+          open={open}
+          value={selectGroup}
+          items={items}
+          setOpen={setOpen}
+          setValue={setSelectGroup}
+          setItems={setItems}
+          searchable={true}
+          searchPlaceholder={'Пошук'}
+          dropDownDirection={'BOTTOM'}
+          placeholder={'Вибери свою группу'}
+        />
       </View>
       <View style={styles.containerButton}>
       <TouchableOpacity onPress={async () => {await buttoncontinue()}}>
@@ -132,13 +156,11 @@ const styles = StyleSheet.create({
   },
   containerPicker: {
     flexDirection: 'row',
+    justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'center',
     marginBottom: 10,
-    translateX: 7
-  },
-  pickerGroup: {
-    width: 135
+    width: 150,
   },
   containerButton: {
     justifyContent: 'center', 

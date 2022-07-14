@@ -1,6 +1,6 @@
 import { ExpoConfig } from '@expo/config-types';
 
-const IS_DEV = process.env.APP_VARIANT === "development";
+const IS_DEV = true;
 
 const config: ExpoConfig = {
   name: IS_DEV ? "Megu (dev)" : "Megu",
@@ -8,19 +8,20 @@ const config: ExpoConfig = {
   version: "1.0.5",
   orientation: "portrait",
   userInterfaceStyle: "automatic",
-  icon: "./assets/icon.png",
+  icon: "./assets/images/icon.png",
   splash: {
-    image: "./assets/splash.png",
+    image: "./assets/images/splash.png",
     resizeMode: "cover",
     backgroundColor: "#6486FF"
   },
   assetBundlePatterns: [
-    "assets/*",
+    "assets/images/*",
     "assets/fonts/*"
   ],
+  jsEngine: "hermes",
   android: {
     adaptiveIcon: {
-      foregroundImage: "./assets/adaptive-icon.png",
+      foregroundImage: "./assets/images/adaptive-icon.png",
       backgroundColor: "#6486FF"
     },
     package: IS_DEV ? "com.megu.dev" : "com.megu.app",
@@ -30,7 +31,8 @@ const config: ExpoConfig = {
     [
       "@react-native-firebase/app",{}
     ]
-  ]
+  ],
+  platforms: ["android"]
 };
 
 export default config;

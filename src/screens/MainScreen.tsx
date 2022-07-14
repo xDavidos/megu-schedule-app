@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, useColorScheme } from 'react-native';
 import Moment from 'react-moment';
 import 'moment/locale/uk';
-import theme from '../assets/themes';
-import DateSlider from './DateSlider';
-import LessonList from './LessonList';
+import theme from '../../assets/themes';
+import DateSlider from '../components/DateSlider';
+import LessonList from '../components/LessonList';
 import { lessonsToday } from '../services/lessons';
 
 const MainMenu = (lessons: any) => {
