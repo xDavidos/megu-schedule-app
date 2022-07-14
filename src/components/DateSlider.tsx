@@ -2,7 +2,7 @@ import React from 'react';
 import { TouchableOpacity, FlatList, StyleSheet, Text, useColorScheme } from 'react-native';
 import Moment from 'react-moment';
 import 'moment/locale/uk';
-import theme from '../assets/themes/index';
+import theme from '../../assets/themes/index';
 
 const DateSlider = ({ data, index, setIndex } : { data: any, index: any, setIndex: any }) => {
   const sliderRef = React.useRef<FlatList>(null);

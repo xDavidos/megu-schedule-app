@@ -9,8 +9,8 @@ import DropDownPicker from 'react-native-dropdown-picker';
 import * as Network from 'expo-network';
 
 const startMenu = ({setFirstStart, setLessons} : {setFirstStart: any, setLessons: any}) => {
-  DropDownPicker.addTheme("DropDown-Dark", require("../assets/themes/dropdown-picker-dark"));
-  DropDownPicker.addTheme("DropDown-Light", require("../assets/themes/dropdown-picker-light"));
+  DropDownPicker.addTheme("DropDown-Dark", require("../../assets/themes/dropdown-picker-dark"));
+  DropDownPicker.addTheme("DropDown-Light", require("../../assets/themes/dropdown-picker-light"));
   const [selectGroup, setSelectGroup] = useState('');
   const [open, setOpen] = useState(false);
   const [connectStatus, setConnectStatus] = useState(false);
@@ -109,7 +109,7 @@ const startMenu = ({setFirstStart, setLessons} : {setFirstStart: any, setLessons
   return (
     <View style={styles.containerMenu}>
       <View style={styles.containerLogo}>
-        <Image style={styles.containerLogo_Img} source={require('../assets/images/icon.png')}/>
+        <Image style={styles.containerLogo_Img} source={require('../../assets/images/icon.png')}/>
         <Text style={[styles.logoText, TextTheme]}>MEGU</Text>
       </View>
       <View style={styles.containerPicker}>

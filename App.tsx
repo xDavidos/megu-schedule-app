@@ -6,9 +6,9 @@ import { MaterialCommunityIcons, AntDesign } from '@expo/vector-icons';
 import { StyleSheet, View, useColorScheme } from 'react-native';
 import database from '@react-native-firebase/database';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import StartMenu from './components/StartMenu';
-import MainMenu from './components/MainMenu';
-import { getLessons, updateLessons } from './services/firebase';
+import StartMenu from './src/screens/StartScreen';
+import MainMenu from './src/screens/MainScreen';
+import { getLessons, updateLessons } from './src/services/firebase';
 import theme from './assets/themes';
 
 export default function App() {

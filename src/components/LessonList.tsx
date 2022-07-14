@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, FlatList, 
   Dimensions, ScrollView, TouchableOpacity, useColorScheme } from 'react-native'
 import AntDesign from '@expo/vector-icons/AntDesign';
-import theme from '../assets/themes';
+import theme from '../../assets/themes';
 import * as Linking from 'expo-linking';
 import Moment from 'react-moment';
 
