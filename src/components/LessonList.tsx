@@ -1,19 +1,22 @@
 import React from 'react';
-import { StyleSheet, Text, View, FlatList, 
-  Dimensions, ScrollView, TouchableOpacity, useColorScheme } from 'react-native'
+import {
+  StyleSheet, View, Dimensions, ScrollView, TouchableOpacity,
+} from 'react-native'
 import AntDesign from '@expo/vector-icons/AntDesign';
-import theme from '../../assets/themes';
+import Theme from '../constants/style';
 import * as Linking from 'expo-linking';
 import Moment from 'react-moment';
+import { FlashList } from "@shopify/flash-list";
+
+import useColorScheme from '../hooks/useColorScheme';
+import { Text } from '../components/Themed';
+import IDay from '../interface/IDay'
 
 const width = Dimensions.get('screen').width;
 
-const LessonList = ({ data, index, setIndex }:
-   { data: any; index: any; setIndex: any }) => {
-  const lessonsRef = React.useRef<FlatList>(null);
+export default function LessonsList({ data, index, setIndex }: { data: any; index: any; setIndex: any }) {
+  const lessonsRef = React.useRef<FlashList<number> | null>(null);
   const colorSchema = useColorScheme();
-  const themeLessonEmpty = colorSchema === 'light' ? styles.lesson_empty_light 
-  : styles.lesson_empty_dark;
 
   React.useEffect(() => {
     lessonsRef.current?.scrollToOffset({
@@ -23,17 +26,11 @@ const LessonList = ({ data, index, setIndex }:
   }, [index]);
 
   return (
-    <FlatList
+    <FlashList
       ref={lessonsRef}
       initialScrollIndex={index}
-      data={data.lessons}
-      keyExtractor={item => item.date}
-      getItemLayout={(data, index) => ({
-        length: width,
-        offset: width * index,
-        index,
-      })}
-      onMomentumScrollEnd={ev => {
+      data={data}
+      onMomentumScrollEnd={(ev: { nativeEvent: { contentOffset: { x: number; }; }; }) => {
         setIndex(
           Math.floor(Math.floor(ev.nativeEvent.contentOffset.x) / Math.floor(width),
           ),
@@ -42,7 +39,7 @@ const LessonList = ({ data, index, setIndex }:
       horizontal
       pagingEnabled
       showsHorizontalScrollIndicator={false}
-      renderItem={({item}: {item: any; index: any}) => {
+      renderItem={({ item }: { item: any; index: any }) => {
         return (
           <ScrollView showsVerticalScrollIndicator={false}>
             <View style={styles.lessons_view_heder}>
@@ -54,31 +51,71 @@ const LessonList = ({ data, index, setIndex }:
                 <Lesson key={item.id} item={item} />
               ))
             ) : (
-              <Text style={[styles.lesson_empty, themeLessonEmpty]}>Вихідний</Text>
+              <Text style={styles.lesson_empty} lightColor="#000" darkColor={Theme.colors.white}>Вихідний</Text>
             )}
           </ScrollView>
         );
       }}
     />
-  );
+  )
+
+  /*   return (
+      <FlatList
+        ref={lessonsRef}
+        initialScrollIndex={index}
+        data={data}
+        keyExtractor={item => item.date}
+        getItemLayout={(data, index) => ({
+          length: width,
+          offset: width * index,
+          index,
+        })}
+        onMomentumScrollEnd={ev => {
+          setIndex(
+            Math.floor(Math.floor(ev.nativeEvent.contentOffset.x) / Math.floor(width),
+            ),
+          );
+        }}
+        horizontal
+        pagingEnabled
+        showsHorizontalScrollIndicator={false}
+        renderItem={({item}: {item: any; index: any}) => {
+          return (
+            <ScrollView showsVerticalScrollIndicator={false}>
+              <View style={styles.lessons_view_heder}>
+                <Text style={styles.lessons_view_heder_text1}>Час</Text>
+                <Text style={styles.lessons_view_heder_text2}>Пари</Text>
+              </View>
+              {item.hasOwnProperty('lessons') ? (
+                item.lessons.map((item: any) => (
+                  <Lesson key={item.id} item={item} />
+                ))
+              ) : (
+                <Text style={[styles.lesson_empty, ThemeLessonEmpty]}>Вихідний</Text>
+              )}
+            </ScrollView>
+          );
+        }}
+      />
+    ); */
 };
 
-const Lesson = ({ item } : { item: any }) => {
+const Lesson = ({ item }: { item: any }) => {
   const colorSchema = useColorScheme();
-  const themeLessonStartTime = colorSchema === 'light' ? styles.lesson_time_start_text_light 
-  : styles.lesson_time_start_text_dark;
-  const themeLessonTime = colorSchema === 'light' ? styles.lesson_time_light 
-  : styles.lesson_time_dark;
-  const themeLessonCard = colorSchema === 'light' ? styles.lesson_card_light 
-  : styles.lesson_card_dark;
+  const ThemeLessonStartTime = colorSchema === 'light' ? styles.lesson_time_start_text_light
+    : styles.lesson_time_start_text_dark;
+  const ThemeLessonTime = colorSchema === 'light' ? styles.lesson_time_light
+    : styles.lesson_time_dark;
+  const ThemeLessonCard = colorSchema === 'light' ? styles.lesson_card_light
+    : styles.lesson_card_dark;
 
   return (
     <View style={styles.lessons}>
-      <View style={[styles.lesson_time, themeLessonTime]}>
-        <Moment element={Text} format={'H:mm'} unix={true} style={ colorSchema === 'light' 
-          ? styles.lesson_time_start_text_light 
-          : styles.lesson_time_start_text_dark }>{item.starttime}</Moment>
-        <Moment element={Text} format={'H:mm'} unix={true} 
+      <View style={[styles.lesson_time, ThemeLessonTime]}>
+        <Moment element={Text} format={'H:mm'} unix={true} style={colorSchema === 'light'
+          ? styles.lesson_time_start_text_light
+          : styles.lesson_time_start_text_dark}>{item.starttime}</Moment>
+        <Moment element={Text} format={'H:mm'} unix={true}
           style={styles.lesson_time_end_text}>{item.endtime}</Moment>
       </View>
       {item.isOnline == true ? (
@@ -86,32 +123,32 @@ const Lesson = ({ item } : { item: any }) => {
           onPress={() => {
             Linking.openURL('https://' + item.location);
           }}
-          style={[styles.lesson_card, themeLessonCard]}>
-            <Text style={styles.lesson_card_name}>{item.name}</Text>
-            <Text style={styles.lesson_card_description}>
-              {item.description}
-            </Text>
-            <View style={styles.lesson_card_bottom_view}>
-              <AntDesign style={styles.lesson_card_bottom_img} name="enviromento" size={16} color="white" />
-              <Text style={styles.lesson_card_bottom_text}>{item.location}</Text>
-            </View>
-            <View style={styles.lesson_card_bottom_view}>
-              <AntDesign style={styles.lesson_card_bottom_img} name="user" size={16} color="white" />
-              <Text style={styles.lesson_card_bottom_text}>{item.teacher}</Text>
-            </View>
+          style={[styles.lesson_card, ThemeLessonCard]}>
+          <Text style={styles.lesson_card_name}>{item.name}</Text>
+          <Text style={styles.lesson_card_description}>
+            {item.description}
+          </Text>
+          <View style={styles.lesson_card_bottom_view}>
+            <AntDesign style={styles.lesson_card_bottom_img} name="enviromento" size={16} color="white" />
+            <Text style={styles.lesson_card_bottom_text}>{item.location}</Text>
+          </View>
+          <View style={styles.lesson_card_bottom_view}>
+            <AntDesign style={styles.lesson_card_bottom_img} name="user" size={16} color="white" />
+            <Text style={styles.lesson_card_bottom_text}>{item.teacher}</Text>
+          </View>
         </TouchableOpacity>
       ) : (
-        <View style={[styles.lesson_card, themeLessonCard]}>
+        <View style={[styles.lesson_card, ThemeLessonCard]}>
           <Text style={styles.lesson_card_name}>{item.name}</Text>
           <Text style={styles.lesson_card_description}>{item.description}</Text>
           <View style={styles.lesson_card_bottom_view}>
-              <AntDesign style={styles.lesson_card_bottom_img} name="enviromento" size={16} color="white" />
-              <Text style={styles.lesson_card_bottom_text}>{item.location}</Text>
-            </View>
-            <View style={styles.lesson_card_bottom_view}>
-              <AntDesign style={styles.lesson_card_bottom_img} name="user" size={16} color="white" />
-              <Text style={styles.lesson_card_bottom_text}>{item.teacher}</Text>
-            </View>
+            <AntDesign style={styles.lesson_card_bottom_img} name="enviromento" size={16} color="white" />
+            <Text style={styles.lesson_card_bottom_text}>{item.location}</Text>
+          </View>
+          <View style={styles.lesson_card_bottom_view}>
+            <AntDesign style={styles.lesson_card_bottom_img} name="user" size={16} color="white" />
+            <Text style={styles.lesson_card_bottom_text}>{item.teacher}</Text>
+          </View>
         </View>
       )}
     </View>
@@ -125,18 +162,18 @@ const styles = StyleSheet.create({
     marginTop: 8,
   },
   lessons_view_heder_text1: {
-    ...theme.textVariants.body2,
-    color: theme.colors.gray,
-    paddingLeft: theme.spacing.m,
+    ...Theme.textVariants.body2,
+    color: Theme.colors.gray,
+    paddingLeft: Theme.spacing.m,
     marginRight: 43,
   },
   lessons_view_heder_text2: {
-    ...theme.textVariants.body2,
-    color: theme.colors.gray,
+    ...Theme.textVariants.body2,
+    color: Theme.colors.gray,
   },
   lessons: {
     flexDirection: "row",
-    paddingHorizontal: theme.spacing.m,
+    paddingHorizontal: Theme.spacing.m,
     width: width,
   },
   lesson_time: {
@@ -150,41 +187,41 @@ const styles = StyleSheet.create({
     borderRightColor: "#222222",
   },
   lesson_time_start_text_light: {
-    ...theme.textVariants.body2,
+    ...Theme.textVariants.body2,
     marginBottom: 5,
     color: "#000"
   },
   lesson_time_start_text_dark: {
-    ...theme.textVariants.body2,
+    ...Theme.textVariants.body2,
     marginBottom: 5,
     color: "#fff"
   },
   lesson_time_end_text: {
-    ...theme.textVariants.body2,
-    color: theme.colors.gray,
+    ...Theme.textVariants.body2,
+    color: Theme.colors.gray,
   },
   lesson_card: {
-    backgroundColor: theme.colors.blueGray,
-    marginLeft: theme.spacing.m,
-    marginBottom: theme.spacing.m,
+    backgroundColor: Theme.colors.blueGray,
+    marginLeft: Theme.spacing.m,
+    marginBottom: Theme.spacing.m,
     borderRadius: 15,
-    padding: theme.spacing.m,
+    padding: Theme.spacing.m,
     flex: 1,
   },
   lesson_card_light: {
-    backgroundColor: theme.colors.blueGray,
+    backgroundColor: Theme.colors.blueGray,
   },
   lesson_card_dark: {
-    backgroundColor: theme.colors.darkblueGray,
+    backgroundColor: Theme.colors.darkblueGray,
   },
   lesson_card_name: {
-    ...theme.textVariants.h2,
-    color: theme.colors.white,
+    ...Theme.textVariants.h2,
+    color: Theme.colors.white,
     marginBottom: 5,
   },
   lesson_card_description: {
-    ...theme.textVariants.body3,
-    color: theme.colors.white,
+    ...Theme.textVariants.body3,
+    color: Theme.colors.white,
     marginBottom: 15
   },
   lesson_card_bottom_view: {
@@ -195,22 +232,14 @@ const styles = StyleSheet.create({
     marginRight: 5,
   },
   lesson_card_bottom_text: {
-    ...theme.textVariants.body5,
-    color: theme.colors.white,
+    ...Theme.textVariants.body5,
+    color: Theme.colors.white,
     textAlignVertical: 'center'
   },
   lesson_empty: {
-    ...theme.textVariants.body1,
+    ...Theme.textVariants.body1,
     width: width,
     paddingTop: 20,
     textAlign: 'center',
-  },
-  lesson_empty_light: {
-    color: "#000"
-  },
-  lesson_empty_dark: {
-    color: theme.colors.white
   }
 });
-
-export default LessonList

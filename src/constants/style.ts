@@ -18,35 +18,35 @@ const theme = {
   },
   textVariants: {
     h1: {
-      fontFamily: 'eUkraineBold',
+      fontFamily: 'e-Ukraine-Bold',
       fontSize: 14,
     },
     h2: {
-      fontFamily: 'eUkraineBold',
+      fontFamily: 'e-Ukraine-Bold',
       fontSize: 11,
     },
     h3: {
-      fontFamily: 'eUkraineBold',
+      fontFamily: 'e-Ukraine-Bold',
       fontSize: 9,
     },
     body1: {
-      fontFamily: 'eUkraineMedium',
+      fontFamily: 'e-Ukraine-Medium',
       fontSize: 44,
     },
     body2: {
-      fontFamily: 'eUkraineMedium',
+      fontFamily: 'e-Ukraine-Medium',
       fontSize: 14,
     },
     body3: {
-      fontFamily: 'eUkraineMedium',
+      fontFamily: 'e-Ukraine-Medium',
       fontSize: 10,
     },
     body4: {
-      fontFamily: 'eUkraineRegular',
+      fontFamily: 'e-Ukraine-Regular',
       fontSize: 14,
     },
     body5: {
-      fontFamily: 'eUkraineRegular',
+      fontFamily: 'e-Ukraine-Regular',
       fontSize: 10,
     }
   },

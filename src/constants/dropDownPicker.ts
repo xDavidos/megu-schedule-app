@@ -1,12 +1,5 @@
-import {StyleSheet} from 'react-native';
-import theme from './index';
-
-export const ICONS = {
-  ARROW_DOWN: require('../images/arrow-down-dark.png'),
-  ARROW_UP: require('../images/arrow-up-dark.png'),
-  TICK: require('../images/tick-dark.png'),
-  CLOSE: require('../images/close-dark.png')
-};
+import { StyleSheet } from 'react-native';
+import theme from './style';
 
 export default StyleSheet.create({
   container: {
@@ -18,13 +11,11 @@ export default StyleSheet.create({
     justifyContent: 'space-evenly',
     width: '100%',
     minHeight: 50,
-    borderRadius: 8,
     marginLeft: 10,
-    paddingVertical: 3,
+    paddingVertical: 3
   },
   label: {
     flex: 1,
-    color: theme.colors.white,
     ...theme.textVariants.body3
     //textAlign: 'center',
   },
@@ -69,9 +60,9 @@ export default StyleSheet.create({
   },
   dropDownContainer: {
     position: 'absolute',
-    backgroundColor: theme.colors.gray3,
+    backgroundColor: '#faf9f9',
     borderRadius: 8,
-      shadowColor: "#000",
+    shadowColor: "#000",
     shadowOffset: {
       width: 0,
       height: 2,
@@ -91,11 +82,11 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingHorizontal: 10,
-    height: 40
+    height: 40,
   },
   listItemLabel: {
     flex: 1,
-    color: theme.colors.white,
+    color: '#000',
     ...theme.textVariants.body3
   },
   iconContainer: {
@@ -124,7 +115,7 @@ export default StyleSheet.create({
   },
   searchContainer: {
     flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   searchTextInput: {
     flexGrow: 1,

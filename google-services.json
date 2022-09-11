@@ -8,20 +8,12 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:641477291619:android:dd04fc3c0fc89ad0ae5256",
+        "mobilesdk_app_id": "1:641477291619:android:1537b8e69c2812f3ae5256",
         "android_client_info": {
           "package_name": "com.megu.app"
         }
       },
       "oauth_client": [
-        {
-          "client_id": "641477291619-0icaisivdlqoastppa4i55hlbfujhnq8.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.megu.app",
-            "certificate_hash": "e99807dd8788c137069616e444b9c364fba3d696"
-          }
-        },
         {
           "client_id": "641477291619-6et96rj6gb88g5nb1vah5621nq83gui6.apps.googleusercontent.com",
           "client_type": 3

@@ -5,19 +5,21 @@ export async function getLessons() {
   const group = await AsyncStorage.getItem('@group');
   let data;
   await database()
-  .ref(`shedule/${group}`)
-  .once('value')
-  .then(snapshot => {
-    data = snapshot.val();
-  })
+    .ref(`${group}`)
+    .once('value')
+    .then(snapshot => {
+      data = snapshot.val();
+    })
   return data;
 }
 
-export async function updateLessons(setLessons: any) { 
-  const group = await AsyncStorage.getItem('@group') 
+// ! ADD Change state to finally
+
+export async function updateLessons(setLessons: any) {
+  const group = await AsyncStorage.getItem('@group')
   database()
-  .ref(`shedule/${group}`)
-  .on('value', snapshot => {
-    setLessons(snapshot.val());
-  });
+    .ref(`${group}`)
+    .on('value', snapshot => {
+      setLessons(snapshot.val());
+    });
 }

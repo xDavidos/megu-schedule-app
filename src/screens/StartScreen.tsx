@@ -1,74 +1,28 @@
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, useColorScheme, Image, Alert } from 'react-native';
-import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
-import theme from '../../assets/themes';
+import { Dispatch, SetStateAction, useState } from 'react';
+import { StyleSheet, TouchableOpacity, Image, Alert } from 'react-native';
+import { MaterialCommunityIcons, AntDesign } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import database from '@react-native-firebase/database';
-import { getLessons, updateLessons } from '../services/firebase';
 import DropDownPicker from 'react-native-dropdown-picker';
-import * as Network from 'expo-network';
 
-const startMenu = ({setFirstStart, setLessons} : {setFirstStart: any, setLessons: any}) => {
-  DropDownPicker.addTheme("DropDown-Dark", require("../../assets/themes/dropdown-picker-dark"));
-  DropDownPicker.addTheme("DropDown-Light", require("../../assets/themes/dropdown-picker-light"));
+import { View, Text } from '../components/Themed'
+import Theme from '../constants/style';
+import useColorScheme from '../hooks/useColorScheme';
+
+
+
+export default function StartScreen({ setFirstStart, isConnected }: { setFirstStart: any, isConnected: any }) {
+  const colorSchema = useColorScheme();
   const [selectGroup, setSelectGroup] = useState('');
   const [open, setOpen] = useState(false);
-  const [connectStatus, setConnectStatus] = useState(false);
-  const [items, setItems] = useState([
-    {label: 'ПІ-20', value: 'PI20'},
-    {label: 'КН-20', value: 'KN20'},
-    {label: 'ІН-20', value: 'IN20'},
-    {label: 'ЄВІ-20', value: 'EBI20'}
-    
-  ]);
-  const colorSchema = useColorScheme();
-  DropDownPicker.setTheme(colorSchema === 'light' ? "DropDown-Light" : "DropDown-Dark");
-  const TextTheme = colorSchema === 'light' ? styles.Text_light 
-  : styles.Text_dark;
-  const descriptionTheme = colorSchema === 'light' ? styles.Text_light 
-  : styles.description_dark;
+  const [groups, setGroups] = useState([
+    { label: 'ПІ-20', value: 'PI20' },
+    { label: 'КН-20', value: 'KN20' },
+    { label: 'ІН-20', value: 'IN20' },
+    { label: 'ЄВІ-20', value: 'EBI20' }]);
 
-  useEffect(() => {
-    (async () => {
-      let connection = await Network.getNetworkStateAsync();
-
-      if (connection.isConnected !== true || connection.isInternetReachable !== true){
-        console.log('Нема віфі')
-        Alert.alert('Нема інтерната', 'Нема інтерната.');
-        return;
-      }
-    })
-  }, [])
-  
-  async function buttoncontinue()
-  {
-/*     await database()
-    .ref(".info/connected")
-    .once("value", async status => {
-      if (status.val() == true) {
-        createAlertYouSure();
-        console.log("connected");
-      } else {
-        createAlertNoInternet();
-        console.log("not connected");
-      }
-    }) */
-  }
-
-  const createAlertNoInternet = () =>
-  Alert.alert(
-    "Помилка!",
-    "Відсутнє інтернет підключення",
-    [
-      {
-        text: "Ok",
-      }
-    ]
-  );
-
-  const createAlertYouSure = () => {
+  function createAlertYouSure() {
     let TextGroup;
-    switch(selectGroup){
+    switch (selectGroup) {
       case 'PI20':
         TextGroup = "ПI-20"
         break;
@@ -81,7 +35,6 @@ const startMenu = ({setFirstStart, setLessons} : {setFirstStart: any, setLessons
       case 'EBI20':
         TextGroup = "ЄВІ-20"
         break;
-
     }
 
     Alert.alert(
@@ -97,9 +50,7 @@ const startMenu = ({setFirstStart, setLessons} : {setFirstStart: any, setLessons
           style: 'default',
           onPress: async () => {
             await AsyncStorage.setItem('@group', selectGroup);
-            setLessons(await getLessons());
-            setFirstStart(false)
-            updateLessons(setLessons)
+            setFirstStart(false);
           }
         }
       ]
@@ -107,87 +58,87 @@ const startMenu = ({setFirstStart, setLessons} : {setFirstStart: any, setLessons
   }
 
   return (
-    <View style={styles.containerMenu}>
-      <View style={styles.containerLogo}>
-        <Image style={styles.containerLogo_Img} source={require('../../assets/images/icon.png')}/>
-        <Text style={[styles.logoText, TextTheme]}>MEGU</Text>
+    <View style={styles.container}>
+      <View style={styles.logo}>
+        <Image style={styles.logoImg} source={require('../../assets/images/icon.png')} />
+        <Text style={styles.logoText}>MEGU</Text>
       </View>
-      <View style={styles.containerPicker}>
-        <MaterialCommunityIcons name="account-group-outline" size={24} 
-          color={colorSchema === 'light' ? "#000" : "#fff"} />
+      <View style={styles.picker}>
+        <MaterialCommunityIcons name="account-group-outline" size={24}
+          color={colorSchema === 'light' ? '#000' : '#fff'} />
         <DropDownPicker
           open={open}
           value={selectGroup}
-          items={items}
+          items={groups}
           setOpen={setOpen}
           setValue={setSelectGroup}
-          setItems={setItems}
+          setItems={setGroups}
+          textStyle={{ color: colorSchema === 'light' ? '#000' : '#fff' }}
+          dropDownContainerStyle={{ backgroundColor: colorSchema === 'light' ? '#fff' : Theme.colors.gray3 }}
+          searchTextInputStyle={{ color: colorSchema === 'light' ? '#000' : Theme.colors.gray }}
+          listItemLabelStyle={{ color: colorSchema === 'light' ? '#000' : '#fff' }}
+          ArrowDownIconComponent={() => <AntDesign name="down" size={15} color={colorSchema === 'light' ? 'black' : 'white'} />}
+          ArrowUpIconComponent={() => <AntDesign name="up" size={15} color={colorSchema === 'light' ? 'black' : 'white'} />}
+          TickIconComponent={() => <AntDesign name="check" size={15} color={colorSchema === 'light' ? 'black' : 'white'} />}
           searchable={true}
           searchPlaceholder={'Пошук'}
           dropDownDirection={'BOTTOM'}
           placeholder={'Вибери свою группу'}
+          translation={{
+            NOTHING_TO_SHOW: "Нічого не найшов"
+          }}
         />
       </View>
       <View style={styles.containerButton}>
-      <TouchableOpacity onPress={async () => {await buttoncontinue()}}>
-        <Text style={styles.containerButton_Text}>Продовжити</Text>
-      </TouchableOpacity>
-      <Text style={[styles.description, descriptionTheme]}>*Щоб продовжити потрібен доступ до інтернету</Text>
+        <TouchableOpacity disabled={!isConnected} onPress={() => createAlertYouSure()}>
+          <Text style={styles.containerButton_Text}>Продовжити</Text>
+        </TouchableOpacity>
+        <Text style={styles.description} darkColor={Theme.colors.gray}>*Щоб продовжити потрібен доступ до інтернету</Text>
       </View>
-  </View>
+    </View>
   )
 }
 
 const styles = StyleSheet.create({
-  containerMenu: {
-    flex: 1, 
+  container: {
+    flex: 1,
     justifyContent: "center"
   },
-  containerLogo: {
+  logo: {
     alignItems: 'center'
   },
-  containerLogo_Img: {
-    width: 100, 
-    height: 100, 
+  logoImg: {
+    width: 100,
+    height: 100,
     marginBottom: 20
   },
   logoText: {
-    ...theme.textVariants.body1,
+    ...Theme.textVariants.body1,
   },
-  containerPicker: {
+  picker: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'center',
     marginBottom: 10,
     width: 150,
+    zIndex: 9999
   },
   containerButton: {
-    justifyContent: 'center', 
+    justifyContent: 'center',
     alignSelf: 'center'
   },
   containerButton_Text: {
-    ...theme.textVariants.h1, 
-    color: theme.colors.blueGray, 
-    backgroundColor: 'rgba(52, 79, 179, 0.1)', 
-    borderRadius: 10, 
-    padding: 8, 
-    textAlign: 'center', 
+    ...Theme.textVariants.h1,
+    color: Theme.colors.blueGray,
+    backgroundColor: 'rgba(52, 79, 179, 0.1)',
+    borderRadius: 10,
+    padding: 8,
+    textAlign: 'center',
     marginBottom: 5
   },
   description: {
-    ...theme.textVariants.h3,
+    ...Theme.textVariants.h3,
     width: 220
-  },
-  description_dark: {
-    color: theme.colors.gray
-  },
-  Text_light: {
-    color: '#000',
-  },
-  Text_dark: {
-    color: '#fff'
-  },
+  }
 });
-
-export default startMenu

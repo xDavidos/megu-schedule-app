@@ -1,0 +1,38 @@
+{
+  "expo": {
+    "name": "Megu",
+    "slug": "megu-app",
+    "version": "1.0.0 alpha",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "image": "./assets/images/splash.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#6486FF"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "assets/images/*",
+      "assets/fonts/*"
+    ],
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "backgroundColor": "#6486FF"
+      },
+      "package": "com.megu.app",
+      "googleServicesFile": "./google-services.json"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "2b78c58b-fa9f-45d9-9ee7-fe5d104ddf5e"
+      }
+    },
+    "plugins": [
+      "@react-native-firebase/app"
+    ]
+  }
+}

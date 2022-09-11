@@ -2,67 +2,64 @@ import React from 'react';
 import { TouchableOpacity, FlatList, StyleSheet, Text, useColorScheme } from 'react-native';
 import Moment from 'react-moment';
 import 'moment/locale/uk';
-import theme from '../../assets/themes/index';
+import { FlashList } from "@shopify/flash-list";
 
-const DateSlider = ({ data, index, setIndex } : { data: any, index: any, setIndex: any }) => {
-  const sliderRef = React.useRef<FlatList>(null);
+import Theme from '../constants/style';
+
+const DateSlider = ({ data, index, setIndex }: { data: any, index: any, setIndex: any }) => {
+  const sliderRef = React.useRef<FlashList<number> | null>(null);
   const colorSchema = useColorScheme();
-  const themeDataslider = colorSchema === 'light' ? styles.dataslider_light 
-  : styles.dataslider_dark;
-  const themeDatasliderBox = colorSchema === 'light' ? theme.colors.white 
-  : theme.colors.gray3;
-  const themeDatasliderText = colorSchema === 'light' ? styles.day_flatlist_day_light 
-  : styles.day_flatlist_day_dark;
-  const themeDatasliderTextSelect = colorSchema === 'light' ? styles.day_flatlist_day_select_light 
-  : styles.day_flatlist_day_select_dark;
+  const themeDataslider = colorSchema === 'light' ? styles.dataslider_light
+    : styles.dataslider_dark;
+  const themeDatasliderBox = colorSchema === 'light' ? Theme.colors.white
+    : Theme.colors.gray3;
+  const themeDatasliderText = colorSchema === 'light' ? styles.day_flatlist_day_light
+    : styles.day_flatlist_day_dark;
+  const themeDatasliderTextSelect = colorSchema === 'light' ? styles.day_flatlist_day_select_light
+    : styles.day_flatlist_day_select_dark;
 
-   React.useEffect(() => {
+  React.useEffect(() => {
     sliderRef.current?.scrollToIndex({
       index: index,
       animated: true,
       viewPosition: 0.40,
-      viewOffset: theme.spacing.data_slidel
+      viewOffset: Theme.spacing.data_slidel
     })
   }, [index])
-  
+
   return (
-    <FlatList
-    ref={sliderRef}
-    style ={[styles.dataslider, themeDataslider]}
-    initialNumToRender={8}
-    initialScrollIndex={index}
-    getItemLayout={(data, index) => (
-      {length: 54, offset: 54 * index, index}
-    )}
-    data={data.lessons}
-    keyExtractor={(item) => item.date}
-    contentContainerStyle={{ paddingLeft: theme.spacing.data_slidel }}
-    showsHorizontalScrollIndicator={false}
-    horizontal
-    renderItem={({ item, index: fIndex }) => {
-      return (
-        <TouchableOpacity 
-        onPress={() => { setIndex(fIndex);}}
-        style={{
-          marginRight: theme.spacing.data_slidel,
-          borderRadius: 10,
-          paddingVertical: 8,
-          width: 40,
-          backgroundColor:
-            fIndex == index ? theme.colors.blue : themeDatasliderBox,
-        }}>
-          <Moment element={Text} unix={true} style={ fIndex == index
-            ? styles.day_flatlist_weekday_select
-            : styles.day_flatlist_weekday
-          } format="dd">{item.date}</Moment>
-          <Moment element={Text} unix={true} style={ fIndex == index
-            ? themeDatasliderTextSelect
-            : themeDatasliderText
-          } format="D">{item.date}</Moment>
-        </TouchableOpacity>
-      );
-    }}
-  />
+    <FlashList
+      ref={sliderRef}
+      style={[styles.dataslider, themeDataslider]}
+      initialScrollIndex={index}
+      data={data}
+      contentContainerStyle={{ paddingLeft: Theme.spacing.data_slidel }}
+      showsHorizontalScrollIndicator={false}
+      horizontal
+      renderItem={({ item, index: fIndex }) => {
+        return (
+          <TouchableOpacity
+            onPress={() => { setIndex(fIndex); }}
+            style={{
+              marginRight: Theme.spacing.data_slidel,
+              borderRadius: 10,
+              paddingVertical: 8,
+              width: 40,
+              backgroundColor:
+                fIndex == index ? Theme.colors.blue : themeDatasliderBox,
+            }}>
+            <Moment element={Text} unix={true} style={fIndex == index
+              ? styles.day_flatlist_weekday_select
+              : styles.day_flatlist_weekday
+            } format="dd">{item.date}</Moment>
+            <Moment element={Text} unix={true} style={fIndex == index
+              ? themeDatasliderTextSelect
+              : themeDatasliderText
+            } format="D">{item.date}</Moment>
+          </TouchableOpacity>
+        );
+      }}
+    />
   );
 }
 
@@ -80,39 +77,39 @@ const styles = StyleSheet.create({
     borderBottomColor: "#222222",
   },
   day_flatlist_weekday: {
-    ...theme.textVariants.h2,
+    ...Theme.textVariants.h2,
     textTransform: 'uppercase',
     textAlign: 'center',
-    color: theme.colors.gray,
+    color: Theme.colors.gray,
     paddingBottom: 5,
   },
   day_flatlist_weekday_select: {
-    ...theme.textVariants.h2,
+    ...Theme.textVariants.h2,
     textTransform: 'uppercase',
     textAlign: 'center',
     color: '#FFF',
     paddingBottom: 5,
   },
   day_flatlist_day_light: {
-    ...theme.textVariants.h1,
+    ...Theme.textVariants.h1,
     textTransform: 'uppercase',
     textAlign: 'center',
     color: '#000',
   },
   day_flatlist_day_dark: {
-    ...theme.textVariants.h1,
+    ...Theme.textVariants.h1,
     textTransform: 'uppercase',
     textAlign: 'center',
     color: '#fff',
   },
   day_flatlist_day_select_light: {
-    ...theme.textVariants.h1,
+    ...Theme.textVariants.h1,
     textTransform: 'uppercase',
     textAlign: 'center',
     color: '#FFF',
   },
   day_flatlist_day_select_dark: {
-    ...theme.textVariants.h1,
+    ...Theme.textVariants.h1,
     textTransform: 'uppercase',
     textAlign: 'center',
     color: '#fff',

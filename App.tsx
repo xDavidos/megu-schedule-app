@@ -1,85 +1,88 @@
-import * as Font from 'expo-font';
-import * as SplashScreen from 'expo-splash-screen';
+import React, { useState, useEffect, useRef } from 'react';
+import { StyleSheet, Animated } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import React, { useState, useEffect, useCallback } from 'react';
-import { MaterialCommunityIcons, AntDesign } from '@expo/vector-icons'; 
-import { StyleSheet, View, useColorScheme } from 'react-native';
-import database from '@react-native-firebase/database';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import StartMenu from './src/screens/StartScreen';
-import MainMenu from './src/screens/MainScreen';
-import { getLessons, updateLessons } from './src/services/firebase';
-import theme from './assets/themes';
+import { Feather } from '@expo/vector-icons';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { useNetInfo } from "@react-native-community/netinfo";
+
+import StartScreen from './src/screens/StartScreen';
+import MainScreen from './src/screens/MainScreen';
+import { Text } from './src/components/Themed';
+import Theme from './src/constants/style';
+import useCachedResources from './src/hooks/useCachedResources';
+import useColorScheme from './src/hooks/useColorScheme';
 
 export default function App() {
-  const [appIsReady, setAppIsReady] = useState(false);
-  const [firstStart, setFirstStart] = useState(false);
-  const [lessons, setLessons] = useState();
-  const colorSchema = useColorScheme();
-  const themeContainer = colorSchema === 'light' ? styles.container_light 
-  : styles.container_dark;
-
+  const [isFirstStart, setIsFirstStart] = useState(false);
+  const isLoadingComplete = useCachedResources(setIsFirstStart);
+  const { isConnected } = useNetInfo();
+  const slideAnim = useRef(new Animated.Value(0)).current;
+  const themeContainer = useColorScheme() === 'light' ? styles.container : styles.container_dark;
 
   useEffect(() => {
-    async function prepare() {
-      try {
-        await SplashScreen.preventAutoHideAsync();
-        database().setPersistenceEnabled(true);
-        await Font.loadAsync(AntDesign.font);
-        await Font.loadAsync(MaterialCommunityIcons.font);
-        await Font.loadAsync({
-          eUkraineBold: require('./assets/fonts/e-Ukraine-Bold.otf'),
-          eUkraineMedium: require('./assets/fonts/e-Ukraine-Medium.otf'),
-          eUkraineRegular: require('./assets/fonts/e-Ukraine-Regular.otf'),
-        });
-        const value = await AsyncStorage.getItem('@group');
-        if(value == null) {
-          setFirstStart(true);
-        } else {
-          setLessons(await getLessons());
-        }
-      } catch (e) {
-        console.log(e)
-      } finally {
-        setAppIsReady(true);
-      }
-    } 
-
-    prepare();
-  }, []);
-
-  const onLayoutRootView = useCallback(async () => {
-    if (appIsReady) {
-      if (firstStart == false){
-        updateLessons(setLessons)
-      }
-      await SplashScreen.hideAsync();
+    if (!isConnected) {
+      Animated.timing(slideAnim, {
+        toValue: 1,
+        duration: 1000,
+        useNativeDriver: true
+      }).start();
+    } else {
+      Animated.timing(slideAnim, {
+        toValue: 0,
+        duration: 1000,
+        useNativeDriver: true
+      }).start();
     }
-  }, [appIsReady]);
+  }, [isConnected])
 
-  if (!appIsReady) {
+  if (!isLoadingComplete) {
     return null;
+  } else {
+    return (
+      <SafeAreaProvider style={[styles.container, themeContainer]}>
+        <StatusBar style='auto' />
+        <Animated.View style={[styles.noInternetNotification, {
+          transform: [{
+            translateY: slideAnim.interpolate({
+              inputRange: [0, 1],
+              outputRange: [-150, 0]
+            }),
+          }],
+        }]}>
+          <Feather name="cloud-off" size={12} color="white" />
+          <Text style={styles.noInternetNotification_Text}>Немає інтернету</Text>
+        </Animated.View>
+        {isFirstStart == true
+          ? <StartScreen setFirstStart={setIsFirstStart} isConnected={isConnected} />
+          : <MainScreen />}
+      </SafeAreaProvider>
+    );
   }
-
-  return (
-    <View style={[styles.container, themeContainer]} onLayout={onLayoutRootView}>
-      <StatusBar style='auto'/> 
-      {firstStart == true 
-      ? <StartMenu setFirstStart={setFirstStart} setLessons={setLessons} /> 
-      : <MainMenu lessons={lessons} />}
-    </View>  
-  );
 }
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 30,
-    flex: 1
-  },
-  container_light: {
+    flex: 1,
     backgroundColor: '#faf9f9',
   },
   container_dark: {
-    backgroundColor: theme.colors.gray2,
+    backgroundColor: Theme.colors.gray2,
   },
+  noInternetNotification: {
+    position: 'absolute',
+    width: '100%',
+    backgroundColor: '#FAC239',
+    paddingTop: 40,
+    paddingBottom: 2,
+    justifyContent: 'center',
+    flexDirection: 'row',
+    alignItems: 'center',
+    zIndex: 9999,
+  },
+  noInternetNotification_Text: {
+    color: '#fff',
+    textAlign: 'center',
+    fontSize: 12,
+    paddingLeft: 5,
+  }
 });
