@@ -14,7 +14,6 @@ import { lessonsToday } from '../services/lessons';
 export default function MainScreen() {
   const [index, setIndex] = useState(0);
   const [lessons, setLessons] = useState();
-  const [loading, setIsLoading] = useState(true);
   const colorSchema = useColorScheme();
 
   useEffect(() => {
@@ -24,23 +23,11 @@ export default function MainScreen() {
         updateLessons(setLessons);
       } catch (e) {
         console.log(e);
-      } finally {
-        console.log("Загружено");
-        setIsLoading(true);
       }
     }
     db();
-  }, [])
-
-  if (loading == true) {
-    return (
-      <View>
-        <ActivityIndicator size="large" />
-      </View>
-    )
-  } else {
     setIndex(lessonsToday(lessons));
-  }
+  }, [])
 
   return (
     <View style={styles.container}>
@@ -57,8 +44,8 @@ export default function MainScreen() {
         </TouchableOpacity>
       </View>
       <View style={styles.lesson_conteiner} lightColor={Theme.colors.white} darkColor={Theme.colors.gray3}>
-        <DateSlider data={lessons} index={index} setIndex={setIndex} />
-        <LessonList data={lessons} index={index} setIndex={setIndex} />
+        {lessons == undefined ? <ActivityIndicator style={styles.lesson_indicator} size="large" /> : <DateSlider data={lessons} index={index} setIndex={setIndex} />}
+        {lessons == undefined ? null : <LessonList data={lessons} index={index} setIndex={setIndex} />}
       </View>
     </View>
   )
@@ -114,5 +101,8 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
     flex: 1,
+  },
+  lesson_indicator: {
+    paddingTop: 25
   }
 });

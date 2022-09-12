@@ -7,7 +7,7 @@ import { FlashList } from "@shopify/flash-list";
 import Theme from '../constants/style';
 
 const DateSlider = ({ data, index, setIndex }: { data: any, index: any, setIndex: any }) => {
-  const sliderRef = React.useRef<FlashList<number> | null>(null);
+  const sliderRef = React.useRef<FlatList>(null);
   const colorSchema = useColorScheme();
   const themeDataslider = colorSchema === 'light' ? styles.dataslider_light
     : styles.dataslider_dark;
@@ -28,11 +28,16 @@ const DateSlider = ({ data, index, setIndex }: { data: any, index: any, setIndex
   }, [index])
 
   return (
-    <FlashList
+    <FlatList
       ref={sliderRef}
       style={[styles.dataslider, themeDataslider]}
+      initialNumToRender={8}
       initialScrollIndex={index}
+      getItemLayout={(data, index) => (
+        { length: 54, offset: 54 * index, index }
+      )}
       data={data}
+      keyExtractor={(item) => item.date}
       contentContainerStyle={{ paddingLeft: Theme.spacing.data_slidel }}
       showsHorizontalScrollIndicator={false}
       horizontal
@@ -48,11 +53,11 @@ const DateSlider = ({ data, index, setIndex }: { data: any, index: any, setIndex
               backgroundColor:
                 fIndex == index ? Theme.colors.blue : themeDatasliderBox,
             }}>
-            <Moment element={Text} unix={true} style={fIndex == index
+            <Moment element={Text} style={fIndex == index
               ? styles.day_flatlist_weekday_select
               : styles.day_flatlist_weekday
             } format="dd">{item.date}</Moment>
-            <Moment element={Text} unix={true} style={fIndex == index
+            <Moment element={Text} style={fIndex == index
               ? themeDatasliderTextSelect
               : themeDatasliderText
             } format="D">{item.date}</Moment>

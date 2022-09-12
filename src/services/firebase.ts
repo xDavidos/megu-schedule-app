@@ -13,8 +13,6 @@ export async function getLessons() {
   return data;
 }
 
-// ! ADD Change state to finally
-
 export async function updateLessons(setLessons: any) {
   const group = await AsyncStorage.getItem('@group')
   database()

@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  StyleSheet, View, Dimensions, ScrollView, TouchableOpacity,
+  StyleSheet, Dimensions, ScrollView, TouchableOpacity, FlatList
 } from 'react-native'
 import AntDesign from '@expo/vector-icons/AntDesign';
 import Theme from '../constants/style';
@@ -9,13 +9,13 @@ import Moment from 'react-moment';
 import { FlashList } from "@shopify/flash-list";
 
 import useColorScheme from '../hooks/useColorScheme';
-import { Text } from '../components/Themed';
+import { Text, View } from '../components/Themed';
 import IDay from '../interface/IDay'
 
 const width = Dimensions.get('screen').width;
 
 export default function LessonsList({ data, index, setIndex }: { data: any; index: any; setIndex: any }) {
-  const lessonsRef = React.useRef<FlashList<number> | null>(null);
+  const lessonsRef = React.useRef<FlatList>(null);
   const colorSchema = useColorScheme();
 
   React.useEffect(() => {
@@ -26,11 +26,17 @@ export default function LessonsList({ data, index, setIndex }: { data: any; inde
   }, [index]);
 
   return (
-    <FlashList
+    <FlatList
       ref={lessonsRef}
       initialScrollIndex={index}
       data={data}
-      onMomentumScrollEnd={(ev: { nativeEvent: { contentOffset: { x: number; }; }; }) => {
+      keyExtractor={item => item.date}
+      getItemLayout={(data, index) => ({
+        length: width,
+        offset: width * index,
+        index,
+      })}
+      onMomentumScrollEnd={ev => {
         setIndex(
           Math.floor(Math.floor(ev.nativeEvent.contentOffset.x) / Math.floor(width),
           ),
@@ -102,8 +108,6 @@ export default function LessonsList({ data, index, setIndex }: { data: any; inde
 
 const Lesson = ({ item }: { item: any }) => {
   const colorSchema = useColorScheme();
-  const ThemeLessonStartTime = colorSchema === 'light' ? styles.lesson_time_start_text_light
-    : styles.lesson_time_start_text_dark;
   const ThemeLessonTime = colorSchema === 'light' ? styles.lesson_time_light
     : styles.lesson_time_dark;
   const ThemeLessonCard = colorSchema === 'light' ? styles.lesson_card_light
@@ -112,11 +116,8 @@ const Lesson = ({ item }: { item: any }) => {
   return (
     <View style={styles.lessons}>
       <View style={[styles.lesson_time, ThemeLessonTime]}>
-        <Moment element={Text} format={'H:mm'} unix={true} style={colorSchema === 'light'
-          ? styles.lesson_time_start_text_light
-          : styles.lesson_time_start_text_dark}>{item.starttime}</Moment>
-        <Moment element={Text} format={'H:mm'} unix={true}
-          style={styles.lesson_time_end_text}>{item.endtime}</Moment>
+        <Text style={styles.lesson_time_start_text} lightColor={"#000"} darkColor={"#fff"}>{item.starttime}</Text>
+        <Text style={styles.lesson_time_end_text}>{item.endtime}</Text>
       </View>
       {item.isOnline == true ? (
         <TouchableOpacity
@@ -128,24 +129,24 @@ const Lesson = ({ item }: { item: any }) => {
           <Text style={styles.lesson_card_description}>
             {item.description}
           </Text>
-          <View style={styles.lesson_card_bottom_view}>
+          <View style={styles.lesson_card_bottom_view} lightColor={Theme.colors.blueGray} darkColor={Theme.colors.darkblueGray}>
             <AntDesign style={styles.lesson_card_bottom_img} name="enviromento" size={16} color="white" />
             <Text style={styles.lesson_card_bottom_text}>{item.location}</Text>
           </View>
-          <View style={styles.lesson_card_bottom_view}>
+          <View style={styles.lesson_card_bottom_view} lightColor={Theme.colors.blueGray} darkColor={Theme.colors.darkblueGray}>
             <AntDesign style={styles.lesson_card_bottom_img} name="user" size={16} color="white" />
             <Text style={styles.lesson_card_bottom_text}>{item.teacher}</Text>
           </View>
         </TouchableOpacity>
       ) : (
-        <View style={[styles.lesson_card, ThemeLessonCard]}>
+        <View style={styles.lesson_card} lightColor={Theme.colors.blueGray} darkColor={Theme.colors.darkblueGray}>
           <Text style={styles.lesson_card_name}>{item.name}</Text>
           <Text style={styles.lesson_card_description}>{item.description}</Text>
-          <View style={styles.lesson_card_bottom_view}>
+          <View style={styles.lesson_card_bottom_view} lightColor={Theme.colors.blueGray} darkColor={Theme.colors.darkblueGray}>
             <AntDesign style={styles.lesson_card_bottom_img} name="enviromento" size={16} color="white" />
             <Text style={styles.lesson_card_bottom_text}>{item.location}</Text>
           </View>
-          <View style={styles.lesson_card_bottom_view}>
+          <View style={styles.lesson_card_bottom_view} lightColor={Theme.colors.blueGray} darkColor={Theme.colors.darkblueGray}>
             <AntDesign style={styles.lesson_card_bottom_img} name="user" size={16} color="white" />
             <Text style={styles.lesson_card_bottom_text}>{item.teacher}</Text>
           </View>
@@ -186,15 +187,9 @@ const styles = StyleSheet.create({
   lesson_time_dark: {
     borderRightColor: "#222222",
   },
-  lesson_time_start_text_light: {
+  lesson_time_start_text: {
     ...Theme.textVariants.body2,
     marginBottom: 5,
-    color: "#000"
-  },
-  lesson_time_start_text_dark: {
-    ...Theme.textVariants.body2,
-    marginBottom: 5,
-    color: "#fff"
   },
   lesson_time_end_text: {
     ...Theme.textVariants.body2,
@@ -226,7 +221,7 @@ const styles = StyleSheet.create({
   },
   lesson_card_bottom_view: {
     flexDirection: 'row',
-    marginBottom: 3,
+    marginBottom: 3
   },
   lesson_card_bottom_img: {
     marginRight: 5,
