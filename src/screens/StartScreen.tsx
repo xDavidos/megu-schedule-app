@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useState } from 'react';
+import { useState } from 'react';
 import { StyleSheet, TouchableOpacity, Image, Alert } from 'react-native';
 import { MaterialCommunityIcons, AntDesign } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -7,12 +7,13 @@ import DropDownPicker from 'react-native-dropdown-picker';
 import { View, Text } from '../components/Themed'
 import Theme from '../constants/style';
 import useColorScheme from '../hooks/useColorScheme';
+import { getLessons, updateLessons } from '../services/firebase';
 
 
 
-export default function StartScreen({ setFirstStart, isConnected }: { setFirstStart: any, isConnected: any }) {
+export default function StartScreen({ setFirstStart, isConnected, setLessons }: { setFirstStart: any, isConnected: any, setLessons: any }) {
   const colorSchema = useColorScheme();
-  const [selectGroup, setSelectGroup] = useState('');
+  const [selectGroup, setSelectGroup] = useState(null);
   const [open, setOpen] = useState(false);
   const [groups, setGroups] = useState([
     { label: 'ПІ-20', value: 'PI20' },
@@ -21,6 +22,9 @@ export default function StartScreen({ setFirstStart, isConnected }: { setFirstSt
     { label: 'ЄВІ-20', value: 'EBI20' }]);
 
   function createAlertYouSure() {
+    if (selectGroup == null) {
+      return
+    }
     let TextGroup;
     switch (selectGroup) {
       case 'PI20':
@@ -38,7 +42,7 @@ export default function StartScreen({ setFirstStart, isConnected }: { setFirstSt
     }
 
     Alert.alert(
-      "Увага!",
+      "",
       "Ти впевнений(на) що группа " + TextGroup + " твоя?",
       [
         {
@@ -50,6 +54,8 @@ export default function StartScreen({ setFirstStart, isConnected }: { setFirstSt
           style: 'default',
           onPress: async () => {
             await AsyncStorage.setItem('@group', selectGroup);
+            setLessons(await getLessons());
+            updateLessons(setLessons);
             setFirstStart(false);
           }
         }

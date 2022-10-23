@@ -2,32 +2,23 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, TouchableOpacity, ActivityIndicator } from 'react-native';
 import Moment from 'react-moment';
 import 'moment/locale/uk';
-import { getLessons, updateLessons } from '../services/firebase';
 
 import { View, Text } from '../components/Themed';
 import Theme from '../constants/style';
 import DateSlider from '../components/DateSlider';
 import LessonList from '../components/LessonList';
 import useColorScheme from '../hooks/useColorScheme';
-import { lessonsToday } from '../services/lessons';
+import lessonsToday from '../services/lessons';
 
-export default function MainScreen() {
+export default function MainScreen(lessons: any) {
   const [index, setIndex] = useState(0);
-  const [lessons, setLessons] = useState();
   const colorSchema = useColorScheme();
 
   useEffect(() => {
-    async function db() {
-      try {
-        setLessons(await getLessons());
-        updateLessons(setLessons);
-      } catch (e) {
-        console.log(e);
-      }
+    if (lessons.lessons != undefined) {
+      setIndex(lessonsToday(lessons));
     }
-    db();
-    setIndex(lessonsToday(lessons));
-  }, [])
+  }, [lessons])
 
   return (
     <View style={styles.container}>
@@ -44,7 +35,7 @@ export default function MainScreen() {
         </TouchableOpacity>
       </View>
       <View style={styles.lesson_conteiner} lightColor={Theme.colors.white} darkColor={Theme.colors.gray3}>
-        {lessons == undefined ? <ActivityIndicator style={styles.lesson_indicator} size="large" /> : <DateSlider data={lessons} index={index} setIndex={setIndex} />}
+        {lessons == undefined ? <ActivityIndicator size="large" /> : <DateSlider data={lessons} index={index} setIndex={setIndex} />}
         {lessons == undefined ? null : <LessonList data={lessons} index={index} setIndex={setIndex} />}
       </View>
     </View>

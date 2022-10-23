@@ -11,10 +11,12 @@ import { Text } from './src/components/Themed';
 import Theme from './src/constants/style';
 import useCachedResources from './src/hooks/useCachedResources';
 import useColorScheme from './src/hooks/useColorScheme';
+import { getLessons, updateLessons } from './src/services/firebase';
 
 export default function App() {
-  const [isFirstStart, setIsFirstStart] = useState(false);
-  const isLoadingComplete = useCachedResources(setIsFirstStart);
+  const [isFirstStart, setIsFirstStart] = useState(true);
+  const [lessons, setLessons] = useState();
+  const isLoadingComplete = useCachedResources(setIsFirstStart, setLessons);
   const { isConnected } = useNetInfo();
   const slideAnim = useRef(new Animated.Value(0)).current;
   const themeContainer = useColorScheme() === 'light' ? styles.container : styles.container_dark;
@@ -35,6 +37,21 @@ export default function App() {
     }
   }, [isConnected])
 
+  useEffect(() => {
+    async function db() {
+      if (!isFirstStart) {
+        try {
+          setLessons(await getLessons());
+          updateLessons(setLessons);
+        } catch (e) {
+          console.warn(e);
+        }
+      }
+    }
+
+    db();
+  }, [isFirstStart])
+
   if (!isLoadingComplete) {
     return null;
   } else {
@@ -53,8 +70,8 @@ export default function App() {
           <Text style={styles.noInternetNotification_Text}>Немає інтернету</Text>
         </Animated.View>
         {isFirstStart == true
-          ? <StartScreen setFirstStart={setIsFirstStart} isConnected={isConnected} />
-          : <MainScreen />}
+          ? <StartScreen setFirstStart={setIsFirstStart} isConnected={isConnected} setLessons={setLessons} />
+          : <MainScreen lessons={lessons} />}
       </SafeAreaProvider>
     );
   }
