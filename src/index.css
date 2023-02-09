@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: e-Ukraine-Light;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgb(255, 255, 255);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+@font-face {
+  font-family: e-Ukraine-Medium;
+  font-style: normal;
+  font-weight: 500;
+  src: local("e-Ukraine-Medium"),
+    url(@/assets/fonts/e-Ukraine-Medium.otf) format("opentype");
+}
+
+@font-face {
+  font-family: e-Ukraine-Regular;
+  font-style: normal;
+  font-weight: 400;
+  src: local("e-Ukraine-Regular"),
+    url(@/assets/fonts/e-Ukraine-Regular.otf) format("opentype");
+}
+
+@font-face {
+  font-family: e-Ukraine-Light;
+  font-style: normal;
+  font-weight: 300;
+  src: local("e-Ukraine-Light"),
+    url(@/assets/fonts/e-Ukraine-Light.otf) format("opentype");
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #000000;
+    background-color: #faf9f9;
+  }
+}
