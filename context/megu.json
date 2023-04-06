@@ -1,0 +1,396 @@
+{
+  "PI20": [
+    {
+      "date": "2023-03-27T10:00:00.000Z",
+      "lessons": [
+        {
+          "description": "Лекція",
+          "endtime": "12:50",
+          "id": 0,
+          "isOnline": true,
+          "location": "calendar.google.com",
+          "name": "3D-моделювання",
+          "starttime": "11:30",
+          "teacher": "доц.Фещук Ю.В.",
+          "type": 0
+        },
+        {
+          "description": "Лекція",
+          "endtime": "14:20",
+          "id": 1,
+          "isOnline": true,
+          "location": "calendar.google.com",
+          "name": "Емпіричні методи програмної інженерії",
+          "starttime": "13:00",
+          "teacher": "проф.Колупаєв Б.Б.",
+          "type": 0
+        },
+        {
+          "description": "Лабораторна робота",
+          "endtime": "15:50",
+          "id": 2,
+          "isOnline": true,
+          "location": "calendar.google.com",
+          "name": "Емпіричні методи програмної інженерії",
+          "starttime": "14:30",
+          "teacher": "проф.Колупаєв Б.Б.",
+          "type": 0
+        }
+      ]
+    },
+    {
+      "date": "2023-03-28T10:00:00.000Z",
+      "lessons": [
+        {
+          "description": "Лекція",
+          "endtime": "12:50",
+          "id": 0,
+          "isOnline": true,
+          "location": "calendar.google.com",
+          "name": "Командна розробка програмних проектів",
+          "starttime": "11:30",
+          "teacher": "доц.Шпортько О.В.",
+          "type": 0
+        },
+        {
+          "description": "Практична робота",
+          "endtime": "15:50",
+          "id": 1,
+          "isOnline": true,
+          "location": "calendar.google.com",
+          "name": "Бази даних",
+          "starttime": "14:30",
+          "teacher": "проф.Янчук П.С.",
+          "type": 0
+        }
+      ]
+    },
+    {
+      "date": "2023-03-29T10:00:00.000Z",
+      "lessons": [
+        {
+          "description": "Лекція",
+          "endtime": "12:50",
+          "id": 0,
+          "isOnline": true,
+          "location": "calendar.google.com",
+          "name": "Емпіричні методи програмної інженерії",
+          "starttime": "11:30",
+          "teacher": "проф.Колупаєв Б.Б.",
+          "type": 0
+        },
+        {
+          "description": "Лабораторна робота",
+          "endtime": "14:20",
+          "id": 1,
+          "isOnline": true,
+          "location": "calendar.google.com",
+          "name": "Емпіричні методи програмної інженерії",
+          "starttime": "13:00",
+          "teacher": "проф.Колупаєв Б.Б.",
+          "type": 0
+        }
+      ]
+    },
+    {
+      "date": "2023-03-30T10:00:00.000Z",
+      "lessons": [
+        {
+          "description": "Лекція",
+          "endtime": "11:20",
+          "id": 0,
+          "isOnline": true,
+          "location": "calendar.google.com",
+          "name": "Програмування на Python",
+          "starttime": "10:00",
+          "teacher": "доц.Сяський В.А.",
+          "type": 0
+        },
+        {
+          "description": "Лекція",
+          "endtime": "12:50",
+          "id": 1,
+          "isOnline": true,
+          "location": "calendar.google.com",
+          "name": "Англійська мова",
+          "starttime": "11:30",
+          "teacher": "доц.Пабат М.А.",
+          "type": 0
+        },
+        {
+          "description": "Лабораторна робота",
+          "endtime": "14:20",
+          "id": 2,
+          "isOnline": true,
+          "location": "calendar.google.com",
+          "name": "Програмування на Python",
+          "starttime": "13:00",
+          "teacher": "доц.Сяський В.А.",
+          "type": 0
+        },
+        {
+          "description": "Лабораторна робота",
+          "endtime": "15:50",
+          "id": 3,
+          "isOnline": true,
+          "location": "calendar.google.com",
+          "name": "Бази даних",
+          "starttime": "14:30",
+          "teacher": "проф.Янчук П.С.",
+          "type": 0
+        }
+      ]
+    },
+    {
+      "date": "2023-03-31T10:00:00.000Z",
+      "lessons": [
+        {
+          "description": "Лабораторна робота",
+          "endtime": "12:50",
+          "id": 0,
+          "isOnline": true,
+          "location": "calendar.google.com",
+          "name": "Командна розробка програмних проектів",
+          "starttime": "11:30",
+          "teacher": "доц.Шпортько О.В.",
+          "type": 0
+        },
+        {
+          "description": "Лабораторна робота",
+          "endtime": "14:20",
+          "id": 1,
+          "isOnline": true,
+          "location": "calendar.google.com",
+          "name": "3D-моделювання",
+          "starttime": "13:00",
+          "teacher": "доц.Фещук Ю.В.",
+          "type": 0
+        },
+        {
+          "description": "Лекція",
+          "endtime": "15:50",
+          "id": 2,
+          "isOnline": true,
+          "location": "calendar.google.com",
+          "name": "Архітектура та проектування ПЗ",
+          "starttime": "14:30",
+          "teacher": "ст.в.Грисюк А.В.",
+          "type": 0
+        },
+        {
+          "description": "Лабораторна робота",
+          "endtime": "17:20",
+          "id": 3,
+          "isOnline": true,
+          "location": "calendar.google.com",
+          "name": "Архітектура та проектування ПЗ",
+          "starttime": "16:00",
+          "teacher": "ст.в.Грисюк А.В.",
+          "type": 0
+        }
+      ]
+    },
+    {
+      "date": "2023-04-01T10:00:00.000Z"
+    },
+    {
+      "date": "2023-04-02T10:00:00.000Z"
+    },
+    {
+      "date": "2023-04-03T10:00:00.000Z",
+      "lessons": [
+        {
+          "description": "Лекція",
+          "endtime": "12:50",
+          "id": 0,
+          "isOnline": false,
+          "location": "1415",
+          "name": "3D-моделювання",
+          "starttime": "11:30",
+          "teacher": "доц.Фещук Ю.В.",
+          "type": 0
+        },
+        {
+          "description": "Лекція",
+          "endtime": "14:20",
+          "id": 1,
+          "isOnline": true,
+          "location": "calendar.google.com",
+          "name": "Емпіричні методи програмної інженерії",
+          "starttime": "13:00",
+          "teacher": "проф.Колупаєв Б.Б.",
+          "type": 0
+        },
+        {
+          "description": "Лабораторна робота",
+          "endtime": "15:50",
+          "id": 2,
+          "isOnline": true,
+          "location": "calendar.google.com",
+          "name": "Емпіричні методи програмної інженерії",
+          "starttime": "14:30",
+          "teacher": "проф.Колупаєв Б.Б.",
+          "type": 0
+        }
+      ]
+    },
+    {
+      "date": "2023-04-04T10:00:00.000Z",
+      "lessons": [
+        {
+          "description": "Лекція",
+          "endtime": "12:50",
+          "id": 0,
+          "isOnline": false,
+          "location": "1412",
+          "name": "Командна розробка програмних проектів",
+          "starttime": "11:30",
+          "teacher": "доц.Шпортько О.В.",
+          "type": 0
+        },
+        {
+          "description": "Практична робота",
+          "endtime": "15:50",
+          "id": 1,
+          "isOnline": false,
+          "location": "1409",
+          "name": "Бази даних",
+          "starttime": "14:30",
+          "teacher": "проф.Янчук П.С.",
+          "type": 0
+        }
+      ]
+    },
+    {
+      "date": "2023-04-05T10:00:00.000Z",
+      "lessons": [
+        {
+          "description": "Лекція",
+          "endtime": "12:50",
+          "id": 0,
+          "isOnline": true,
+          "location": "calendar.google.com",
+          "name": "Емпіричні методи програмної інженерії",
+          "starttime": "11:30",
+          "teacher": "проф.Колупаєв Б.Б.",
+          "type": 0
+        },
+        {
+          "description": "Лабораторна робота",
+          "endtime": "14:20",
+          "id": 1,
+          "isOnline": true,
+          "location": "calendar.google.com",
+          "name": "Емпіричні методи програмної інженерії",
+          "starttime": "13:00",
+          "teacher": "проф.Колупаєв Б.Б.",
+          "type": 0
+        },
+        {
+          "description": "Лекція",
+          "endtime": "15:50",
+          "id": 2,
+          "isOnline": true,
+          "location": "calendar.google.com",
+          "name": "Англійська мова",
+          "starttime": "14:30",
+          "teacher": "доц.Пабат М.А.",
+          "type": 0
+        }
+      ]
+    },
+    {
+      "date": "2023-04-06T10:00:00.000Z",
+      "lessons": [
+        {
+          "description": "Лекція",
+          "endtime": "11:20",
+          "id": 0,
+          "isOnline": false,
+          "location": "1409",
+          "name": "Програмування на Python",
+          "starttime": "10:00",
+          "teacher": "доц.Сяський В.А.",
+          "type": 0
+        },
+        {
+          "description": "Лабораторна робота",
+          "endtime": "14:20",
+          "id": 1,
+          "isOnline": false,
+          "location": "1415",
+          "name": "Програмування на Python",
+          "starttime": "13:00",
+          "teacher": "доц.Сяський В.А.",
+          "type": 0
+        },
+        {
+          "description": "Лабораторна робота",
+          "endtime": "15:50",
+          "id": 2,
+          "isOnline": false,
+          "location": "1412",
+          "name": "Бази даних",
+          "starttime": "14:30",
+          "teacher": "проф.Янчук П.С.",
+          "type": 0
+        }
+      ]
+    },
+    {
+      "date": "2023-04-07T10:00:00.000Z",
+      "lessons": [
+        {
+          "description": "Лабораторна робота",
+          "endtime": "12:50",
+          "id": 0,
+          "isOnline": false,
+          "location": "1402",
+          "name": "Командна розробка програмних проектів",
+          "starttime": "11:30",
+          "teacher": "доц.Шпортько О.В.",
+          "type": 0
+        },
+        {
+          "description": "Лабораторна робота",
+          "endtime": "14:20",
+          "id": 1,
+          "isOnline": false,
+          "location": "1410",
+          "name": "3D-моделювання",
+          "starttime": "13:00",
+          "teacher": "доц.Фещук Ю.В.",
+          "type": 0
+        },
+        {
+          "description": "Лекція",
+          "endtime": "15:50",
+          "id": 2,
+          "isOnline": false,
+          "location": "1409",
+          "name": "Архітектура та проектування ПЗ",
+          "starttime": "14:30",
+          "teacher": "ст.в.Грисюк А.В.",
+          "type": 0
+        },
+        {
+          "description": "Лабораторна робота",
+          "endtime": "17:20",
+          "id": 3,
+          "isOnline": false,
+          "location": "1409",
+          "name": "Архітектура та проектування ПЗ",
+          "starttime": "16:00",
+          "teacher": "ст.в.Грисюк А.В.",
+          "type": 0
+        }
+      ]
+    },
+    {
+      "date": "2023-04-08T10:00:00.000Z"
+    },
+    {
+      "date": "2023-04-09T20:00:00.000Z"
+    }
+  ]
+}

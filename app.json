@@ -1,0 +1,31 @@
+{
+  "expo": {
+    "name": "MEGU dev",
+    "slug": "megu",
+    "version": "2.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "megu",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "image": "./assets/images/splash.png",
+      "backgroundColor": "#4E6DDF",
+      "dark": {
+        "image": "./assets/images/splash_dark.png",
+        "backgroundColor": "#1B1B1B"
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "backgroundColor": "#4E6DDF"
+      },
+      "package": "com.megu.dev"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "fc6de8b4-cb68-4964-8f67-95a4d0b64fdb"
+      }
+    }
+  }
+}

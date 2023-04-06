@@ -1,19 +1,25 @@
 {
   "cli": {
-    "version": ">= 0.49.0"
+    "version": ">= 3.7.2"
   },
   "build": {
     "development": {
-      "releaseChannel": "dev",
       "developmentClient": true,
-      "distribution": "internal"
+      "distribution": "internal",
+      "ios": {
+        "resourceClass": "m1-medium"
+      }
     },
     "preview": {
-      "releaseChannel": "staging",
-      "distribution": "internal"
+      "distribution": "internal",
+      "ios": {
+        "resourceClass": "m1-medium"
+      }
     },
     "production": {
-      "releaseChannel": "production"
+      "ios": {
+        "resourceClass": "m1-medium"
+      }
     }
   },
   "submit": {
