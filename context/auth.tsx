@@ -2,7 +2,7 @@ import { createContext, useContext, useState, useEffect } from "react";
 import { useRouter, useSegments } from "expo-router";
 import { useAsyncStorage } from "@react-native-async-storage/async-storage";
 
-type selectGroupType = string | null | undefined;
+type selectGroupType = string | null;
 
 interface AuthContextType {
   signIn: (selectGroup: selectGroupType) => void;
@@ -25,25 +25,23 @@ export function useAuth() {
 }
 
 function useProtectedRoute(selectGroup: selectGroupType) {
-  const rootSegment = useSegments()[0];
+  const segments = useSegments();
   const router = useRouter();
 
   useEffect(() => {
-    if (selectGroup === undefined) {
-      return;
-    }
+    const inAuthGroup = segments[0] === "(auth)";
 
-    if (!selectGroup && rootSegment !== "(auth)") {
+    if (!selectGroup && !inAuthGroup) {
       router.replace("/sign-in");
-    } else if (selectGroup && rootSegment !== "(app)") {
-      router.replace("/");
+    } else if (selectGroup && inAuthGroup) {
+      router.replace("/app");
     }
-  }, [selectGroup, rootSegment]);
+  }, [selectGroup, segments]);
 }
 
 export function AuthProvider(props: any) {
   const { getItem, setItem, removeItem } = useAsyncStorage("SelectGroup");
-  const [selectGroup, setSelectGroup] = useState<selectGroupType>(undefined);
+  const [selectGroup, setSelectGroup] = useState<selectGroupType>(null);
 
   useEffect(() => {
     getItem().then((json) => {
