@@ -34,7 +34,7 @@ function useProtectedRoute(selectGroup: selectGroupType) {
     if (!selectGroup && !inAuthGroup) {
       router.replace("/sign-in");
     } else if (selectGroup && inAuthGroup) {
-      router.replace("/app");
+      router.replace("/");
     }
   }, [selectGroup, segments]);
 }
