@@ -22,6 +22,10 @@
       },
       "package": "com.megu.dev"
     },
+    "web": {
+      "favicon": "./assets/images/favicon.png",
+      "bundler": "metro"
+    },
     "extra": {
       "eas": {
         "projectId": "fc6de8b4-cb68-4964-8f67-95a4d0b64fdb"
